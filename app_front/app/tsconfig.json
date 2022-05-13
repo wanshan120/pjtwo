@@ -18,7 +18,10 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "baseUrl": "src",  //'src'ディレクトリをインポートの起点にする
+    //ES5以下でも実行ES2015から導入されたイテレータ周りの挙動を解決
+    "downlevelIteration": true
   },
   "include": [
     "src"
