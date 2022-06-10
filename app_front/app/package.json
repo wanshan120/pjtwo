@@ -21,8 +21,11 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "fix": "npm run -s format && npm run -s lint:fix",
+    "format": " prettier --write --loglevel=warn'{public,src}/**/*.{js,jsx,ts,tsx,html,gql,graphql,json}'",
     "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
     "lint:fix": "eslint --fix 'src/**/*.{js,jsx,ts,tsx}'",
+    "lint:conflict": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
     "preinstall": "typesync || :"
   },
   "eslintConfig": {
@@ -53,6 +56,10 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.29.4",
-    "eslint-plugin-react-hooks": "^4.5.0"
+    "eslint-plugin-react-hooks": "^4.5.0",
+    "stylelint": "^14.9.0",
+    "stylelint-config-recess-order": "^3.0.0",
+    "stylelint-config-standard": "^26.0.0",
+    "stylelint-order": "^5.0.0"
   }
 }
