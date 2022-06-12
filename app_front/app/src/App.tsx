@@ -1,5 +1,5 @@
 import { FC, useEffect } from 'react';
-import { Navigate, Route, Routes, useLocation } from 'react-router';
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 
 import Home from 'components/pages/Home';
 import Characters from 'components/pages/Characters';
