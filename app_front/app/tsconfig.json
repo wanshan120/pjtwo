@@ -19,9 +19,14 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
+    "jsxImportSource": "@emotion/react",
     "baseUrl": "src",  //'src'ディレクトリをインポートの起点にする
     //ES5以下でも実行ES2015から導入されたイテレータ周りの挙動を解決
-    "downlevelIteration": true
+    "downlevelIteration": true,
+    // MUI
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true
   },
   "include": [
     "src"
