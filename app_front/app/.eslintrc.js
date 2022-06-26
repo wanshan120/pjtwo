@@ -99,6 +99,9 @@ module.exports = {
         classPropertiesAllowed: false,
       },
     ],
+    // note you must disable the base rule as it can report incorrect errors
+    'no-shadow': 'off',
+    '@typescript-eslint/no-shadow': ['error'],
   },
   overrides: [
     {
@@ -114,6 +117,7 @@ module.exports = {
       node: {
         paths: ['src'],
       },
+      typescript: { project: './' },
     },
   },
 };
