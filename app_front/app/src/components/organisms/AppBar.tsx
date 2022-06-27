@@ -74,7 +74,7 @@ const AppBar = styled(MuiAppBar, {
   }),
 }));
 
-const ResponsiveMuiDrawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
+const MiniDrawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
     width: drawerWidth,
     flexShrink: 0,
@@ -91,7 +91,7 @@ const ResponsiveMuiDrawer = styled(MuiDrawer, { shouldForwardProp: (prop) => pro
   }),
 );
 
-const MiniDrawer = (props: Props) => {
+const ResponsiveMenuBar = (props: Props) => {
   const { window } = props;
 
   // toggle Drawer
@@ -205,9 +205,9 @@ const MiniDrawer = (props: Props) => {
           {drawer}
         </MuiDrawer>
       ) : (
-        <ResponsiveMuiDrawer variant="permanent" open={open}>
+        <MiniDrawer variant="permanent" open={open}>
           {drawer}
-        </ResponsiveMuiDrawer>
+        </MiniDrawer>
       )}
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
@@ -239,4 +239,4 @@ const MiniDrawer = (props: Props) => {
   );
 };
 
-export default MiniDrawer;
+export default ResponsiveMenuBar;

@@ -8,7 +8,7 @@ import { ThemeProvider } from '@mui/material';
 import Home from 'components/pages/Home';
 import ContentsDetail from 'components/templates/ContentsDetail';
 import ResponsiveDrawer from 'components/organisms/SideMenuBar copy';
-import MiniDrawer from 'components/organisms/AppBar';
+import ResponsiveMenuBar from 'components/organisms/AppBar';
 
 import theme from 'theme/myTheme';
 
@@ -41,7 +41,7 @@ const App: FC = () => {
           <Route path="/" element={<Home />} />
           <Route path="contents_detail" element={<ContentsDetail />} />
           <Route path="contents_detail_copy" element={<ResponsiveDrawer />} />
-          <Route path="mini_drawer" element={<MiniDrawer />} />
+          <Route path="mini_drawer" element={<ResponsiveMenuBar />} />
           <Route path="characters" element={<Characters />}>
             <Route path="" element={<AllCharacters />} />
             <Route path=":schoolCode" element={<SchoolCharacters />} />
