@@ -2,17 +2,14 @@ import { FC, useEffect } from 'react';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 
+// MUI
+import theme from 'theme/myTheme';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material';
 
+// compornents
 import Home from 'components/pages/Home';
-import ContentsDetail from 'components/templates/ContentsDetail';
-import ResponsiveDrawer from 'components/organisms/SideMenuBar copy';
-import ResponsiveMenuBar from 'components/organisms/ResponsiveMenuBar';
 import PageDetailMovie from 'components/pages/DetailMovie';
-
-import theme from 'theme/myTheme';
-
 import Characters from 'components/pages/Characters';
 import AllCharacters from 'containers/templates/AllCharacters';
 import SchoolCharacters from 'containers/templates/SchoolCharacters';
@@ -40,9 +37,6 @@ const App: FC = () => {
         <CssBaseline />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="contents_detail" element={<ContentsDetail />} />
-          <Route path="contents_detail_copy" element={<ResponsiveDrawer />} />
-          <Route path="mini_drawer" element={<ResponsiveMenuBar />} />
           <Route path="characters" element={<Characters />}>
             <Route path="" element={<AllCharacters />} />
             <Route path=":schoolCode" element={<SchoolCharacters />} />
