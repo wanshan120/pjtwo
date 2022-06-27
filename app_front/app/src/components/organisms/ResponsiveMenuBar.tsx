@@ -50,6 +50,17 @@ const ResponsiveMenuBar = (props: Props) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.only('mobile'));
 
+  // メニューの開閉状態を画面サイズで制御する
+  React.useEffect(() => {
+    if (!isMobile) {
+      // モバイル以外の時はデフォルトで閉じる
+      setOpen(true);
+    } else {
+      // モバイルはデフォルトで閉じる
+      setOpen(false);
+    }
+  }, [isMobile]);
+
   const drawer = (
     <>
       <Toolbar />
