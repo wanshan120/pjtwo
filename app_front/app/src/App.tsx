@@ -8,7 +8,8 @@ import { ThemeProvider } from '@mui/material';
 import Home from 'components/pages/Home';
 import ContentsDetail from 'components/templates/ContentsDetail';
 import ResponsiveDrawer from 'components/organisms/SideMenuBar copy';
-import ResponsiveMenuBar from 'components/organisms/AppBar';
+import ResponsiveMenuBar from 'components/organisms/ResponsiveMenuBar';
+import PageDetailMovie from 'components/pages/DetailMovie';
 
 import theme from 'theme/myTheme';
 
@@ -47,6 +48,7 @@ const App: FC = () => {
             <Route path=":schoolCode" element={<SchoolCharacters />} />
           </Route>
           <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="detail_movie" element={<PageDetailMovie />} />
         </Routes>
       </ThemeProvider>
     </>
