@@ -28,7 +28,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import AppBar from 'components/molecules/AppBar';
 import SearchUnit from 'components/molecules/SearchUnit';
 import MiniDrawer from 'components/molecules/MiniDrawer';
-import drawerWidth from 'components/atoms/const_list/DrawerWidth';
+import drawerWidth from 'components/const_list/DrawerWidth';
 
 interface Props {
   /**
@@ -42,7 +42,7 @@ const ResponsiveMenuBar = (props: Props) => {
   const { window } = props;
 
   // toggle Drawer
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
   const handleDrawerToggle = () => {
     setOpen(!open);
   };

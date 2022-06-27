@@ -2,7 +2,7 @@ import { styled, Theme, CSSObject } from '@mui/material/styles';
 import MuiDrawer from '@mui/material/Drawer';
 
 // compornents
-import drawerWidth from 'components/atoms/const_list/DrawerWidth';
+import drawerWidth from 'components/const_list/DrawerWidth';
 
 const openedMixin = (theme: Theme): CSSObject => ({
   width: drawerWidth,
