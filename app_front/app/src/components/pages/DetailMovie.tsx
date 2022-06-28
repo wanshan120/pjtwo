@@ -48,7 +48,6 @@ const PageDetailMovie = () => {
             style={{
               flexGrow: 1,
               maxHeight: '300px',
-              maxWidth: `calc(100%-468.75px)`,
               margin: '5px',
               overflow: 'hidden',
               position: 'relative',
@@ -58,7 +57,7 @@ const PageDetailMovie = () => {
               component="div"
               style={{
                 position: 'relative',
-                left: `calc(200px)`,
+                left: 0,
                 top: '0',
                 minHeight: '100%',
                 minWidth: '100%',
