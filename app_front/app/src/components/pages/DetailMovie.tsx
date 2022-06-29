@@ -3,6 +3,8 @@ import * as React from 'react';
 // MUI
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Grid';
+import Paper from '@mui/material/Paper';
 
 // atoms
 import DrawerHeader from 'components/atoms/DrawerHeader';
@@ -15,20 +17,132 @@ import VODSiteList from 'components/molecules/VODSiteList';
 // images
 import intothewildAama from 'data/images/intothewildAma.jpg';
 
-// list
+import Stack from '@mui/material/Stack';
+// import Rating from '@mui/material/Rating';
+// import FavoriteIcon from '@mui/icons-material/Favorite';
+// import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+// import { styled } from '@mui/material/styles';
+import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
+import NotificationAddOutlinedIcon from '@mui/icons-material/NotificationAddOutlined';
 
-import Paper from '@mui/material/Paper';
+// const labels: { [index: string]: string } = {
+//   0.5: 'R.I.P',
+//   1: 'D',
+//   1.5: 'D+',
+//   2: 'C',
+//   2.5: 'C+',
+//   3: 'B',
+//   3.5: 'B+',
+//   4: 'A',
+//   4.5: 'A+',
+//   5: 'GOD',
+// };
+
+// const getLabelText = (value: number) => `${value} Star${value !== 1 ? 's' : ''}, ${labels[value]}`;
+
+// const StyledRating = styled(Rating)({
+//   '& .MuiRating-iconFilled': {
+//     color: '#ff6d75',
+//   },
+//   '& .MuiRating-iconHover': {
+//     color: '#ff3d47',
+//   },
+// });
 
 const PageDetailMovie = () => {
   // const theme = useTheme();
+  // const [value, setValue] = React.useState<number | null>(2);
+  // const [hover, setHover] = React.useState(-1);
   console.log('detail');
 
   return (
     <Box sx={{ display: 'flex', justifyContent: 'center' }}>
       <ResponsiveMenuBar />
-      <Box component="main" sx={{ maxWidth: 1280, p: 3, bgcolor: '#9a9a9a' }}>
+      <Box component="main" sx={{ maxWidth: 1280, p: 3 }}>
         <DrawerHeader />
-        <h1 style={{ fontSize: '2rem' }}>イントゥ・ザ・ワイルド</h1>
+        <Box sx={{ flexGrow: 1, marginBottom: 1 }}>
+          <Grid container direction="row" justifyContent="space-between" alignItems="center">
+            <Grid item tablet={7}>
+              <h1 style={{ fontSize: '2rem' }}>イントゥ・ザ・ワイルド</h1>
+            </Grid>
+            <Grid item tablet={5}>
+              <Box style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                <Stack direction="column" justifyContent="center" alignItems="center" spacing={0}>
+                  評価指数
+                  <Paper variant="outlined" sx={{ paddingLeft: 1, paddingRight: 1 }}>
+                    <Typography display="inline" style={{ fontSize: 52 }}>
+                      S
+                    </Typography>
+                    <Typography display="inline" style={{ fontSize: 27, marginLeft: 7 }}>
+                      86
+                    </Typography>
+                    <Typography display="inline" style={{ fontSize: 11 }}>
+                      /100
+                    </Typography>
+                  </Paper>
+                </Stack>
+                <Stack direction="column" justifyContent="center" alignItems="center" spacing={0}>
+                  マイレート
+                  <Paper variant="outlined" sx={{ paddingLeft: 1, paddingRight: 1 }}>
+                    <Typography display="inline" style={{ fontSize: 52 }}>
+                      A+
+                    </Typography>
+                    <Typography display="inline" style={{ fontSize: 27, marginLeft: 7 }}>
+                      9.5
+                    </Typography>
+                    <Typography display="inline" style={{ fontSize: 11 }}>
+                      /10
+                    </Typography>
+                  </Paper>
+                </Stack>
+                <Stack direction="column" justifyContent="center" alignItems="center" spacing={0}>
+                  後で
+                  <Paper variant="outlined" sx={{ paddingLeft: 1, paddingRight: 1 }}>
+                    <BookmarkBorderOutlinedIcon sx={{ fontSize: 52 }} />
+                  </Paper>
+                </Stack>
+                <Stack direction="column" justifyContent="center" alignItems="center" spacing={0}>
+                  通知
+                  <Paper variant="outlined" sx={{ paddingLeft: 1, paddingRight: 1 }}>
+                    <NotificationAddOutlinedIcon sx={{ fontSize: 52 }} />
+                  </Paper>
+                </Stack>
+              </Box>
+            </Grid>
+
+            {/* <Stack direction="column" justifyContent="center" alignItems="center" spacing={0}>
+              評価指数
+              <Paper variant="outlined" sx={{ paddingLeft: 1, paddingRight: 1 }}>
+                <Box
+                  sx={{
+                    '& > legend': { mt: 2 },
+                  }}
+                >
+                  <StyledRating
+                    name="customized-color"
+                    defaultValue={2}
+                    getLabelText={getLabelText}
+                    precision={0.5}
+                    icon={<FavoriteIcon fontSize="inherit" />}
+                    onChange={(event, newValue) => {
+                      setValue(newValue);
+                    }}
+                    onChangeActive={(event, newHover) => {
+                      setHover(newHover);
+                    }}
+                    emptyIcon={<FavoriteBorderIcon fontSize="inherit" />}
+                  />
+                  {value !== null && (
+                    <Box sx={{ tablet: 2, display: 'inline' }}>
+                      {labels[hover !== -1 ? hover : value]}
+                    </Box>
+                  )}
+                </Box>
+              </Paper>
+            </Stack> */}
+          </Grid>
+        </Box>
+
         <Box component="div" style={{ display: 'flex' }}>
           <AspectRatioBlock sx={{ width: '22%' }}>
             <AspectRatioImage src={intothewildAama} alt={intothewildAama} loading="lazy" />
