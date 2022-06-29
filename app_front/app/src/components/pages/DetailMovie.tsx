@@ -1,5 +1,4 @@
 import * as React from 'react';
-// import { styled } from '@mui/material/styles';
 
 // MUI
 import Box from '@mui/material/Box';
@@ -7,10 +6,18 @@ import Typography from '@mui/material/Typography';
 
 // atoms
 import DrawerHeader from 'components/atoms/DrawerHeader';
+import YoutubeIframe from 'components/atoms/YoutubeIframe';
+import AspectRatioImage from 'components/atoms/AspectRatioImage';
 // organisms
 import ResponsiveMenuBar from 'components/organisms/ResponsiveMenuBar';
+import AspectRatioBlock from 'components/molecules/AspectRatioBlock';
+import VODSiteList from 'components/molecules/VODSiteList';
 // images
 import intothewildAama from 'data/images/intothewildAma.jpg';
+
+// list
+
+import Paper from '@mui/material/Paper';
 
 const PageDetailMovie = () => {
   // const theme = useTheme();
@@ -19,113 +26,42 @@ const PageDetailMovie = () => {
   return (
     <Box sx={{ display: 'flex', justifyContent: 'center' }}>
       <ResponsiveMenuBar />
-      <Box component="main" sx={{ maxWidth: 1280, p: 3 }}>
+      <Box component="main" sx={{ maxWidth: 1280, p: 3, bgcolor: '#9a9a9a' }}>
         <DrawerHeader />
-        <Box component="div" style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'stretch' }}>
-          <Box
-            component="div"
-            style={{
-              flexGrow: 1,
-              maxHeight: '300px',
-              maxWidth: `calc(100% - 468.75px)`,
-              position: 'relative',
-            }}
+        <h1 style={{ fontSize: '2rem' }}>イントゥ・ザ・ワイルド</h1>
+        <Box component="div" style={{ display: 'flex' }}>
+          <AspectRatioBlock sx={{ width: '22%' }}>
+            <AspectRatioImage src={intothewildAama} alt={intothewildAama} loading="lazy" />
+          </AspectRatioBlock>
+          <AspectRatioBlock
+            aspectRatio="56.25%"
+            sx={{ width: '56%', marginLeft: '5px', marginRight: '5px' }}
           >
-            <img
-              alt=""
-              src={intothewildAama}
+            <YoutubeIframe
+              src="https://www.youtube.com/embed/eQyE0Mu97Ec"
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </AspectRatioBlock>
+          <AspectRatioBlock sx={{ width: '22%' }}>
+            <Paper
+              variant="outlined"
               style={{
                 position: 'absolute',
-                left: '0',
-                top: '0',
-                height: '100%',
-                width: 'auto',
-              }}
-            />
-          </Box>
-          <Box
-            component="div"
-            style={{
-              flexGrow: 1,
-              maxHeight: '300px',
-              margin: '5px',
-              overflow: 'hidden',
-              position: 'relative',
-            }}
-          >
-            <Box
-              component="div"
-              style={{
-                position: 'relative',
+                top: 0,
                 left: 0,
-                top: '0',
-                minHeight: '100%',
-                minWidth: '100%',
-                paddingTop: '56.25%',
+                bottom: 0,
+                right: 0,
+                height: '100%',
+                minWidth: '200px',
               }}
             >
-              <iframe
-                style={{
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  bottom: 0,
-                  right: 0,
-                  width: '100%',
-                  height: '100%',
-                }}
-                src="https://www.youtube.com/embed/eQyE0Mu97Ec"
-                title="YouTube video player"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                width="560"
-                height="315"
-              />
-            </Box>
-          </Box>
+              <VODSiteList />
+            </Paper>
+          </AspectRatioBlock>
         </Box>
-        {/* 
-        <Box>
-          <Box component="div" style={{ position: 'relative' }}>
-            <img
-              src={intothewild}
-              style={{
-                position: 'absolute',
-                zIndex: 2000,
-                height: 'auto',
-                width: 'auto',
-                maxWidth: '100%',
-                maxHeight: '229px',
-              }}
-              alt={intothewild}
-              loading="lazy"
-            />
-          </Box>
-          <Box component="div" style={{ position: 'relative', maxWidth: 800 }}>
-            <Box component="div" style={{ paddingTop: '56.25%' }}>
-              <iframe
-                style={{
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  bottom: 0,
-                  right: 0,
-                  width: '100%',
-                  height: '100%',
-                  zIndex: 2000,
-                }}
-                src="https://www.youtube.com/embed/eQyE0Mu97Ec"
-                title="YouTube video player"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                width="560"
-                height="315"
-              />
-            </Box>
-          </Box>
-        </Box> */}
 
         <Box sx={{ display: 'block' }}>
           <Typography paragraph>
