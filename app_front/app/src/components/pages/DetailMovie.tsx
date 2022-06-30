@@ -67,13 +67,19 @@ const PageDetailMovie = () => {
             </Grid>
             <Grid item tablet={5}>
               <Box style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                <Stack direction="column" justifyContent="center" alignItems="center" spacing={0}>
+                <Stack
+                  direction="column"
+                  justifyContent="center"
+                  alignItems="center"
+                  spacing={0}
+                  marginRight={1}
+                >
                   評価指数
-                  <Paper variant="outlined" sx={{ paddingLeft: 1, paddingRight: 1 }}>
-                    <Typography display="inline" style={{ fontSize: 52 }}>
+                  <Paper variant="outlined" elevation={0} sx={{ paddingLeft: 1, paddingRight: 1 }}>
+                    <Typography display="inline" style={{ fontSize: 44 }}>
                       S
                     </Typography>
-                    <Typography display="inline" style={{ fontSize: 27, marginLeft: 7 }}>
+                    <Typography display="inline" style={{ fontSize: 23, marginLeft: 7 }}>
                       86
                     </Typography>
                     <Typography display="inline" style={{ fontSize: 11 }}>
@@ -81,13 +87,19 @@ const PageDetailMovie = () => {
                     </Typography>
                   </Paper>
                 </Stack>
-                <Stack direction="column" justifyContent="center" alignItems="center" spacing={0}>
+                <Stack
+                  direction="column"
+                  justifyContent="center"
+                  alignItems="center"
+                  spacing={0}
+                  marginRight={2}
+                >
                   マイレート
-                  <Paper variant="outlined" sx={{ paddingLeft: 1, paddingRight: 1 }}>
-                    <Typography display="inline" style={{ fontSize: 52 }}>
+                  <Paper variant="outlined" elevation={0} sx={{ paddingLeft: 1, paddingRight: 1 }}>
+                    <Typography display="inline" style={{ fontSize: 44 }}>
                       A+
                     </Typography>
-                    <Typography display="inline" style={{ fontSize: 27, marginLeft: 7 }}>
+                    <Typography display="inline" style={{ fontSize: 23, marginLeft: 7 }}>
                       9.5
                     </Typography>
                     <Typography display="inline" style={{ fontSize: 11 }}>
@@ -95,16 +107,27 @@ const PageDetailMovie = () => {
                     </Typography>
                   </Paper>
                 </Stack>
-                <Stack direction="column" justifyContent="center" alignItems="center" spacing={0}>
-                  後で
-                  <Paper variant="outlined" sx={{ paddingLeft: 1, paddingRight: 1 }}>
-                    <BookmarkBorderOutlinedIcon sx={{ fontSize: 52 }} />
+                <Stack
+                  direction="column"
+                  justifyContent="flex-end "
+                  alignItems="center"
+                  spacing={0}
+                  marginRight={1}
+                >
+                  通知
+                  <Paper elevation={0} sx={{ paddingLeft: 1, paddingRight: 1 }}>
+                    <NotificationAddOutlinedIcon sx={{ fontSize: 40 }} />
                   </Paper>
                 </Stack>
-                <Stack direction="column" justifyContent="center" alignItems="center" spacing={0}>
-                  通知
-                  <Paper variant="outlined" sx={{ paddingLeft: 1, paddingRight: 1 }}>
-                    <NotificationAddOutlinedIcon sx={{ fontSize: 52 }} />
+                <Stack
+                  direction="column"
+                  justifyContent="flex-end "
+                  alignItems="center"
+                  spacing={0}
+                >
+                  後で
+                  <Paper elevation={0} sx={{ paddingLeft: 1, paddingRight: 1 }}>
+                    <BookmarkBorderOutlinedIcon sx={{ fontSize: 40 }} />
                   </Paper>
                 </Stack>
               </Box>
