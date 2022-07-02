@@ -17,12 +17,11 @@ type TagKeyValue = {
 };
 
 const TagItemGrid: FC<TagKeyValue> = ({ jpReadingKey, tagValue }) => (
-  <Grid container item spacing={3} justifyContent="center" alignItems="flex-start">
+  <Grid container item>
     <Grid item tablet={4} sx={{ textAlign: 'right' }}>
       <Typography
         variant="h4"
-        display="inline"
-        sx={{ fontSize: '0.9rem', color: 'text.secondary' }}
+        sx={{ fontSize: '0.9rem', color: 'text.secondary', paddingRight: 3 }}
       >
         {jpReadingKey}
       </Typography>
@@ -38,8 +37,8 @@ const TagItemGrid: FC<TagKeyValue> = ({ jpReadingKey, tagValue }) => (
 );
 
 const DetailTagList: FC<AllContentsTagType> = ({ detailCode }) => (
-  <Paper variant="outlined" sx={{ padding: 2 }}>
-    <Grid container spacing={1}>
+  <Paper variant="outlined">
+    <Grid container spacing={1} sx={{ p: 2 }}>
       <TagItemGrid jpReadingKey="公開年" tagValue={detailCode.publicationDate} />
       <TagItemGrid jpReadingKey="原作" tagValue={detailCode.based} />
       <TagItemGrid jpReadingKey="原作者" tagValue={detailCode.author} />
