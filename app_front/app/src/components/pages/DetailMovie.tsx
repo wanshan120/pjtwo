@@ -14,8 +14,11 @@ import AspectRatioImage from 'components/atoms/AspectRatioImage';
 import ResponsiveMenuBar from 'components/organisms/ResponsiveMenuBar';
 import AspectRatioBlock from 'components/molecules/AspectRatioBlock';
 import VODSiteList from 'components/molecules/VODSiteList';
+import DetailTagList from 'components/organisms/DetailTagList';
 // images
 import intothewildAama from 'data/images/intothewildAma.jpg';
+// data
+import { AllContentsTagData } from 'data/detailTag';
 
 import Stack from '@mui/material/Stack';
 // import Rating from '@mui/material/Rating';
@@ -24,6 +27,7 @@ import Stack from '@mui/material/Stack';
 // import { styled } from '@mui/material/styles';
 import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
 import NotificationAddOutlinedIcon from '@mui/icons-material/NotificationAddOutlined';
+import Divider from '@mui/material/Divider';
 
 // const labels: { [index: string]: string } = {
 //   0.5: 'R.I.P',
@@ -53,87 +57,100 @@ const PageDetailMovie = () => {
   // const theme = useTheme();
   // const [value, setValue] = React.useState<number | null>(2);
   // const [hover, setHover] = React.useState(-1);
-  console.log('detail');
+  // console.log(AllContentsTagData.intoTheWild);
+  const contentsTagData = AllContentsTagData.intoTheWild;
 
   return (
     <Box sx={{ display: 'flex', justifyContent: 'center' }}>
       <ResponsiveMenuBar />
-      <Box component="main" sx={{ maxWidth: 1280, p: 3 }}>
+      <Paper variant="outlined" component="main" sx={{ maxWidth: 1280, p: 3 }}>
         <DrawerHeader />
         <Box sx={{ flexGrow: 1, marginBottom: 1 }}>
-          <Grid container direction="row" justifyContent="space-between" alignItems="center">
-            <Grid item tablet={7}>
-              <h1 style={{ fontSize: '2rem' }}>イントゥ・ザ・ワイルド</h1>
-            </Grid>
-            <Grid item tablet={5}>
-              <Box style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                <Stack
-                  direction="column"
-                  justifyContent="center"
-                  alignItems="center"
-                  spacing={0}
-                  marginRight={1}
+          <Paper elevation={0} sx={{ paddingTop: 2, paddingLeft: 2, paddingRight: 2 }}>
+            <Grid container direction="row" justifyContent="space-between" alignItems="center">
+              <Grid item tablet={7}>
+                <Typography
+                  variant="h1"
+                  display="inline"
+                  sx={{ fontSize: '2.5rem', paddingLeft: 1 }}
                 >
-                  評価指数
-                  <Paper variant="outlined" elevation={0} sx={{ paddingLeft: 1, paddingRight: 1 }}>
-                    <Typography display="inline" style={{ fontSize: 44 }}>
-                      S
-                    </Typography>
-                    <Typography display="inline" style={{ fontSize: 23, marginLeft: 7 }}>
-                      86
-                    </Typography>
-                    <Typography display="inline" style={{ fontSize: 11 }}>
-                      /100
-                    </Typography>
-                  </Paper>
-                </Stack>
-                <Stack
-                  direction="column"
-                  justifyContent="center"
-                  alignItems="center"
-                  spacing={0}
-                  marginRight={2}
-                >
-                  マイレート
-                  <Paper variant="outlined" elevation={0} sx={{ paddingLeft: 1, paddingRight: 1 }}>
-                    <Typography display="inline" style={{ fontSize: 44 }}>
-                      A+
-                    </Typography>
-                    <Typography display="inline" style={{ fontSize: 23, marginLeft: 7 }}>
-                      9.5
-                    </Typography>
-                    <Typography display="inline" style={{ fontSize: 11 }}>
-                      /10
-                    </Typography>
-                  </Paper>
-                </Stack>
-                <Stack
-                  direction="column"
-                  justifyContent="flex-end "
-                  alignItems="center"
-                  spacing={0}
-                  marginRight={1}
-                >
-                  通知
-                  <Paper elevation={0} sx={{ paddingLeft: 1, paddingRight: 1 }}>
-                    <NotificationAddOutlinedIcon sx={{ fontSize: 40 }} />
-                  </Paper>
-                </Stack>
-                <Stack
-                  direction="column"
-                  justifyContent="flex-end "
-                  alignItems="center"
-                  spacing={0}
-                >
-                  後で
-                  <Paper elevation={0} sx={{ paddingLeft: 1, paddingRight: 1 }}>
-                    <BookmarkBorderOutlinedIcon sx={{ fontSize: 40 }} />
-                  </Paper>
-                </Stack>
-              </Box>
-            </Grid>
+                  イントゥ・ザ・ワイルド
+                </Typography>
+              </Grid>
 
-            {/* <Stack direction="column" justifyContent="center" alignItems="center" spacing={0}>
+              <Grid item tablet={5}>
+                <Box style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                  <Divider orientation="vertical" variant="middle" flexItem />
+
+                  <Stack
+                    direction="column"
+                    justifyContent="flex-end "
+                    alignItems="center"
+                    spacing={0}
+                    marginRight={1}
+                  >
+                    <Typography style={{ fontSize: 12 }}>評価指数</Typography>
+                    <Paper elevation={0} sx={{ paddingLeft: 3, paddingRight: 2 }}>
+                      <Typography display="inline" style={{ fontSize: '2.2rem' }}>
+                        S
+                      </Typography>
+                      <Typography display="inline" style={{ fontSize: '1.4rem', marginLeft: 7 }}>
+                        8.6
+                      </Typography>
+                      <Typography display="inline" style={{ fontSize: '0.8rem' }}>
+                        /10
+                      </Typography>
+                    </Paper>
+                  </Stack>
+                  <Stack
+                    direction="column"
+                    justifyContent="flex-end "
+                    alignItems="center"
+                    spacing={0}
+                    marginRight={2}
+                  >
+                    <Typography style={{ fontSize: 12 }}>マイレート</Typography>
+                    <Paper elevation={0} sx={{ paddingLeft: 1, paddingRight: 2 }}>
+                      <Typography display="inline" style={{ fontSize: '2.2rem' }}>
+                        A+
+                      </Typography>
+                      <Typography display="inline" style={{ fontSize: '1.4rem', marginLeft: 7 }}>
+                        9.6
+                      </Typography>
+                      <Typography display="inline" style={{ fontSize: '0.8rem' }}>
+                        /10
+                      </Typography>
+                    </Paper>
+                  </Stack>
+                  <Stack
+                    direction="column"
+                    justifyContent="flex-end "
+                    alignItems="center"
+                    spacing={0}
+                    marginRight={1}
+                  >
+                    <Typography style={{ fontSize: 12 }}>通知</Typography>
+
+                    <Paper elevation={0} sx={{ paddingLeft: 1, paddingRight: 1 }}>
+                      <NotificationAddOutlinedIcon sx={{ fontSize: 40 }} />
+                    </Paper>
+                  </Stack>
+                  <Stack
+                    direction="column"
+                    justifyContent="flex-end "
+                    alignItems="center"
+                    spacing={0}
+                  >
+                    <Typography style={{ fontSize: 12 }}>後で</Typography>
+
+                    <Paper elevation={0} sx={{ paddingLeft: 1, paddingRight: 1 }}>
+                      <BookmarkBorderOutlinedIcon sx={{ fontSize: 40 }} />
+                    </Paper>
+                  </Stack>
+                </Box>
+              </Grid>
+
+              {/* <Stack direction="column" justifyContent="center" alignItems="center" spacing={0}>
               評価指数
               <Paper variant="outlined" sx={{ paddingLeft: 1, paddingRight: 1 }}>
                 <Box
@@ -163,7 +180,8 @@ const PageDetailMovie = () => {
                 </Box>
               </Paper>
             </Stack> */}
-          </Grid>
+            </Grid>
+          </Paper>
         </Box>
 
         <Box component="div" style={{ display: 'flex' }}>
@@ -172,7 +190,7 @@ const PageDetailMovie = () => {
           </AspectRatioBlock>
           <AspectRatioBlock
             aspectRatio="56.25%"
-            sx={{ width: '56%', marginLeft: '5px', marginRight: '5px' }}
+            sx={{ width: '56%', marginLeft: 1, marginRight: 1 }}
           >
             <YoutubeIframe
               src="https://www.youtube.com/embed/eQyE0Mu97Ec"
@@ -199,34 +217,30 @@ const PageDetailMovie = () => {
             </Paper>
           </AspectRatioBlock>
         </Box>
-
-        <Box sx={{ display: 'block' }}>
-          <Typography paragraph>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non enim praesent
-            elementum facilisis leo vel. Risus at ultrices mi tempus imperdiet. Semper risus in
-            hendrerit gravida rutrum quisque non tellus. Convallis convallis tellus id interdum
-            velit laoreet id donec ultrices. Odio morbi quis commodo odio aenean sed adipiscing.
-            Amet nisl suscipit adipiscing bibendum est ultricies integer quis. Cursus euismod quis
-            viverra nibh cras. Metus vulputate eu scelerisque felis imperdiet proin fermentum leo.
-            Mauris commodo quis imperdiet massa tincidunt. Cras tincidunt lobortis feugiat vivamus
-            at augue. At augue eget arcu dictum varius duis at consectetur lorem. Velit sed
-            ullamcorper morbi tincidunt. Lorem donec massa sapien faucibus et molestie ac.
-          </Typography>
-          <Typography paragraph>
-            Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper eget nulla
-            facilisi etiam dignissim diam. Pulvinar elementum integer enim neque volutpat ac
-            tincidunt. Ornare suspendisse sed nisi lacus sed viverra tellus. Purus sit amet volutpat
-            consequat mauris. Elementum eu facilisis sed odio morbi. Euismod lacinia at quis risus
-            sed vulputate odio. Morbi tincidunt ornare massa eget egestas purus viverra accumsan in.
-            In hendrerit gravida rutrum quisque non tellus orci ac. Pellentesque nec nam aliquam sem
-            et tortor. Habitant morbi tristique senectus et. Adipiscing elit duis tristique
-            sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis eleifend. Commodo
-            viverra maecenas accumsan lacus vel facilisis. Nulla posuere sollicitudin aliquam
-            ultrices sagittis orci a.
-          </Typography>
-        </Box>
-      </Box>
+        <Grid container direction="row" columnSpacing={1} sx={{ marginTop: 1 }}>
+          <Grid item tablet={8}>
+            <Paper variant="outlined" sx={{ padding: 2 }}>
+              <Typography
+                variant="h4"
+                display="inline"
+                sx={{
+                  fontSize: '1rem',
+                  color: 'text.secondary',
+                  fontWeight: 'bold',
+                }}
+              >
+                あらすじ
+              </Typography>
+              <Typography paragraph sx={{ fontSize: '0.9rem', marginTop: 0.5 }}>
+                裕福な家庭に生まれ、物質的に恵まれた環境で育ったクリス・マッキャンドレスは、エモリー大学を優秀な成績で卒業する。両親はハーバードのロースクールに進学することを望んでいたが、幼い頃から不和を見せつけられ、金で物ばかりを与えようとする両親に嫌気が差していたクリスは、学資預金を全額寄付し、世界の真理を求めアラスカへと旅に出る。
+              </Typography>
+            </Paper>
+          </Grid>
+          <Grid item tablet={4}>
+            <DetailTagList detailCode={contentsTagData} />
+          </Grid>
+        </Grid>
+      </Paper>
     </Box>
   );
 };

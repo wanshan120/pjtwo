@@ -2,17 +2,26 @@ import { createTheme } from '@mui/material';
 
 const theme = createTheme({
   palette: {
-    mode: 'light',
+    mode: 'dark',
     primary: {
-      main: '#08192D',
+      main: '#323233',
     },
     secondary: {
-      main: '#926B71',
+      main: '#007acc',
+    },
+    background: {
+      default: '#1e1e1e',
+    },
+    text: {
+      primary: 'rgba(255, 255, 255, 0.85)',
+      secondary: 'rgba(255, 255, 255, 0.7)',
+      disabled: 'rgba(255, 255, 255, 0.5)',
     },
   },
   typography: {
     fontFamily: ['Roboto', 'Noto Sans JP', '"Helvetica"', 'Arial', 'sans-serif'].join(','),
   },
+
   breakpoints: {
     values: {
       mobile: 0,

@@ -15,7 +15,14 @@ import unext from 'data/images/icons/unext.png';
 import hulu from 'data/images/icons/hulu.png';
 
 const VODSiteList: FC = () => (
-  <List sx={{ width: '100%', height: '100%', bgcolor: 'background.paper' }}>
+  <List
+    sx={{
+      margin: '1px',
+      width: 'calc(100% - 2px)',
+      height: 'calc(100% - 2px)',
+      bgcolor: 'background.paper',
+    }}
+  >
     <ListItem alignItems="flex-start">
       <ListItemAvatar>
         <Avatar alt="Cindy Baker" src={AmazonPrimeVideo} />
