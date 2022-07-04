@@ -25,7 +25,7 @@ const DetailTagJPData: DetailTagJP = {
   directedBy: '監督',
   screenplayBy: '撮影',
   producedBy: '脚本',
-  starring: '主演・助演',
+  starring: 'キャスト',
   graphy: '映像',
   editedBy: '制作',
   musicBy: '音楽',

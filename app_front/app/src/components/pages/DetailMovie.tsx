@@ -19,6 +19,7 @@ import DetailTagList from 'components/organisms/DetailTagList';
 import intothewildAama from 'data/images/intothewildAma.jpg';
 // data
 import { AllContentsTagData } from 'data/detailTag';
+import DetailTagJPData from 'data/detailTagJP';
 
 import Stack from '@mui/material/Stack';
 // import Rating from '@mui/material/Rating';
@@ -58,7 +59,8 @@ const PageDetailMovie = () => {
   // const [value, setValue] = React.useState<number | null>(2);
   // const [hover, setHover] = React.useState(-1);
   // console.log(AllContentsTagData.intoTheWild);
-  const contentsTagData = AllContentsTagData.intoTheWild;
+  const contentsTagData = AllContentsTagData;
+  const jpReadingTags = DetailTagJPData;
 
   return (
     <Box sx={{ display: 'flex', justifyContent: 'center' }}>
@@ -218,26 +220,73 @@ const PageDetailMovie = () => {
           </AspectRatioBlock>
         </Box>
         <Grid container direction="row" columnSpacing={1} sx={{ marginTop: 1 }}>
-          <Grid item tablet={8}>
-            <Paper variant="outlined" sx={{ padding: 2 }}>
-              <Typography
-                variant="h4"
-                display="inline"
+          <Grid container item direction="column" tablet={8} columnSpacing={1}>
+            <Grid item>
+              <Paper variant="outlined" sx={{ padding: 2 }}>
+                <Typography
+                  variant="h4"
+                  display="inline"
+                  sx={{
+                    fontSize: '1rem',
+                    color: 'text.secondary',
+                    fontWeight: 'bold',
+                  }}
+                >
+                  あらすじ
+                </Typography>
+                <Typography paragraph sx={{ fontSize: '0.9rem', marginTop: 0.5 }}>
+                  裕福な家庭に生まれ、物質的に恵まれた環境で育ったクリス・マッキャンドレスは、エモリー大学を優秀な成績で卒業する。両親はハーバードのロースクールに進学することを望んでいたが、幼い頃から不和を見せつけられ、金で物ばかりを与えようとする両親に嫌気が差していたクリスは、学資預金を全額寄付し、世界の真理を求めアラスカへと旅に出る。
+                </Typography>
+              </Paper>
+            </Grid>
+            {/* <Grid item>
+              <Paper
+                variant="outlined"
                 sx={{
-                  fontSize: '1rem',
-                  color: 'text.secondary',
-                  fontWeight: 'bold',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  flexWrap: 'wrap',
+                  listStyle: 'none',
+                }}
+                component="ul"
+              >
+
+                <Typography paragraph sx={{ fontSize: '0.9rem' }}>
+                  #tag1
+                </Typography>
+              </Paper>
+            </Grid> */}
+          </Grid>
+
+          <Grid container item direction="column" spacing={1} tablet={4}>
+            <Grid item>
+              <Paper
+                variant="outlined"
+                sx={{
+                  flexWrap: 'wrap',
+                  listStyle: 'none',
+                  padding: 2,
                 }}
               >
-                あらすじ
-              </Typography>
-              <Typography paragraph sx={{ fontSize: '0.9rem', marginTop: 0.5 }}>
-                裕福な家庭に生まれ、物質的に恵まれた環境で育ったクリス・マッキャンドレスは、エモリー大学を優秀な成績で卒業する。両親はハーバードのロースクールに進学することを望んでいたが、幼い頃から不和を見せつけられ、金で物ばかりを与えようとする両親に嫌気が差していたクリスは、学資預金を全額寄付し、世界の真理を求めアラスカへと旅に出る。
-              </Typography>
-            </Paper>
-          </Grid>
-          <Grid item tablet={4}>
-            <DetailTagList detailCode={contentsTagData} />
+                <Typography
+                  variant="h4"
+                  paragraph
+                  sx={{
+                    fontSize: '1rem',
+                    color: 'text.secondary',
+                    fontWeight: 'bold',
+                  }}
+                >
+                  タグ
+                </Typography>
+                <Typography paragraph sx={{ fontSize: '0.9rem', marginTop: 0.5 }}>
+                  #tag1
+                </Typography>
+              </Paper>
+            </Grid>
+            <Grid item>
+              <DetailTagList tagObjects={contentsTagData} jpReadingObjects={jpReadingTags} />
+            </Grid>
           </Grid>
         </Grid>
       </Paper>

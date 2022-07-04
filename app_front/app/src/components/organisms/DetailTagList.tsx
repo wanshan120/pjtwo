@@ -8,7 +8,8 @@ import Paper from '@mui/material/Paper';
 // import ListItem from '@mui/material/ListItem';
 
 // itemdata
-import { AllContentsTagType, tagWithURL } from 'data/detailTag';
+import { TagType, tagWithURL } from 'data/detailTag';
+import { DetailTagJP } from 'data/detailTagJP';
 // import { DetailTagJPData } from 'data/detailTagJP';
 
 type TagKeyValue = {
@@ -16,9 +17,14 @@ type TagKeyValue = {
   tagValue?: undefined | tagWithURL[];
 };
 
+type TagTypes = {
+  jpReadingObjects: DetailTagJP;
+  tagObjects: TagType;
+};
+
 const TagItemGrid: FC<TagKeyValue> = ({ jpReadingKey, tagValue }) => (
   <Grid container item>
-    <Grid item tablet={4} sx={{ textAlign: 'right' }}>
+    <Grid item tablet={3} sx={{ textAlign: 'right' }}>
       <Typography
         variant="h4"
         sx={{ fontSize: '0.9rem', color: 'text.secondary', paddingRight: 3 }}
@@ -26,7 +32,7 @@ const TagItemGrid: FC<TagKeyValue> = ({ jpReadingKey, tagValue }) => (
         {jpReadingKey}
       </Typography>
     </Grid>
-    <Grid item tablet={8}>
+    <Grid item tablet={9}>
       {tagValue?.map((tag) => (
         <Typography paragraph margin={0} sx={{ fontSize: '0.9rem' }}>
           {tag.name}
@@ -36,23 +42,15 @@ const TagItemGrid: FC<TagKeyValue> = ({ jpReadingKey, tagValue }) => (
   </Grid>
 );
 
-const DetailTagList: FC<AllContentsTagType> = ({ detailCode }) => (
+const DetailTagList: FC<TagTypes> = ({ jpReadingObjects, tagObjects }) => (
   <Paper variant="outlined">
     <Grid container spacing={1} sx={{ p: 2 }}>
-      <TagItemGrid jpReadingKey="公開年" tagValue={detailCode.publicationDate} />
-      <TagItemGrid jpReadingKey="原作" tagValue={detailCode.based} />
-      <TagItemGrid jpReadingKey="原作者" tagValue={detailCode.author} />
-      <TagItemGrid jpReadingKey="制作国" tagValue={detailCode.country} />
-      <TagItemGrid jpReadingKey="言語" tagValue={detailCode.language} />
-      <TagItemGrid jpReadingKey="ジャンル" tagValue={detailCode.genre} />
-      <TagItemGrid jpReadingKey="監督" tagValue={detailCode.directedBy} />
-      <TagItemGrid jpReadingKey="脚本" tagValue={detailCode.producedBy} />
-      <TagItemGrid jpReadingKey="主演・助演" tagValue={detailCode.starring} />
-      <TagItemGrid jpReadingKey="音楽" tagValue={detailCode.musicBy} />
-      <TagItemGrid jpReadingKey="制作会社" tagValue={detailCode.prodConpany} />
-      <TagItemGrid jpReadingKey="制作" tagValue={detailCode.editedBy} />
-      <TagItemGrid jpReadingKey="撮影" tagValue={detailCode.screenplayBy} />
-      <TagItemGrid jpReadingKey="映像" tagValue={detailCode.graphy} />
+      {Object.entries(jpReadingObjects).map((jpV) =>
+        // ブラケット記法だと型anyでエラーになるため2重ループで対応
+        Object.entries(tagObjects).map(
+          (tagV) => jpV[0] === tagV[0] && <TagItemGrid jpReadingKey={jpV[1]} tagValue={tagV[1]} />,
+        ),
+      )}
     </Grid>
   </Paper>
 );
