@@ -19,9 +19,16 @@ export type TagType = {
   editedBy?: tagWithURL[];
   musicBy?: tagWithURL[];
   prodConpany?: tagWithURL[];
+  award?: tagWithURL[];
+  feeling?: tagWithURL[];
+  period?: tagWithURL[];
+  stage?: tagWithURL[];
+  freeWord?: tagWithURL[];
+  action?: tagWithURL[];
+  thought?: tagWithURL[];
 };
 
-export const AllContentsTagData: TagType = {
+export const SampleContentsTagData: TagType = {
   publicationDate: [{ id: 1, name: '2007', url: '/' }],
   based: [{ id: 1, name: '荒野へ', url: '/' }],
   author: [

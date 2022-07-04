@@ -1,4 +1,4 @@
-export type DetailTagJP = {
+export type TagKeysType = {
   publicationDate?: string;
   based?: string;
   author?: string;
@@ -13,9 +13,16 @@ export type DetailTagJP = {
   editedBy?: string;
   musicBy?: string;
   prodConpany?: string;
+  award?: string;
+  feeling?: string;
+  period?: string;
+  stage?: string;
+  freeWord?: string;
+  action?: string;
+  thought?: string;
 };
 
-const DetailTagJPData: DetailTagJP = {
+const TagKeys: TagKeysType = {
   publicationDate: '公開日',
   based: '原作',
   author: '原作者',
@@ -30,6 +37,13 @@ const DetailTagJPData: DetailTagJP = {
   editedBy: '制作',
   musicBy: '音楽',
   prodConpany: '制作会社',
+  award: '受賞',
+  feeling: '情感',
+  period: '時代',
+  stage: '舞台',
+  freeWord: 'その他',
+  action: '行動',
+  thought: '思想',
 };
 
-export default DetailTagJPData;
+export default TagKeys;

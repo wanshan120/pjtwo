@@ -4,12 +4,11 @@ import { FC } from 'react';
 // import { styled} from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
 // import ListItem from '@mui/material/ListItem';
 
 // itemdata
 import { TagType, tagWithURL } from 'data/detailTag';
-import { DetailTagJP } from 'data/detailTagJP';
+import { TagKeysType } from 'data/tagKeysType';
 // import { DetailTagJPData } from 'data/detailTagJP';
 
 type TagKeyValue = {
@@ -18,7 +17,7 @@ type TagKeyValue = {
 };
 
 type TagTypes = {
-  jpReadingObjects: DetailTagJP;
+  jpReadingObjects: TagKeysType;
   tagObjects: TagType;
 };
 
@@ -43,16 +42,14 @@ const TagItemGrid: FC<TagKeyValue> = ({ jpReadingKey, tagValue }) => (
 );
 
 const DetailTagList: FC<TagTypes> = ({ jpReadingObjects, tagObjects }) => (
-  <Paper variant="outlined">
-    <Grid container spacing={1} sx={{ p: 2 }}>
-      {Object.entries(jpReadingObjects).map((jpV) =>
-        // ブラケット記法だと型anyでエラーになるため2重ループで対応
-        Object.entries(tagObjects).map(
-          (tagV) => jpV[0] === tagV[0] && <TagItemGrid jpReadingKey={jpV[1]} tagValue={tagV[1]} />,
-        ),
-      )}
-    </Grid>
-  </Paper>
+  <Grid container spacing={1}>
+    {Object.entries(jpReadingObjects).map((jpV) =>
+      // TODO: ブラケット記法だと型anyでエラーになるため2重ループで対応している
+      Object.entries(tagObjects).map(
+        (tagV) => jpV[0] === tagV[0] && <TagItemGrid jpReadingKey={jpV[1]} tagValue={tagV[1]} />,
+      ),
+    )}
+  </Grid>
 );
 
 export default DetailTagList;

@@ -18,8 +18,9 @@ import DetailTagList from 'components/organisms/DetailTagList';
 // images
 import intothewildAama from 'data/images/intothewildAma.jpg';
 // data
-import { AllContentsTagData } from 'data/detailTag';
-import DetailTagJPData from 'data/detailTagJP';
+import { SampleContentsTagData } from 'data/detailTag';
+import TagKeys from 'data/tagKeysType';
+import SamplefreeTagsData from 'data/freeTags';
 
 import Stack from '@mui/material/Stack';
 // import Rating from '@mui/material/Rating';
@@ -59,8 +60,11 @@ const PageDetailMovie = () => {
   // const [value, setValue] = React.useState<number | null>(2);
   // const [hover, setHover] = React.useState(-1);
   // console.log(AllContentsTagData.intoTheWild);
-  const contentsTagData = AllContentsTagData;
-  const jpReadingTags = DetailTagJPData;
+  const contentsTagData = SampleContentsTagData;
+  const jpReadingTags = TagKeys;
+
+  // freeTags
+  const freeTagData = SamplefreeTagsData;
 
   return (
     <Box sx={{ display: 'flex', justifyContent: 'center' }}>
@@ -260,13 +264,9 @@ const PageDetailMovie = () => {
 
           <Grid container item direction="column" spacing={1} tablet={4}>
             <Grid item>
-              <Paper
+              {/* <Paper
                 variant="outlined"
-                sx={{
-                  flexWrap: 'wrap',
-                  listStyle: 'none',
-                  padding: 2,
-                }}
+                
               >
                 <Typography
                   variant="h4"
@@ -282,10 +282,55 @@ const PageDetailMovie = () => {
                 <Typography paragraph sx={{ fontSize: '0.9rem', marginTop: 0.5 }}>
                   #tag1
                 </Typography>
+              </Paper> */}
+              <Paper
+                variant="outlined"
+                sx={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  justifyContent: 'center',
+                  listStyle: 'none',
+                  padding: 2,
+                }}
+              >
+                <Typography
+                  variant="h4"
+                  paragraph
+                  sx={{
+                    fontSize: '1rem',
+                    color: 'text.secondary',
+                    fontWeight: 'bold',
+                  }}
+                >
+                  キーワード
+                </Typography>
+                <DetailTagList tagObjects={freeTagData} jpReadingObjects={jpReadingTags} />
               </Paper>
             </Grid>
             <Grid item>
-              <DetailTagList tagObjects={contentsTagData} jpReadingObjects={jpReadingTags} />
+              <Paper
+                variant="outlined"
+                sx={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  justifyContent: 'center',
+                  listStyle: 'none',
+                  padding: 2,
+                }}
+              >
+                <Typography
+                  variant="h4"
+                  paragraph
+                  sx={{
+                    fontSize: '1rem',
+                    color: 'text.secondary',
+                    fontWeight: 'bold',
+                  }}
+                >
+                  作品情報
+                </Typography>
+                <DetailTagList tagObjects={contentsTagData} jpReadingObjects={jpReadingTags} />
+              </Paper>
             </Grid>
           </Grid>
         </Grid>
