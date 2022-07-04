@@ -48,8 +48,8 @@ const DetailTagList: FC<AllContentsTagType> = ({ detailCode }) => (
       <TagItemGrid jpReadingKey="監督" tagValue={detailCode.directedBy} />
       <TagItemGrid jpReadingKey="脚本" tagValue={detailCode.producedBy} />
       <TagItemGrid jpReadingKey="主演・助演" tagValue={detailCode.starring} />
-      <TagItemGrid jpReadingKey="音楽" tagValue={detailCode.prodConpany} />
-      <TagItemGrid jpReadingKey="制作会社" tagValue={detailCode.musicBy} />
+      <TagItemGrid jpReadingKey="音楽" tagValue={detailCode.musicBy} />
+      <TagItemGrid jpReadingKey="制作会社" tagValue={detailCode.prodConpany} />
       <TagItemGrid jpReadingKey="制作" tagValue={detailCode.editedBy} />
       <TagItemGrid jpReadingKey="撮影" tagValue={detailCode.screenplayBy} />
       <TagItemGrid jpReadingKey="映像" tagValue={detailCode.graphy} />
