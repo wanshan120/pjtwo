@@ -212,7 +212,7 @@ const PageDetailMovie = () => {
                 </Typography>
               </Paper>
             </Grid>
-            <Grid item direction="row" spacing={1}>
+            <Grid item direction="row">
               <DetailTab />
             </Grid>
           </Grid>
