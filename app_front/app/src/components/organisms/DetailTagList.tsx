@@ -4,7 +4,6 @@ import { FC } from 'react';
 // import { styled} from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
-// import ListItem from '@mui/material/ListItem';
 
 // itemdata
 import { TagType, tagWithURL } from 'data/detailTag';
@@ -23,7 +22,7 @@ type TagTypes = {
 
 const TagItemGrid: FC<TagKeyValue> = ({ jpReadingKey, tagValue }) => (
   <Grid container item>
-    <Grid item tablet={3} sx={{ textAlign: 'right' }}>
+    <Grid item tablet={4} sx={{ textAlign: 'right' }}>
       <Typography
         variant="h4"
         sx={{ fontSize: '0.9rem', color: 'text.secondary', paddingRight: 3 }}
@@ -31,7 +30,7 @@ const TagItemGrid: FC<TagKeyValue> = ({ jpReadingKey, tagValue }) => (
         {jpReadingKey}
       </Typography>
     </Grid>
-    <Grid item tablet={9}>
+    <Grid item tablet={8}>
       {tagValue?.map((tag) => (
         <Typography paragraph margin={0} sx={{ fontSize: '0.9rem' }}>
           {tag.name}

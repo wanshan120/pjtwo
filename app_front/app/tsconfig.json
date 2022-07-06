@@ -28,7 +28,7 @@
     "noImplicitThis": true,
     "strictNullChecks": true,
     //.d.tsのディレクトリパス
-    "typeRoots" : ["./node_modules/@types/", "./src/types/"]
+    "typeRoots" : ["node_modules/@types/", "src/types/"]
   },
   "include": [
     "src"

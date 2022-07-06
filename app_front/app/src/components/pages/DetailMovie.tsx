@@ -15,6 +15,7 @@ import ResponsiveMenuBar from 'components/organisms/ResponsiveMenuBar';
 import AspectRatioBlock from 'components/molecules/AspectRatioBlock';
 import VODSiteList from 'components/molecules/VODSiteList';
 import DetailTagList from 'components/organisms/DetailTagList';
+import DetailTab from 'components/organisms/DetailTab';
 // images
 import intothewildAama from 'data/images/intothewildAma.jpg';
 // data
@@ -23,43 +24,11 @@ import TagKeys from 'data/tagKeysType';
 import SamplefreeTagsData from 'data/freeTags';
 
 import Stack from '@mui/material/Stack';
-// import Rating from '@mui/material/Rating';
-// import FavoriteIcon from '@mui/icons-material/Favorite';
-// import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-// import { styled } from '@mui/material/styles';
 import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
 import NotificationAddOutlinedIcon from '@mui/icons-material/NotificationAddOutlined';
 import Divider from '@mui/material/Divider';
 
-// const labels: { [index: string]: string } = {
-//   0.5: 'R.I.P',
-//   1: 'D',
-//   1.5: 'D+',
-//   2: 'C',
-//   2.5: 'C+',
-//   3: 'B',
-//   3.5: 'B+',
-//   4: 'A',
-//   4.5: 'A+',
-//   5: 'GOD',
-// };
-
-// const getLabelText = (value: number) => `${value} Star${value !== 1 ? 's' : ''}, ${labels[value]}`;
-
-// const StyledRating = styled(Rating)({
-//   '& .MuiRating-iconFilled': {
-//     color: '#ff6d75',
-//   },
-//   '& .MuiRating-iconHover': {
-//     color: '#ff3d47',
-//   },
-// });
-
 const PageDetailMovie = () => {
-  // const theme = useTheme();
-  // const [value, setValue] = React.useState<number | null>(2);
-  // const [hover, setHover] = React.useState(-1);
-  // console.log(AllContentsTagData.intoTheWild);
   const contentsTagData = SampleContentsTagData;
   const jpReadingTags = TagKeys;
 
@@ -224,7 +193,7 @@ const PageDetailMovie = () => {
           </AspectRatioBlock>
         </Box>
         <Grid container direction="row" columnSpacing={1} sx={{ marginTop: 1 }}>
-          <Grid container item direction="column" tablet={8} columnSpacing={1}>
+          <Grid container item direction="column" tablet={9} spacing={1}>
             <Grid item>
               <Paper variant="outlined" sx={{ padding: 2 }}>
                 <Typography
@@ -243,46 +212,13 @@ const PageDetailMovie = () => {
                 </Typography>
               </Paper>
             </Grid>
-            {/* <Grid item>
-              <Paper
-                variant="outlined"
-                sx={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  flexWrap: 'wrap',
-                  listStyle: 'none',
-                }}
-                component="ul"
-              >
-
-                <Typography paragraph sx={{ fontSize: '0.9rem' }}>
-                  #tag1
-                </Typography>
-              </Paper>
-            </Grid> */}
+            <Grid item direction="row" spacing={1}>
+              <DetailTab />
+            </Grid>
           </Grid>
 
-          <Grid container item direction="column" spacing={1} tablet={4}>
+          <Grid container item direction="column" spacing={1} tablet={3}>
             <Grid item>
-              {/* <Paper
-                variant="outlined"
-                
-              >
-                <Typography
-                  variant="h4"
-                  paragraph
-                  sx={{
-                    fontSize: '1rem',
-                    color: 'text.secondary',
-                    fontWeight: 'bold',
-                  }}
-                >
-                  タグ
-                </Typography>
-                <Typography paragraph sx={{ fontSize: '0.9rem', marginTop: 0.5 }}>
-                  #tag1
-                </Typography>
-              </Paper> */}
               <Paper
                 variant="outlined"
                 sx={{
