@@ -60,7 +60,6 @@ const DetailTab = () => {
         >
           <Tab label="関連作品" />
           <Tab label="レビュー" />
-          <Tab label="商品" disabled />
         </Tabs>
       </AppBar>
       <SwipeableViews
