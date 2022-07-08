@@ -9,6 +9,7 @@ import Box from '@mui/material/Box';
 
 // organisms
 import ContentCard from 'components/organisms/ContentCard';
+import ContentReview from 'components/organisms/ContentReview';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -71,7 +72,7 @@ const DetailTab = () => {
           <ContentCard />
         </TabPanel>
         <TabPanel value={value} index={1}>
-          Item Two
+          <ContentReview />
         </TabPanel>
         <TabPanel value={value} index={2}>
           Item Three
