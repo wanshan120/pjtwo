@@ -7,8 +7,6 @@ import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Card from '@mui/material/Card';
 import Chip from '@mui/material/Chip';
-import ChipTag from 'components/atoms/ChipTag';
-import Tooltip from '@mui/material/Tooltip';
 import Link from '@mui/material/Link';
 import Box from '@mui/material/Box';
 
@@ -144,10 +142,20 @@ const ContentCard: FC = () => (
           </Grid>
           <Grid item tablet={5} sx={{ paddingLeft: 1, paddingRight: 1 }}>
             <Grid container spacing={0.5} direction="column">
-              <Grid item>
-                <Tooltip title="公開日" arrow placement="top" enterDelay={500}>
-                  <ChipTag label="2007" variant="outlined" />
-                </Tooltip>
+              <Grid
+                container
+                item
+                direction="row"
+                justifyContent="center"
+                alignItems="center"
+                sx={{ margintTop: '10px' }}
+              >
+                <Grid item tablet={6} sx={{ textAlign: 'center' }}>
+                  <NotificationAddOutlinedIcon sx={{ fontSize: '1.3rem' }} />
+                </Grid>
+                <Grid item tablet={6} sx={{ textAlign: 'center' }}>
+                  <BookmarkBorderOutlinedIcon sx={{ fontSize: '1.3rem' }} />
+                </Grid>
               </Grid>
               <Grid item tablet={12}>
                 <Box style={{ display: 'flex' }}>
@@ -168,6 +176,16 @@ const ContentCard: FC = () => (
                     </Typography>
                   </Paper>
                 </Box>
+              </Grid>
+              <Grid item>
+                <Link
+                  href="https://twitter.com/home"
+                  color="inherit"
+                  underline="hover"
+                  fontSize="0.8rem"
+                >
+                  2007
+                </Link>
               </Grid>
               <Grid item>
                 <Link
@@ -199,26 +217,11 @@ const ContentCard: FC = () => (
                   剣と魔法
                 </Link>
               </Grid>
-              <Grid
-                container
-                item
-                direction="row"
-                justifyContent="center"
-                alignItems="center"
-                sx={{ margintTop: '10px' }}
-              >
-                <Grid item tablet={6} sx={{ textAlign: 'center' }}>
-                  <NotificationAddOutlinedIcon sx={{ fontSize: '1.3rem' }} />
-                </Grid>
-                <Grid item tablet={6} sx={{ textAlign: 'center' }}>
-                  <BookmarkBorderOutlinedIcon sx={{ fontSize: '1.3rem' }} />
-                </Grid>
-              </Grid>
             </Grid>
           </Grid>
         </Grid>
       </Card>
-    </Grid>{' '}
+    </Grid>
     <Grid item tablet={4} mobile={12} wrap="nowrap">
       <Card component="div" style={{ display: 'flex', overflow: 'hidden', padding: 0 }}>
         <Grid container direction="row">
@@ -239,10 +242,20 @@ const ContentCard: FC = () => (
           </Grid>
           <Grid item tablet={5} sx={{ paddingLeft: 1, paddingRight: 1 }}>
             <Grid container spacing={0.5} direction="column">
-              <Grid item>
-                <Tooltip title="公開日" arrow placement="top" enterDelay={500}>
-                  <ChipTag label="2007" variant="outlined" />
-                </Tooltip>
+              <Grid
+                container
+                item
+                direction="row"
+                justifyContent="center"
+                alignItems="center"
+                sx={{ margintTop: '10px' }}
+              >
+                <Grid item tablet={6} sx={{ textAlign: 'center' }}>
+                  <NotificationAddOutlinedIcon sx={{ fontSize: '1.3rem' }} />
+                </Grid>
+                <Grid item tablet={6} sx={{ textAlign: 'center' }}>
+                  <BookmarkBorderOutlinedIcon sx={{ fontSize: '1.3rem' }} />
+                </Grid>
               </Grid>
               <Grid item tablet={12}>
                 <Box style={{ display: 'flex' }}>
@@ -263,6 +276,16 @@ const ContentCard: FC = () => (
                     </Typography>
                   </Paper>
                 </Box>
+              </Grid>
+              <Grid item>
+                <Link
+                  href="https://twitter.com/home"
+                  color="inherit"
+                  underline="hover"
+                  fontSize="0.8rem"
+                >
+                  2007
+                </Link>
               </Grid>
               <Grid item>
                 <Link
@@ -293,21 +316,6 @@ const ContentCard: FC = () => (
                 >
                   剣と魔法
                 </Link>
-              </Grid>
-              <Grid
-                container
-                item
-                direction="row"
-                justifyContent="center"
-                alignItems="center"
-                sx={{ margintTop: '10px' }}
-              >
-                <Grid item tablet={6} sx={{ textAlign: 'center' }}>
-                  <NotificationAddOutlinedIcon sx={{ fontSize: '1.3rem' }} />
-                </Grid>
-                <Grid item tablet={6} sx={{ textAlign: 'center' }}>
-                  <BookmarkBorderOutlinedIcon sx={{ fontSize: '1.3rem' }} />
-                </Grid>
               </Grid>
             </Grid>
           </Grid>
