@@ -9,6 +9,8 @@ import { ThemeProvider } from '@mui/material';
 
 // compornents
 import Home from 'components/pages/Home';
+import HomePage from 'components/pages/HomePage';
+
 import PageDetailMovie from 'components/pages/DetailMovie';
 import Characters from 'components/pages/Characters';
 import AllCharacters from 'containers/templates/AllCharacters';
@@ -37,6 +39,7 @@ const App: FC = () => {
         <CssBaseline />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="home" element={<HomePage />} />
           <Route path="characters" element={<Characters />}>
             <Route path="" element={<AllCharacters />} />
             <Route path=":schoolCode" element={<SchoolCharacters />} />

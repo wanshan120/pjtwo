@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import { Link } from 'react-router-dom';
 
 // JSX
 import MuiDrawer from '@mui/material/Drawer';
@@ -73,6 +74,8 @@ const ResponsiveMenuBar = (props: Props) => {
                 justifyContent: open ? 'initial' : 'center',
                 px: 2.5,
               }}
+              component={Link}
+              to="/home"
             >
               <ListItemIcon
                 sx={{
