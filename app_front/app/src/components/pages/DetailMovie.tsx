@@ -17,7 +17,6 @@ import VODSiteList from 'components/molecules/VODSiteList';
 import DetailTagList from 'components/organisms/DetailTagList';
 import DetailTab from 'components/organisms/DetailTab';
 import DetailFAV from 'components/organisms/DetailFAB';
-
 // images
 import intothewildAama from 'data/images/intothewildAma.jpg';
 // data

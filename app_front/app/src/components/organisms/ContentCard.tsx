@@ -37,7 +37,7 @@ const ContentCard: FC = () => (
               ロードオブザリング
             </Typography>
           </Grid>
-          <Grid item tablet={7}>
+          <Grid item tablet={7} sx={{ lineHeight: 0 }}>
             <img src={ring1} alt={ring1} loading="lazy" style={{ width: '100%', height: 'auto' }} />
           </Grid>
           <Grid item tablet={5} sx={{ paddingLeft: 1, paddingRight: 1 }}>
@@ -137,7 +137,7 @@ const ContentCard: FC = () => (
               ロードオブザリング 二つの塔
             </Typography>
           </Grid>
-          <Grid item tablet={7}>
+          <Grid item tablet={7} sx={{ lineHeight: 0 }}>
             <img src={ring2} alt={ring2} loading="lazy" style={{ width: '100%', height: 'auto' }} />
           </Grid>
           <Grid item tablet={5} sx={{ paddingLeft: 1, paddingRight: 1 }}>
@@ -237,7 +237,7 @@ const ContentCard: FC = () => (
               ロードオブザリング 王の帰還
             </Typography>
           </Grid>
-          <Grid item tablet={7}>
+          <Grid item tablet={7} sx={{ lineHeight: 0 }}>
             <img src={ring3} alt={ring3} loading="lazy" style={{ width: '100%', height: 'auto' }} />
           </Grid>
           <Grid item tablet={5} sx={{ paddingLeft: 1, paddingRight: 1 }}>

@@ -251,7 +251,7 @@ const HomePage = () => (
                         </Typography>
                       </Box>
                     </Grid>
-                    <Grid item tablet={3}>
+                    <Grid item tablet={3} sx={{ lineHeight: 0 }}>
                       <img
                         src={intothewildAama}
                         alt={intothewildAama}
