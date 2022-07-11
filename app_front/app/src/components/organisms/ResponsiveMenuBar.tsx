@@ -27,9 +27,9 @@ import LogoutIcon from '@mui/icons-material/Logout';
 
 // compornents
 import AppBar from 'components/molecules/AppBar';
-import SearchUnit from 'components/molecules/SearchUnit';
 import MiniDrawer from 'components/molecules/MiniDrawer';
 import drawerWidth from 'components/const_list/DrawerWidth';
+import SearchModal from 'components/organisms/SearchModal';
 
 interface Props {
   /**
@@ -151,7 +151,7 @@ const ResponsiveMenuBar = (props: Props) => {
           >
             {isMobile ? `isMobile` : `isTablet`}
           </Typography>
-          <SearchUnit />
+          <SearchModal />
         </Toolbar>
       </AppBar>
       {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
