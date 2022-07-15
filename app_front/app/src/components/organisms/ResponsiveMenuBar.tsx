@@ -1,35 +1,37 @@
 import * as React from 'react';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 // JSX
 import MuiDrawer from '@mui/material/Drawer';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
-import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 
 // icon
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import MailIcon from '@mui/icons-material/Mail';
 import HomeIcon from '@mui/icons-material/Home';
-import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 import SettingsIcon from '@mui/icons-material/Settings';
 import LogoutIcon from '@mui/icons-material/Logout';
+import MailIcon from '@mui/icons-material/Mail';
+import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 
 // compornents
 import AppBar from 'components/molecules/AppBar';
 import MiniDrawer from 'components/molecules/MiniDrawer';
 import drawerWidth from 'components/const_list/DrawerWidth';
 import SearchModal from 'components/organisms/SearchModal';
+import ListItemWithButton from 'components/atoms/ListItemWithButton';
+import StyledListItemIcon from 'components/atoms/StyledListItemIcon';
+
+// data
+import { urlPatterns } from 'components/const_list/urlPatterns';
 
 interface Props {
   /**
@@ -66,60 +68,58 @@ const ResponsiveMenuBar = (props: Props) => {
     <>
       <Toolbar />
       <List>
-        {['ホーム', 'マイリスト', '通知', 'メッセージ'].map((text, index) => (
-          <ListItem key={text} disablePadding sx={{ display: 'block' }}>
-            <ListItemButton
-              sx={{
-                minHeight: 48,
-                justifyContent: open ? 'initial' : 'center',
-                px: 2.5,
-              }}
-              component={Link}
-              to="/home"
-            >
-              <ListItemIcon
-                sx={{
-                  minWidth: 0,
-                  mr: open ? 3 : 'auto',
-                  justifyContent: 'center',
-                }}
-              >
-                {index === 0 && <HomeIcon />}
-                {index === 1 && <FormatListBulletedIcon />}
-                {index === 2 && <NotificationsActiveIcon />}
-                {index === 3 && <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-            </ListItemButton>
-          </ListItem>
-        ))}
+        {/* ホーム */}
+        <ListItemWithButton open={open} url={urlPatterns.home.path}>
+          <StyledListItemIcon open={open}>
+            <HomeIcon />
+          </StyledListItemIcon>
+          <ListItemText primary={urlPatterns.home.name} sx={{ opacity: open ? 1 : 0 }} />
+        </ListItemWithButton>
+        {/* マイリスト */}
+        <ListItemWithButton open={open} url={urlPatterns.myList.path}>
+          <StyledListItemIcon open={open}>
+            <FormatListBulletedIcon />
+          </StyledListItemIcon>
+          <ListItemText primary={urlPatterns.myList.name} sx={{ opacity: open ? 1 : 0 }} />
+        </ListItemWithButton>
+        {/* 通知 */}
+        <ListItemWithButton open={open} url={urlPatterns.notice.path}>
+          <StyledListItemIcon open={open}>
+            <NotificationsActiveIcon />
+          </StyledListItemIcon>
+          <ListItemText primary={urlPatterns.notice.name} sx={{ opacity: open ? 1 : 0 }} />
+        </ListItemWithButton>
+        {/* メッセージ */}
+        <ListItemWithButton open={open} url={urlPatterns.message.path}>
+          <StyledListItemIcon open={open}>
+            <MailIcon />
+          </StyledListItemIcon>
+          <ListItemText primary={urlPatterns.message.name} sx={{ opacity: open ? 1 : 0 }} />
+        </ListItemWithButton>
       </List>
       <Divider />
       <List>
-        {['プロフィール', '設定', 'ログアウト'].map((text, index) => (
-          <ListItem key={text} disablePadding sx={{ display: 'block' }}>
-            <ListItemButton
-              sx={{
-                minHeight: 48,
-                justifyContent: open ? 'initial' : 'center',
-                px: 2.5,
-              }}
-            >
-              <ListItemIcon
-                sx={{
-                  minWidth: 0,
-                  mr: open ? 3 : 'auto',
-                  justifyContent: 'center',
-                }}
-              >
-                {index === 0 && <PermIdentityIcon />}
-                {index === 1 && <SettingsIcon />}
-                {index === 2 && <LogoutIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-            </ListItemButton>
-          </ListItem>
-        ))}
+        {/* プロフィール */}
+        <ListItemWithButton open={open} url={urlPatterns.profile.path}>
+          <StyledListItemIcon open={open}>
+            <PermIdentityIcon />
+          </StyledListItemIcon>
+          <ListItemText primary={urlPatterns.profile.name} sx={{ opacity: open ? 1 : 0 }} />
+        </ListItemWithButton>
+        {/* 設定 */}
+        <ListItemWithButton open={open} url={urlPatterns.settings.path}>
+          <StyledListItemIcon open={open}>
+            <SettingsIcon />
+          </StyledListItemIcon>
+          <ListItemText primary={urlPatterns.settings.name} sx={{ opacity: open ? 1 : 0 }} />
+        </ListItemWithButton>
+        {/* ログアウト */}
+        <ListItemWithButton open={open} url={urlPatterns.logout.path}>
+          <StyledListItemIcon open={open}>
+            <LogoutIcon />
+          </StyledListItemIcon>
+          <ListItemText primary={urlPatterns.logout.name} sx={{ opacity: open ? 1 : 0 }} />
+        </ListItemWithButton>
       </List>
     </>
   );

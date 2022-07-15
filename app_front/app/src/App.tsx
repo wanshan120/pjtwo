@@ -2,6 +2,9 @@ import { FC, useEffect } from 'react';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 
+// URL pattern list
+import { urlPatterns } from 'components/const_list/urlPatterns';
+
 // MUI
 import theme from 'theme/myTheme';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -10,7 +13,7 @@ import { ThemeProvider } from '@mui/material';
 // compornents
 import Home from 'components/pages/Home';
 import HomePage from 'components/pages/HomePage';
-
+import MyList from 'components/pages/MyList';
 import PageDetailMovie from 'components/pages/DetailMovie';
 import Characters from 'components/pages/Characters';
 import AllCharacters from 'containers/templates/AllCharacters';
@@ -39,13 +42,16 @@ const App: FC = () => {
         <CssBaseline />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="home" element={<HomePage />} />
+          <Route path={urlPatterns.home.path} element={<HomePage />} />
+          <Route path={urlPatterns.myList.path} element={<MyList />} />
+          <Route path={urlPatterns.notice.path} element={<HomePage />} />
+          <Route path={urlPatterns.message.path} element={<HomePage />} />
           <Route path="characters" element={<Characters />}>
             <Route path="" element={<AllCharacters />} />
             <Route path=":schoolCode" element={<SchoolCharacters />} />
           </Route>
           <Route path="*" element={<Navigate to="/" replace />} />
-          <Route path="detail_movie" element={<PageDetailMovie />} />
+          <Route path={urlPatterns.detailMovie.path} element={<PageDetailMovie />} />
         </Routes>
       </ThemeProvider>
     </>
