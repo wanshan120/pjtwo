@@ -16,6 +16,10 @@ export const urlPatterns: urlPatternsType = {
     path: '/my_list',
     name: 'マイリスト',
   },
+  watchlist: {
+    path: '/watchlist',
+    name: '後で見る',
+  },
   detailMovie: {
     path: '/detail_movie',
     name: 'detail_movie',

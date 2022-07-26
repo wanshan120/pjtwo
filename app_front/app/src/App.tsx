@@ -44,6 +44,7 @@ const App: FC = () => {
           <Route path="/" element={<Home />} />
           <Route path={urlPatterns.home.path} element={<HomePage />} />
           <Route path={urlPatterns.myList.path} element={<MyList />} />
+          <Route path={urlPatterns.watchlist.path} element={<MyList />} />
           <Route path={urlPatterns.notice.path} element={<HomePage />} />
           <Route path={urlPatterns.message.path} element={<HomePage />} />
           <Route path="characters" element={<Characters />}>

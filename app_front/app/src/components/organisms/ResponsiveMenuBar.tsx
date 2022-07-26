@@ -21,6 +21,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import LogoutIcon from '@mui/icons-material/Logout';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
+import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
 
 // compornents
 import AppBar from 'components/molecules/AppBar';
@@ -28,6 +29,8 @@ import MiniDrawer from 'components/molecules/MiniDrawer';
 import drawerWidth from 'components/const_list/DrawerWidth';
 import SearchModal from 'components/organisms/SearchModal';
 import ListItemWithButton from 'components/atoms/ListItemWithButton';
+// import ListItemWithButtonToMyList from 'components/atoms/ListItemWithButtonToMylist';
+
 import StyledListItemIcon from 'components/atoms/StyledListItemIcon';
 
 // data
@@ -56,10 +59,8 @@ const ResponsiveMenuBar = (props: Props) => {
   // メニューの開閉状態を画面サイズで制御する
   React.useEffect(() => {
     if (!isMobile) {
-      // モバイル以外の時はデフォルトで閉じる
       setOpen(true);
     } else {
-      // モバイルはデフォルトで閉じる
       setOpen(false);
     }
   }, [isMobile]);
@@ -81,6 +82,13 @@ const ResponsiveMenuBar = (props: Props) => {
             <FormatListBulletedIcon />
           </StyledListItemIcon>
           <ListItemText primary={urlPatterns.myList.name} sx={{ opacity: open ? 1 : 0 }} />
+        </ListItemWithButton>
+        {/* 後で見る */}
+        <ListItemWithButton open={open} url={urlPatterns.watchlist.path}>
+          <StyledListItemIcon open={open}>
+            <BookmarkBorderOutlinedIcon />
+          </StyledListItemIcon>
+          <ListItemText primary={urlPatterns.watchlist.name} sx={{ opacity: open ? 1 : 0 }} />
         </ListItemWithButton>
         {/* 通知 */}
         <ListItemWithButton open={open} url={urlPatterns.notice.path}>
