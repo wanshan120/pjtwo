@@ -1,0 +1,126 @@
+[
+  {
+    "name": "Amazon Prime Video",
+    "plan": {
+      "planName": "会員見放題",
+      "url": "/"
+    }
+  },
+  {
+    "name": "Amazon Prime Video",
+    "plan": {
+      "planName": "レンタル",
+      "price": 300,
+      "url": "/"
+    }
+  },
+  {
+    "name": "Amazon Prime Video",
+    "plan": {
+      "planName": "レンタル 高画質",
+      "price": 500,
+      "url": "/"
+    }
+  },
+  {
+    "name": "Amazon Prime Video",
+    "plan": {
+      "planName": "購入",
+      "price": 1500,
+      "url": "/"
+    }
+  },
+  {
+    "name": "NETFLIX",
+    "plan": {
+      "planName": "会員見放題",
+      "url": "/"
+    }
+  },
+  {
+    "name": "NETFLIX",
+    "plan": {
+      "planName": "レンタル",
+      "price": 300,
+      "url": "/"
+    }
+  },
+  {
+    "name": "NETFLIX",
+    "plan": {
+      "planName": "レンタル 高画質",
+      "price": 500,
+      "url": "/"
+    }
+  },
+  {
+    "name": "NETFLIX",
+    "plan": {
+      "planName": "購入",
+      "price": 1500,
+      "url": "/"
+    }
+  },
+  {
+    "name": "U-NEXT",
+    "plan": {
+      "planName": "会員見放題",
+      "url": "/"
+    }
+  },
+  {
+    "name": "U-NEXT",
+    "plan": {
+      "planName": "レンタル",
+      "price": 300,
+      "url": "/"
+    }
+  },
+  {
+    "name": "U-NEXT",
+    "plan": {
+      "planName": "レンタル 高画質",
+      "price": 500,
+      "url": "/"
+    }
+  },
+  {
+    "name": "U-NEXT",
+    "plan": {
+      "planName": "購入",
+      "price": 1500,
+      "url": "/"
+    }
+  },
+  {
+    "name": "fulu",
+    "plan": {
+      "planName": "会員見放題",
+      "url": "/"
+    }
+  },
+  {
+    "name": "fulu",
+    "plan": {
+      "planName": "レンタル",
+      "price": 300,
+      "url": "/"
+    }
+  },
+  {
+    "name": "fulu",
+    "plan": {
+      "planName": "レンタル 高画質",
+      "price": 500,
+      "url": "/"
+    }
+  },
+  {
+    "name": "fulu",
+    "plan": {
+      "planName": "購入",
+      "price": 1500,
+      "url": "/"
+    }
+  }
+]

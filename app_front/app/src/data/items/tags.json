@@ -1,0 +1,259 @@
+[
+  {
+    "category": "award",
+    "controlType": "keyword",
+    "name": "ゴールデングローブ賞",
+    "status": "available",
+    "desc": "アメリカ合衆国における映画とテレビドラマに与えられる賞。ハリウッド外国人映画記者協会（HFPA）の会員の投票により選定される。毎年1月に発表され、アカデミー賞の前哨戦としての注目度も高い。",
+    "url": "/"
+  },
+  {
+    "category": "award",
+    "controlType": "keyword",
+    "name": "ゴッサム賞",
+    "status": "available",
+    "desc": "ゴッサム・インディペンデント映画賞（Gotham Independent Film Awards）は、ニューヨークで行われる自主映画を対象とした映画賞である。",
+    "url": "/"
+  },
+  {
+    "category": "award",
+    "controlType": "keyword",
+    "name": "ナショナル・ボード・オブ・レビュー",
+    "status": "available",
+    "desc": "例年、その年に公開されたアメリカ国内外の映画について、優秀な作品や優秀な俳優を顕彰する賞の授与",
+    "url": "/"
+  },
+  {
+    "category": "award",
+    "controlType": "keyword",
+    "name": "パームスプリングス国際映画祭",
+    "status": "available",
+    "desc": "カリフォルニア州パームスプリングスで開催される映画祭である。",
+    "url": "/"
+  },
+  {
+    "category": "award",
+    "controlType": "keyword",
+    "name": "映画館大賞",
+    "status": "available",
+    "desc": "前年に日本全国の映画館で公開されたすべての映画の中から、日本全国の独立系映画館スタッフが「映画ファンにスクリーンで見てもらいたい」作品を投票で選んだ映画賞である。",
+    "url": "/"
+  },
+  {
+    "category": "feeling",
+    "controlType": "keyword",
+    "name": "心温まる",
+    "status": "available",
+    "url": "/"
+  },
+  {
+    "category": "feeling",
+    "controlType": "keyword",
+    "name": "情熱",
+    "status": "available",
+    "url": "/"
+  },
+  {
+    "category": "feeling",
+    "controlType": "keyword",
+    "name": "名誉、責任",
+    "status": "available",
+    "url": "/"
+  },
+  {
+    "category": "period",
+    "controlType": "keyword",
+    "name": "現代",
+    "status": "available",
+    "url": "/"
+  },
+  {
+    "category": "period",
+    "controlType": "keyword",
+    "name": "現代",
+    "status": "available",
+    "url": "/"
+  },
+  {
+    "category": "period",
+    "controlType": "keyword",
+    "name": "2000年代",
+    "status": "available",
+    "url": "/"
+  },
+  {
+    "category": "period",
+    "controlType": "keyword",
+    "name": "2010年代",
+    "status": "available",
+    "url": "/"
+  },
+  {
+    "category": "period",
+    "controlType": "keyword",
+    "name": "2020年代",
+    "status": "available",
+    "url": "/"
+  },
+  {
+    "category": "period",
+    "controlType": "keyword",
+    "name": "中世",
+    "status": "available",
+    "url": "/"
+  },
+  {
+    "category": "period",
+    "controlType": "keyword",
+    "name": "近世",
+    "status": "available",
+    "url": "/"
+  },
+  {
+    "category": "period",
+    "controlType": "keyword",
+    "name": "昭和",
+    "status": "available",
+    "url": "/"
+  },
+  {
+    "category": "period",
+    "controlType": "keyword",
+    "name": "平成",
+    "status": "available",
+    "url": "/"
+  },
+  {
+    "category": "stage",
+    "controlType": "keyword",
+    "name": "日本",
+    "status": "available",
+    "url": "/"
+  },
+  {
+    "category": "stage",
+    "controlType": "keyword",
+    "name": "アメリカ",
+    "status": "available",
+    "url": "/"
+  },
+  {
+    "category": "stage",
+    "controlType": "keyword",
+    "name": "自然",
+    "status": "available",
+    "url": "/"
+  },
+  {
+    "category": "stage",
+    "controlType": "keyword",
+    "name": "異世界",
+    "status": "available",
+    "url": "/"
+  },
+  {
+    "category": "action",
+    "controlType": "keyword",
+    "name": "人生",
+    "status": "available",
+    "url": "/"
+  },
+  {
+    "category": "action",
+    "controlType": "keyword",
+    "name": "旅",
+    "status": "available",
+    "url": "/"
+  },
+  {
+    "category": "throught",
+    "controlType": "keyword",
+    "name": "アナーキズム",
+    "status": "available",
+    "url": "/"
+  },
+  {
+    "category": "publicationDate",
+    "controlType": "meta",
+    "name": "2007",
+    "status": "available",
+    "url": "/"
+  },
+  {
+    "category": "publicationDate",
+    "controlType": "meta",
+    "name": "2008",
+    "status": "available",
+    "url": "/"
+  },
+  {
+    "category": "publicationDate",
+    "controlType": "meta",
+    "name": "2009",
+    "status": "available",
+    "url": "/"
+  },
+  {
+    "category": "publicationDate",
+    "controlType": "meta",
+    "name": "2010",
+    "status": "available",
+    "url": "/"
+  },
+  {
+    "category": "publicationDate",
+    "controlType": "meta",
+    "name": "2011",
+    "status": "available",
+    "url": "/"
+  },
+  {
+    "category": "based",
+    "controlType": "meta",
+    "name": "荒野へ",
+    "status": "available",
+    "url": "/"
+  },
+  {
+    "category": "country",
+    "controlType": "meta",
+    "name": "アメリカ",
+    "status": "available",
+    "url": "/"
+  },
+  {
+    "category": "language",
+    "controlType": "meta",
+    "name": "英語",
+    "status": "available",
+    "url": "/"
+  },
+  {
+    "category": "language",
+    "controlType": "meta",
+    "name": "日本語",
+    "status": "available",
+    "url": "/"
+  },
+  {
+    "category": "genre",
+    "controlType": "meta",
+    "name": "アドベンチャー",
+    "status": "available",
+    "url": "/"
+  },
+  {
+    "category": "genre",
+    "controlType": "meta",
+    "name": "ドラマ",
+    "status": "available",
+    "url": "/"
+  },
+  {
+    "category": "genre",
+    "controlType": "meta",
+    "name": "伝記",
+    "status": "available",
+    "url": "/"
+  }
+]
