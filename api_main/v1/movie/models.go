@@ -2,7 +2,27 @@ package movie
 
 import "go.mongodb.org/mongo-driver/bson/primitive"
 
+type RId struct {
+	Id string `json:"_id" bson:"_id,omitempty" binding:"required"`
+}
+
+type WId struct {
+	Id primitive.ObjectID `json:"_id" bson:"_id,omitempty" binding:"required"`
+}
+
 type Movie struct {
+	Id          primitive.ObjectID `bson:"_id,omitempty"`
+	Title       string             `bson:"title,omitempty" binding:"required"`
+	ContentType string             `bson:"contentType,omitempty" binding:"required"`
+	Rates       []*Rate            `bson:"rates,omitempty"`
+	Images      []*Image           `bson:"images,omitempty"`
+	Pvs         []*Pv              `bson:"pvs,omitempty"`
+	Summary     string             `bson:"summary,omitempty"`
+	Tags        []*RId             `bson:"tags,omitempty" binding:"dive"`
+	// EditLogs primitive.DateTime    `bson:"edit_logs,omitempty"`
+}
+
+type MovieWrite struct {
 	Id          primitive.ObjectID `bson:"_id,omitempty"`
 	Title       string             `bson:"title,omitempty" validate:"required"`
 	ContentType string             `bson:"contentType,omitempty" validate:"required"`
@@ -10,19 +30,7 @@ type Movie struct {
 	Images      []*Image           `bson:"images,omitempty"`
 	Pvs         []*Pv              `bson:"pvs,omitempty"`
 	Summary     string             `bson:"summary,omitempty"`
-	Tags        []string           `bson:"tags,omitempty"`
-	// EditLogs primitive.DateTime    `bson:"edit_logs,omitempty"`
-}
-
-type MovieWrite struct {
-	Id          primitive.ObjectID   `bson:"_id,omitempty"`
-	Title       string               `bson:"title,omitempty" validate:"required"`
-	ContentType string               `bson:"contentType,omitempty" validate:"required"`
-	Rates       []*Rate              `bson:"rates,omitempty"`
-	Images      []*Image             `bson:"images,omitempty"`
-	Pvs         []*Pv                `bson:"pvs,omitempty"`
-	Summary     string               `bson:"summary,omitempty"`
-	Tags        []primitive.ObjectID `bson:"tags,omitempty"`
+	Tags        []*WId             `bson:"tags,omitempty" binding:"dive"`
 	// EditLogs primitive.DateTime    `bson:"edit_logs,omitempty"`
 }
 

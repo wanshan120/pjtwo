@@ -36,22 +36,20 @@ func CreateMovieItem() gin.HandlerFunc {
 					Data:    map[string]interface{}{"data": err.Error()},
 				},
 			)
+			fmt.Println(err)
 			return
 		}
 
 		// nested stringify Objectid to Objectid
-
-		tagsid := make([]primitive.ObjectID, len(movie_item.Tags))
+		movieWrite := MovieWrite{}
 		for i := range movie_item.Tags {
-			oid, err := primitive.ObjectIDFromHex(movie_item.Tags[i])
+			oid, err := primitive.ObjectIDFromHex(movie_item.Tags[i].Id)
 			if err != nil {
 				panic(err)
 			}
-			tagsid[i] = oid
+			movieWrite.Tags = append(movieWrite.Tags, &WId{Id: oid})
 		}
-		fmt.Println(tagsid)
-		fmt.Println(len(tagsid))
-		fmt.Println(cap(tagsid))
+
 		//use the validator library to validate required fields
 		if validationErr := validate.Struct(&movie_item); validationErr != nil {
 			c.JSON(
@@ -70,17 +68,8 @@ func CreateMovieItem() gin.HandlerFunc {
 			Title:       movie_item.Title,
 			ContentType: movie_item.ContentType,
 			Rates:       movie_item.Rates,
-			Tags:        tagsid,
+			Tags:        movieWrite.Tags,
 		}
-
-		// result, err := movieCollection.InsertOne(
-		// 	ctx,
-		// 	bson.D{
-		// 		{"type", "Masala"},
-		// 		{"rating", 10},
-		// 		{"vendor", bson.A{"A", "C"}},
-		// 	},
-		// )
 
 		result, err := movieCollection.InsertOne(ctx, newMovie)
 		if err != nil {
