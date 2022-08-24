@@ -8,7 +8,7 @@ import (
 func RegisterRouter(r *gin.RouterGroup) {
 
 	// 注册
-	r.POST("/movie", CreateUser())
+	r.POST("/movie", CreateMovieItem())
 	// // 登录
 	// r.POST("/login", Auth.LoginHandler)
 
