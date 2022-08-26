@@ -52,7 +52,9 @@ const App: FC = () => {
             <Route path=":schoolCode" element={<SchoolCharacters />} />
           </Route>
           <Route path="*" element={<Navigate to="/" replace />} />
-          <Route path={urlPatterns.detailMovie.path} element={<PageDetailMovie />} />
+          <Route path={urlPatterns.detailMovie.path} element={<PageDetailMovie />}>
+            <Route path=":movieCode" element={<PageDetailMovie />} />
+          </Route>
         </Routes>
       </ThemeProvider>
     </>

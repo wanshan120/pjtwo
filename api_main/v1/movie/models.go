@@ -34,20 +34,30 @@ type MovieWrite struct {
 	// EditLogs primitive.DateTime    `bson:"edit_logs,omitempty"`
 }
 
+type MovieById struct {
+	Id          primitive.ObjectID `bson:"_id,omitempty"`
+	Title       string             `bson:"title,omitempty" validate:"required"`
+	ContentType string             `bson:"contentType,omitempty" validate:"required"`
+	Rates       []*Rate            `bson:"rates,omitempty"`
+	Images      []*Image           `bson:"images,omitempty"`
+	Pvs         []*Pv              `bson:"pvs,omitempty"`
+	Summary     string             `bson:"summary,omitempty"`
+	Tags        []*Tag             `bson:"tags,omitempty" binding:"dive"`
+	// EditLogs primitive.DateTime    `bson:"edit_logs,omitempty"`
+}
+
 type Rate struct {
 	ServiceName string `bson:"serviceName,omitempty"`
 	RateValue   int8   `bson:"rateValue,omitempty"`
 }
 
 type Pv struct {
-	// UserId      primitive.ObjectID `bson:"user_id,omitempty" validate:required`
 	ServiceName string `bson:"serviceName,omitempty"`
 	RateValue   int8   `bson:"rateValue,omitempty"`
 	// CreatedAt   primitive.DateTime `bson:"created_at,omitempty"`
 }
 
 type Image struct {
-	// UserId    primitive.ObjectID `bson:"user_id,omitempty" validate:required`
 	Title string `bson:"title,omitempty"`
 	Path  string `bson:"path,omitempty"`
 	Desc  string `bson:"desc,omitempty"`
@@ -68,11 +78,11 @@ type Image struct {
 // 	CreatedAt  primitive.DateTime `bson:"created_at,omitempty"`
 // }
 
-// type Tag struct {
-// 	Id primitive.ObjectID `bson:"_id,omitempty"`
-// 	Name string `bson:"name,omitempty" validate:"required"`
-// 	Category string `bson:"category,omitempty" validate:"required"`
-// 	Type string `bson:"type,omitempty" validate:"required"`
-// 	Status string `bson:"status,omitempty" validate:"required"`
-// 	Desc string `bson:"desc,omitempty"`
-// }
+type Tag struct {
+	// Id       primitive.ObjectID `bson:"_id,omitempty"`
+	Name     string `bson:"name,omitempty" validate:"required"`
+	Category string `bson:"category,omitempty" validate:"required"`
+	Type     string `bson:"type,omitempty" validate:"required"`
+	Status   string `bson:"status,omitempty" validate:"required"`
+	Desc     string `bson:"desc,omitempty"`
+}
