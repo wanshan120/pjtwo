@@ -274,7 +274,7 @@ func GetMovieById() gin.HandlerFunc {
 			responses.NormalResponse{
 				Status:  http.StatusCreated,
 				Message: "success",
-				Data:    map[string]interface{}{"movieDetai": &movieRead},
+				Data:    map[string]interface{}{"data": &movieRead},
 			},
 		)
 	}
