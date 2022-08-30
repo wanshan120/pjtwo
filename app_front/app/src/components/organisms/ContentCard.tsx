@@ -22,7 +22,7 @@ import ring3 from 'data/images/package/ring3.jpg';
 
 const ContentCard: FC = () => (
   <Grid container direction="row" spacing={1} sx={{ marginTop: 1 }}>
-    <Grid item tablet={4} mobile={12} wrap="nowrap">
+    <Grid item tablet={4} mobile={12}>
       <Card component="div" style={{ display: 'flex', overflow: 'hidden', padding: 0 }}>
         <Grid container direction="row">
           <Grid item tablet={12}>
@@ -122,7 +122,7 @@ const ContentCard: FC = () => (
         </Grid>
       </Card>
     </Grid>
-    <Grid item tablet={4} mobile={12} wrap="nowrap">
+    <Grid item tablet={4} mobile={12}>
       <Card component="div" style={{ display: 'flex', overflow: 'hidden', padding: 0 }}>
         <Grid container direction="row">
           <Grid item tablet={12}>
@@ -222,7 +222,7 @@ const ContentCard: FC = () => (
         </Grid>
       </Card>
     </Grid>
-    <Grid item tablet={4} mobile={12} wrap="nowrap">
+    <Grid item tablet={4} mobile={12}>
       <Card component="div" style={{ display: 'flex', overflow: 'hidden', padding: 0 }}>
         <Grid container direction="row">
           <Grid item tablet={12}>

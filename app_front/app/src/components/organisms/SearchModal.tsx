@@ -44,7 +44,7 @@ const SearchModal = () => {
   const handleClose = () => setOpen(false);
 
   return (
-    <div>
+    <>
       <StyledSearchButton onClick={handleOpen} startIcon={<SearchIcon />} variant="outlined">
         検索
       </StyledSearchButton>
@@ -136,7 +136,7 @@ const SearchModal = () => {
           </Paper>
         </Fade>
       </Modal>
-    </div>
+    </>
   );
 };
 

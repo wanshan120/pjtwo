@@ -32,7 +32,7 @@ const TagItemGrid: FC<TagKeyValue> = ({ jpReadingKey, tagValue }) => (
     </Grid>
     <Grid item tablet={8}>
       {tagValue?.map((tag) => (
-        <Typography paragraph margin={0} sx={{ fontSize: '0.9rem' }}>
+        <Typography key={tag.id} paragraph margin={0} sx={{ fontSize: '0.9rem' }}>
           {tag.name}
         </Typography>
       ))}

@@ -1,15 +1,15 @@
 import { styled } from '@mui/material/styles';
 
 type InputProps = {
-  aspectRatio?: string;
+  aspectratio?: string;
 };
 
-const AspectRatioBlock = styled('div')<InputProps>(({ aspectRatio }) => ({
+const AspectRatioBlock = styled('div')<InputProps>(({ aspectratio }) => ({
   position: 'relative',
   '&::before': {
     content: '""',
     display: 'block',
-    paddingTop: aspectRatio,
+    paddingTop: aspectratio,
   },
 }));
 

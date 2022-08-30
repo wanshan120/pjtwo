@@ -1,4 +1,5 @@
-import * as React from 'react';
+import React, { useEffect } from 'react';
+import axios, { AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
 
 // MUI
 import Box from '@mui/material/Box';
@@ -29,12 +30,33 @@ import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlin
 import NotificationAddOutlinedIcon from '@mui/icons-material/NotificationAddOutlined';
 import Divider from '@mui/material/Divider';
 
+const url = 'http://localhost:8080/api/v1';
+
+const options: AxiosRequestConfig = {
+  url: `${url}/movie/6306771c30101fbc36b00381`,
+  method: 'GET',
+};
+export type AxiosPromise<T = any> = Promise<AxiosResponse<T>>;
+
 const PageDetailMovie = () => {
   const contentsTagData = SampleContentsTagData;
   const jpReadingTags = TagKeys;
 
   // freeTags
   const freeTagData = SamplefreeTagsData;
+
+  useEffect(() => {
+    axios(options)
+      .then((res: AxiosResponse) => {
+        console.log(`then処理`);
+        console.log(res);
+      })
+      .catch((e: AxiosError<{ error: string }>) => {
+        // エラー処理
+        console.log(`error処理`);
+        console.log(e);
+      });
+  }, []);
 
   return (
     <Box sx={{ display: 'flex', justifyContent: 'center' }}>
@@ -166,7 +188,7 @@ const PageDetailMovie = () => {
             <AspectRatioImage src={intothewildAama} alt={intothewildAama} loading="lazy" />
           </AspectRatioBlock>
           <AspectRatioBlock
-            aspectRatio="56.25%"
+            aspectratio="56.25%"
             sx={{ width: '56%', marginLeft: 1, marginRight: 1 }}
           >
             <YoutubeIframe
@@ -214,7 +236,7 @@ const PageDetailMovie = () => {
                 </Typography>
               </Paper>
             </Grid>
-            <Grid item direction="row">
+            <Grid item>
               <DetailTab />
             </Grid>
           </Grid>
