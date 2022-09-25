@@ -4,12 +4,12 @@ import { Movie, movieSchema } from 'services/models/movie';
 import { ZodError } from 'zod';
 // import { ErrorResponse } from 'services/models/error-response';
 
-const getMovie = async (orgCode: string, options?: Options): Promise<Movie[] | unknown> => {
+const getMovie = async (movieId: string, options?: Options): Promise<Movie[] | unknown> => {
   const mergedOptions = {
     ...DEFAULT_API_OPTIONS,
     ...options,
   };
-  const response = await ky.get(`movie/6306771c30101fbc36b00381`, mergedOptions);
+  const response = await ky.get(`movie/${movieId}`, mergedOptions);
   const json = await response.json();
 
   try {

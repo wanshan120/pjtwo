@@ -30,6 +30,7 @@ import NotificationAddOutlinedIcon from '@mui/icons-material/NotificationAddOutl
 import Divider from '@mui/material/Divider';
 
 import useMovieDetail from 'hooks/movie/use-movie-detail';
+import { useParams } from 'react-router-dom';
 
 const PageDetailMovie = () => {
   const contentsTagData = SampleContentsTagData;
@@ -39,7 +40,8 @@ const PageDetailMovie = () => {
   const freeTagData = SamplefreeTagsData;
 
   // use-query
-  const movie: any = useMovieDetail('test');
+  const { movieId = '' } = useParams();
+  const movie: any = useMovieDetail(movieId);
   console.log('use-query', movie);
 
   return (

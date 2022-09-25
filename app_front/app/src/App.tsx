@@ -53,7 +53,7 @@ const App: FC = () => {
           </Route>
           <Route path="*" element={<Navigate to="/" replace />} />
           <Route path={urlPatterns.detailMovie.path} element={<PageDetailMovie />}>
-            <Route path=":movieCode" element={<PageDetailMovie />} />
+            <Route path=":movieId" element={<PageDetailMovie />} />
           </Route>
         </Routes>
       </ThemeProvider>
