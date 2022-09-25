@@ -31,7 +31,7 @@ func CreateMovieItem() gin.HandlerFunc {
 		if err := c.BindJSON(&movieRead); err != nil {
 			c.JSON(
 				http.StatusBadRequest,
-				responses.NormalResponse{
+				responses.ErrorResponse{
 					Status:  http.StatusBadRequest,
 					Message: "JSON error",
 					Data:    map[string]interface{}{"data": err.Error()},
@@ -55,7 +55,7 @@ func CreateMovieItem() gin.HandlerFunc {
 		if validationErr := validate.Struct(&movieRead); validationErr != nil {
 			c.JSON(
 				http.StatusBadRequest,
-				responses.NormalResponse{
+				responses.ErrorResponse{
 					Status:  http.StatusBadRequest,
 					Message: "struct error",
 					Data:    map[string]interface{}{"data": validationErr.Error(), "response": movieRead},
@@ -76,7 +76,7 @@ func CreateMovieItem() gin.HandlerFunc {
 		if err != nil {
 			c.JSON(
 				http.StatusInternalServerError,
-				responses.NormalResponse{
+				responses.ErrorResponse{
 					Status:  http.StatusInternalServerError,
 					Message: "insert error",
 					Data:    map[string]interface{}{"data": err.Error()},
@@ -87,7 +87,7 @@ func CreateMovieItem() gin.HandlerFunc {
 
 		c.JSON(
 			http.StatusCreated,
-			responses.NormalResponse{
+			responses.ErrorResponse{
 				Status:  http.StatusCreated,
 				Message: "success",
 				Data:    map[string]interface{}{"data": result},
@@ -108,7 +108,7 @@ func GetMovieById() gin.HandlerFunc {
 		if err != nil {
 			c.JSON(
 				http.StatusBadRequest,
-				responses.NormalResponse{
+				responses.ErrorResponse{
 					Status:  http.StatusBadRequest,
 					Message: "movieId can't decoded",
 					Data:    map[string]interface{}{"data": err.Error()},
@@ -235,7 +235,7 @@ func GetMovieById() gin.HandlerFunc {
 		if err != nil {
 			c.JSON(
 				http.StatusInternalServerError,
-				responses.NormalResponse{
+				responses.ErrorResponse{
 					Status:  http.StatusInternalServerError,
 					Message: "pipeline does not work",
 					Data:    map[string]interface{}{"data": err.Error()},
@@ -248,7 +248,7 @@ func GetMovieById() gin.HandlerFunc {
 		if err = cursor.All(ctx, &movieRead); err != nil {
 			c.JSON(
 				http.StatusInternalServerError,
-				responses.NormalResponse{
+				responses.ErrorResponse{
 					Status:  http.StatusInternalServerError,
 					Message: "cursor does not work",
 					Data:    map[string]interface{}{"data": err.Error()},
@@ -260,7 +260,7 @@ func GetMovieById() gin.HandlerFunc {
 		if len(movieRead) == 0 {
 			c.JSON(
 				http.StatusNotFound,
-				responses.NormalResponse{
+				responses.ErrorResponse{
 					Status:  http.StatusNotFound,
 					Message: "NotFound",
 					Data:    map[string]interface{}{"data": "no title"},
@@ -271,11 +271,7 @@ func GetMovieById() gin.HandlerFunc {
 
 		c.JSON(
 			http.StatusCreated,
-			responses.NormalResponse{
-				Status:  http.StatusCreated,
-				Message: "success",
-				Data:    map[string]interface{}{"data": &movieRead},
-			},
+			&movieRead[0],
 		)
 	}
 }

@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import axios, { AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
+import React from 'react';
 
 // MUI
 import Box from '@mui/material/Box';
@@ -30,13 +29,7 @@ import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlin
 import NotificationAddOutlinedIcon from '@mui/icons-material/NotificationAddOutlined';
 import Divider from '@mui/material/Divider';
 
-const url = 'http://localhost:8080/api/v1';
-
-const options: AxiosRequestConfig = {
-  url: `${url}/movie/6306771c30101fbc36b00381`,
-  method: 'GET',
-};
-export type AxiosPromise<T = any> = Promise<AxiosResponse<T>>;
+import useMovieDetail from 'hooks/movie/use-movie-detail';
 
 const PageDetailMovie = () => {
   const contentsTagData = SampleContentsTagData;
@@ -45,18 +38,9 @@ const PageDetailMovie = () => {
   // freeTags
   const freeTagData = SamplefreeTagsData;
 
-  useEffect(() => {
-    axios(options)
-      .then((res: AxiosResponse) => {
-        console.log(`then処理`);
-        console.log(res);
-      })
-      .catch((e: AxiosError<{ error: string }>) => {
-        // エラー処理
-        console.log(`error処理`);
-        console.log(e);
-      });
-  }, []);
+  // use-query
+  const movie: any = useMovieDetail('test');
+  console.log('use-query', movie);
 
   return (
     <Box sx={{ display: 'flex', justifyContent: 'center' }}>

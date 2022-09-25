@@ -47,20 +47,20 @@ type MovieById struct {
 }
 
 type Rate struct {
-	ServiceName string `bson:"serviceName,omitempty"`
-	RateValue   int8   `bson:"rateValue,omitempty"`
+	ServiceName string `json:"serviceName" bson:"serviceName,omitempty"`
+	RateValue   int8   `json:"rateValue" bson:"rateValue,omitempty"`
 }
 
 type Pv struct {
-	ServiceName string `bson:"serviceName,omitempty"`
-	RateValue   int8   `bson:"rateValue,omitempty"`
+	ServiceName string `json:"serviceName" bson:"serviceName,omitempty"`
+	Url         string `json:"url" bson:"url,omitempty"`
 	// CreatedAt   primitive.DateTime `bson:"created_at,omitempty"`
 }
 
 type Image struct {
-	Title string `bson:"title,omitempty"`
-	Path  string `bson:"path,omitempty"`
-	Desc  string `bson:"desc,omitempty"`
+	Title string `json:"title" bson:"title,omitempty"`
+	Path  string `json:"path" bson:"path,omitempty"`
+	Desc  string `json:"desc" bson:"desc,omitempty"`
 	// CreatedAt primitive.DateTime `bson:"created_at,omitempty"`
 }
 
@@ -80,9 +80,9 @@ type Image struct {
 
 type Tag struct {
 	// Id       primitive.ObjectID `bson:"_id,omitempty"`
-	Name     string `bson:"name,omitempty" validate:"required"`
-	Category string `bson:"category,omitempty" validate:"required"`
-	Type     string `bson:"type,omitempty" validate:"required"`
-	Status   string `bson:"status,omitempty" validate:"required"`
-	Desc     string `bson:"desc,omitempty"`
+	Name     string `json:"name" bson:"name,omitempty" validate:"required"`
+	Category string `json:"category" bson:"category,omitempty" validate:"required"`
+	Type     string `json:"type" bson:"type,omitempty" validate:"required"`
+	Status   string `json:"status" bson:"status,omitempty" validate:"required"`
+	Desc     string `json:"desc" bson:"desc,omitempty"`
 }
