@@ -4,7 +4,7 @@ import getMovie from 'services/api/movie/get-movie';
 // import getMembers from 'domains/github/services/get-members-delayed';
 
 const useMovieDetail = (movieId: string) => {
-  const { data: movie = [] } = useQuery([movieId, 'movie'], () => getMovie(movieId), {
+  const { data: movie = [] } = useQuery(['movie', movieId], () => getMovie(movieId), {
     enabled: movieId.length >= 2,
   });
 
