@@ -1,4 +1,4 @@
-import React from 'react';
+import { FC } from 'react';
 
 // MUI
 import Box from '@mui/material/Box';
@@ -30,9 +30,8 @@ import NotificationAddOutlinedIcon from '@mui/icons-material/NotificationAddOutl
 import Divider from '@mui/material/Divider';
 
 import useMovieDetail from 'hooks/movie/use-movie-detail';
-import { useParams } from 'react-router-dom';
 
-const PageDetailMovie = () => {
+const PageDetailMovie: FC<{ movieId: string }> = ({ movieId }) => {
   const contentsTagData = SampleContentsTagData;
   const jpReadingTags = TagKeys;
 
@@ -40,7 +39,6 @@ const PageDetailMovie = () => {
   const freeTagData = SamplefreeTagsData;
 
   // use-query
-  const { movieId = '' } = useParams();
   const movie: any = useMovieDetail(movieId);
   console.log('use-query', movie);
 

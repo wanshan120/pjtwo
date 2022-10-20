@@ -14,7 +14,7 @@ import { ThemeProvider } from '@mui/material';
 import Home from 'components/pages/Home';
 import HomePage from 'components/pages/HomePage';
 import MyList from 'components/pages/MyList';
-import PageDetailMovie from 'components/pages/DetailMovie';
+import DetailMovieBoundary from 'components/pages/DetailMovieBoundary';
 import Characters from 'components/pages/Characters';
 import AllCharacters from 'containers/templates/AllCharacters';
 import SchoolCharacters from 'containers/templates/SchoolCharacters';
@@ -52,8 +52,8 @@ const App: FC = () => {
             <Route path=":schoolCode" element={<SchoolCharacters />} />
           </Route>
           <Route path="*" element={<Navigate to="/" replace />} />
-          <Route path={urlPatterns.detailMovie.path} element={<PageDetailMovie />}>
-            <Route path=":movieId" element={<PageDetailMovie />} />
+          <Route path={urlPatterns.detailMovie.path} element={<DetailMovieBoundary />}>
+            <Route path=":movieId" element={<DetailMovieBoundary />} />
           </Route>
         </Routes>
       </ThemeProvider>
