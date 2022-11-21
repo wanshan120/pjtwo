@@ -11,13 +11,9 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material';
 
 // compornents
-import Home from 'components/pages/Home';
 import HomePage from 'components/pages/HomePage';
 import MyList from 'components/pages/MyList';
-import DetailMovieBoundary from 'components/pages/DetailMovieBoundary';
-import Characters from 'components/pages/Characters';
-import AllCharacters from 'containers/templates/AllCharacters';
-import SchoolCharacters from 'containers/templates/SchoolCharacters';
+import PageDetailMovieBoundary from 'features/movie/routes/DetailPage';
 
 const App: FC = () => {
   const { hash, pathname } = useLocation();
@@ -41,19 +37,14 @@ const App: FC = () => {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
           <Route path={urlPatterns.home.path} element={<HomePage />} />
           <Route path={urlPatterns.myList.path} element={<MyList />} />
           <Route path={urlPatterns.watchlist.path} element={<MyList />} />
           <Route path={urlPatterns.notice.path} element={<HomePage />} />
           <Route path={urlPatterns.message.path} element={<HomePage />} />
-          <Route path="characters" element={<Characters />}>
-            <Route path="" element={<AllCharacters />} />
-            <Route path=":schoolCode" element={<SchoolCharacters />} />
-          </Route>
-          <Route path="*" element={<Navigate to="/" replace />} />
-          <Route path={urlPatterns.detailMovie.path} element={<DetailMovieBoundary />}>
-            <Route path=":movieId" element={<DetailMovieBoundary />} />
+          <Route path={urlPatterns.detailMovie.path} element={<PageDetailMovieBoundary />}>
+            <Route path=":movieId" element={<PageDetailMovieBoundary />} />
           </Route>
         </Routes>
       </ThemeProvider>

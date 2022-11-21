@@ -20,12 +20,10 @@ import CommentIcon from '@mui/icons-material/Comment';
 import ReplyAllIcon from '@mui/icons-material/ReplyAll';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 
-// atoms
-import DrawerHeader from 'components/atoms/DrawerHeader';
-// molecules
-import HoverRating from 'components/molecules/HoverRating';
-// organisms
-import ResponsiveMenuBar from 'components/organisms/ResponsiveMenuBar';
+// components
+import DrawerHeader from 'components/elements/DrawerHeader';
+import HoverRating from 'components/elements/HoverRating';
+import ResponsiveMenuBar from 'components/menu/ResponsiveMenuBar';
 
 import intothewildAama from 'data/images/intothewildAma.jpg';
 

@@ -17,12 +17,10 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import ClearIcon from '@mui/icons-material/Clear';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 
-// molecules
-import SortMenu from 'components/molecules/SortMenu';
-// atoms
-import DrawerHeader from 'components/atoms/DrawerHeader';
-// organisms
-import ResponsiveMenuBar from 'components/organisms/ResponsiveMenuBar';
+// components
+import ResponsiveMenuBar from 'components/menu/ResponsiveMenuBar';
+import SortMenu from 'components/menu/SortMenu';
+import DrawerHeader from 'components/elements/DrawerHeader';
 
 // img
 import intothewildAama from 'data/images/intothewildAma.jpg';
