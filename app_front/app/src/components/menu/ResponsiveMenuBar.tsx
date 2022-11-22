@@ -26,7 +26,7 @@ import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlin
 // compornents
 import AppBar from 'components/toolbar/AppBar';
 import MiniDrawer from 'components/toolbar/MiniDrawer';
-import drawerWidth from 'components/const_list/DrawerWidth';
+import drawerWidth from 'components/elements/DrawerWidth';
 import SearchModal from 'components/modal/SearchModal';
 import ListItemWithButton from 'components/elements/ListItemWithButton';
 // import ListItemWithButtonToMyList from 'components/atoms/ListItemWithButtonToMylist';
@@ -34,7 +34,7 @@ import ListItemWithButton from 'components/elements/ListItemWithButton';
 import StyledListItemIcon from 'components/elements/StyledListItemIcon';
 
 // data
-import { urlPatterns } from 'components/const_list/urlPatterns';
+import { urlPatterns } from 'urlPatterns';
 
 interface Props {
   /**

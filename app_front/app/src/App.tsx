@@ -3,7 +3,7 @@ import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 
 // URL pattern list
-import { urlPatterns } from 'components/const_list/urlPatterns';
+import { urlPatterns } from 'urlPatterns';
 
 // MUI
 import theme from 'theme/myTheme';
@@ -11,8 +11,8 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material';
 
 // compornents
-import HomePage from 'components/pages/HomePage';
-import MyList from 'components/pages/MyList';
+import HomePage from 'features/home/components/HomePage';
+import MyList from 'features/mylist/components/MyList';
 import PageDetailMovieBoundary from 'features/movie/routes/DetailPage';
 
 const App: FC = () => {
