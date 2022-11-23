@@ -4,7 +4,7 @@ import { Movie, movieSchema } from 'models/movie';
 import { ZodError } from 'zod';
 // import { ErrorResponse } from 'services/models/error-response';
 
-const getMovie = async (movieId: string, options?: Options): Promise<Movie[] | unknown> => {
+const getMovie = async (movieId: string, options?: Options): Promise<Movie> => {
   const mergedOptions = {
     ...DEFAULT_API_OPTIONS,
     ...options,
@@ -31,7 +31,7 @@ const getMovie = async (movieId: string, options?: Options): Promise<Movie[] | u
   //   throw Error('API type error');
   // }
 
-  return json;
+  return json as Movie;
 };
 
 export default getMovie;

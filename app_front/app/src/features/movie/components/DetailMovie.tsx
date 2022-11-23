@@ -31,7 +31,9 @@ import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlin
 import NotificationAddOutlinedIcon from '@mui/icons-material/NotificationAddOutlined';
 import Divider from '@mui/material/Divider';
 
-import useMovieDetail from 'hooks/movie/use-movie-detail';
+import useMovieDetail from 'features/movie/api/use-movie-detail';
+
+// import { Movie } from 'models/movie';
 
 const PageDetailMovie: FC<{ movieId: string }> = ({ movieId }) => {
   const contentsTagData = SampleContentsTagData;
@@ -41,8 +43,8 @@ const PageDetailMovie: FC<{ movieId: string }> = ({ movieId }) => {
   const freeTagData = SamplefreeTagsData;
 
   // use-query
-  const movie: any = useMovieDetail(movieId);
-  console.log('use-query', movie);
+  const movie = useMovieDetail(movieId);
+  // console.log('use-query', movie);
 
   return (
     <Box sx={{ display: 'flex', justifyContent: 'center' }}>
@@ -59,7 +61,7 @@ const PageDetailMovie: FC<{ movieId: string }> = ({ movieId }) => {
                   display="inline"
                   sx={{ fontSize: '2.5rem', paddingLeft: 1 }}
                 >
-                  イントゥ・ザ・ワイルド
+                  イントゥ・ザ・ワイルド{movie?.title}
                 </Typography>
               </Grid>
 
