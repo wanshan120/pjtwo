@@ -61,7 +61,7 @@ const PageDetailMovie: FC<{ movieId: string }> = ({ movieId }) => {
                   display="inline"
                   sx={{ fontSize: '2.5rem', paddingLeft: 1 }}
                 >
-                  イントゥ・ザ・ワイルド{movie?.title}
+                  {movie?.title}
                 </Typography>
               </Grid>
 
@@ -77,17 +77,33 @@ const PageDetailMovie: FC<{ movieId: string }> = ({ movieId }) => {
                     marginRight={1}
                   >
                     <Typography style={{ fontSize: 12 }}>評価指数</Typography>
-                    <Paper elevation={0} sx={{ paddingLeft: 3, paddingRight: 2 }}>
-                      <Typography display="inline" style={{ fontSize: '2.2rem' }}>
-                        S
-                      </Typography>
-                      <Typography display="inline" style={{ fontSize: '1.4rem', marginLeft: 7 }}>
-                        8.6
-                      </Typography>
-                      <Typography display="inline" style={{ fontSize: '0.8rem' }}>
-                        /10
-                      </Typography>
-                    </Paper>
+                    {movie?.rates?.map(
+                      (rate) =>
+                        rate.serviceName === 'MyService' &&
+                        (rate.rateValue ? (
+                          <Paper elevation={0} sx={{ paddingLeft: 3, paddingRight: 2 }}>
+                            <Typography display="inline" style={{ fontSize: '2.2rem' }}>
+                              S
+                            </Typography>
+                            <Typography
+                              display="inline"
+                              style={{ fontSize: '1.4rem', marginLeft: 7 }}
+                              key={rate.serviceName}
+                            >
+                              {rate.rateValue}
+                            </Typography>
+                            <Typography display="inline" style={{ fontSize: '0.8rem' }}>
+                              /10
+                            </Typography>
+                          </Paper>
+                        ) : (
+                          <Paper elevation={0} sx={{ paddingLeft: 3, paddingRight: 2 }}>
+                            <Typography display="inline" style={{ fontSize: '2.2rem' }}>
+                              RIP
+                            </Typography>
+                          </Paper>
+                        )),
+                    )}
                   </Stack>
                   <Stack
                     direction="column"

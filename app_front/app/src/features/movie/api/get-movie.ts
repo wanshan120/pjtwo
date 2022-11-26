@@ -31,6 +31,8 @@ const getMovie = async (movieId: string, options?: Options): Promise<Movie> => {
   //   throw Error('API type error');
   // }
 
+  console.log(json);
+
   return json as Movie;
 };
 

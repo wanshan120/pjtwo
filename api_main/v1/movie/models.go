@@ -18,19 +18,19 @@ type Movie struct {
 	Images      []*Image           `bson:"images,omitempty"`
 	Pvs         []*Pv              `bson:"pvs,omitempty"`
 	Summary     string             `bson:"summary,omitempty"`
-	Tags        []*RId             `bson:"tags,omitempty" binding:"dive"`
+	TagIds      []string           `bson:"tagIds,omitempty" binding:"dive"`
 	// EditLogs primitive.DateTime    `bson:"edit_logs,omitempty"`
 }
 
 type MovieWrite struct {
-	Id          primitive.ObjectID `bson:"_id,omitempty"`
-	Title       string             `bson:"title,omitempty" validate:"required"`
-	ContentType string             `bson:"contentType,omitempty" validate:"required"`
-	Rates       []*Rate            `bson:"rates,omitempty"`
-	Images      []*Image           `bson:"images,omitempty"`
-	Pvs         []*Pv              `bson:"pvs,omitempty"`
-	Summary     string             `bson:"summary,omitempty"`
-	Tags        []*WId             `bson:"tags,omitempty" binding:"dive"`
+	Id          primitive.ObjectID   `bson:"_id,omitempty"`
+	Title       string               `bson:"title,omitempty" validate:"required"`
+	ContentType string               `bson:"contentType,omitempty" validate:"required"`
+	Rates       []*Rate              `bson:"rates,omitempty"`
+	Images      []*Image             `bson:"images,omitempty"`
+	Pvs         []*Pv                `bson:"pvs,omitempty"`
+	Summary     string               `bson:"summary,omitempty"`
+	TagIds      []primitive.ObjectID `bson:"tagIds,omitempty" binding:"dive"`
 	// EditLogs primitive.DateTime    `bson:"edit_logs,omitempty"`
 }
 

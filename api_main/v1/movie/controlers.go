@@ -43,12 +43,14 @@ func CreateMovieItem() gin.HandlerFunc {
 
 		// nested stringify Objectid to Objectid
 		movieWrite := MovieWrite{}
-		for i := range movieRead.Tags {
-			oid, err := primitive.ObjectIDFromHex(movieRead.Tags[i].Id)
+		for i := range movieRead.TagIds {
+			oid, err := primitive.ObjectIDFromHex(movieRead.TagIds[i])
 			if err != nil {
 				panic(err)
 			}
-			movieWrite.Tags = append(movieWrite.Tags, &WId{Id: oid})
+			// movieWrite.TagIds = append(movieWrite.TagIds, &WId{Id: oid})
+			movieWrite.TagIds = append(movieWrite.TagIds, oid)
+
 		}
 
 		//use the validator library to validate required fields
@@ -69,7 +71,7 @@ func CreateMovieItem() gin.HandlerFunc {
 			Title:       movieRead.Title,
 			ContentType: movieRead.ContentType,
 			Rates:       movieRead.Rates,
-			Tags:        movieWrite.Tags,
+			TagIds:      movieWrite.TagIds,
 		}
 
 		result, err := movieCollection.InsertOne(ctx, newMovie)
@@ -123,7 +125,7 @@ func GetMovieById() gin.HandlerFunc {
 			bson.D{{Key: "$limit", Value: 1}},
 			bson.D{{Key: "$lookup", Value: bson.D{
 				{Key: "from", Value: "tags"},
-				{Key: "let", Value: bson.D{{Key: "tag_ids", Value: "$tag_ids"}}},
+				{Key: "let", Value: bson.D{{Key: "tagIds", Value: "$tagIds"}}},
 				{Key: "pipeline",
 					Value: bson.A{
 						bson.D{
@@ -134,7 +136,7 @@ func GetMovieById() gin.HandlerFunc {
 											{Key: "$in",
 												Value: bson.A{
 													"$_id",
-													"$$tag_ids",
+													"$$tagIds",
 												},
 											},
 										},
@@ -223,6 +225,7 @@ func GetMovieById() gin.HandlerFunc {
 						{Key: "_id", Value: 1},
 						{Key: "title", Value: 1},
 						{Key: "contentType", Value: 1},
+						{Key: "rates", Value: 1},
 						{Key: "tags", Value: 1},
 						{Key: "pvs", Value: 1},
 						{Key: "images", Value: 1},
