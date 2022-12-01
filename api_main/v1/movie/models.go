@@ -1,6 +1,8 @@
 package movie
 
-import "go.mongodb.org/mongo-driver/bson/primitive"
+import (
+	"go.mongodb.org/mongo-driver/bson/primitive"
+)
 
 type RId struct {
 	Id string `json:"_id" bson:"_id,omitempty" binding:"required"`
@@ -47,8 +49,8 @@ type MovieById struct {
 }
 
 type Rate struct {
-	ServiceName string `json:"serviceName" bson:"serviceName,omitempty"`
-	RateValue   int8   `json:"rateValue" bson:"rateValue,omitempty"`
+	ServiceName string  `json:"serviceName" bson:"serviceName,omitempty"`
+	RateValue   float64 `json:"rateValue" bson:"rateValue,omitempty"`
 }
 
 type Pv struct {

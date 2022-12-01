@@ -44,3 +44,26 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+## ディレクトリ構成
+.
+├── components
+│   └── component name
+├── configs
+├── data
+│   ├── images
+│   │   ├── icons
+│   │   └── package
+│   └── items
+├── features
+│   └── feature-name
+│       ├── api - create, delete, getのAPIリクエストをする .ts
+│       │         HTTPリクエスト全般の処理が責務
+│       ├── components - feature単位のコンポーネント .tsx
+│       └── routes - トップレベルのページルート .tsx
+├── hooks　汎用カスタムフック、ファイル名はuseXXX.tsで統一。
+├── lib
+├── models
+├── theme
+└── types

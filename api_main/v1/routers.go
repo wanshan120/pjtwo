@@ -2,6 +2,7 @@ package routers
 
 import (
 	"api_main/v1/movie"
+	"api_main/v1/rate"
 
 	"time"
 
@@ -58,5 +59,6 @@ func setUpRouter(router *gin.Engine) {
 	api := router.Group("/api/v1")
 	{
 		movie.RegisterRouter(api.Group("/movie"))
+		rate.RegisterRouter(api.Group("/rate"))
 	}
 }

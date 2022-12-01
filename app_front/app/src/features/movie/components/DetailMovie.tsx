@@ -32,6 +32,7 @@ import NotificationAddOutlinedIcon from '@mui/icons-material/NotificationAddOutl
 import Divider from '@mui/material/Divider';
 
 import useMovieDetail from 'features/movie/api/use-movie-detail';
+import RateStack from 'features/movie/components/RateStack';
 
 // import { Movie } from 'models/movie';
 
@@ -55,103 +56,59 @@ const PageDetailMovie: FC<{ movieId: string }> = ({ movieId }) => {
         <Box sx={{ flexGrow: 1, marginBottom: 1 }}>
           <Paper elevation={0} sx={{ paddingTop: 2, paddingLeft: 2, paddingRight: 2 }}>
             <Grid container direction="row" justifyContent="space-between" alignItems="center">
-              <Grid item tablet={7}>
-                <Typography
-                  variant="h1"
-                  display="inline"
-                  sx={{ fontSize: '2.5rem', paddingLeft: 1 }}
+              <Typography variant="h1" display="inline" sx={{ fontSize: '2.5rem', paddingLeft: 1 }}>
+                {movie?.title}
+              </Typography>
+
+              <Box style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                <Divider orientation="vertical" flexItem style={{ marginRight: 5 }} />
+                <RateStack rates={movie?.rates} movieId={movieId} />
+                <Stack
+                  direction="column"
+                  justifyContent="flex-end "
+                  alignItems="center"
+                  spacing={0}
+                  marginRight={2}
                 >
-                  {movie?.title}
-                </Typography>
-              </Grid>
+                  <Typography style={{ fontSize: 12 }}>マイレート</Typography>
+                  <Paper elevation={0} sx={{ paddingLeft: 1, paddingRight: 2 }}>
+                    <Typography display="inline" style={{ fontSize: '2.2rem' }}>
+                      A+
+                    </Typography>
+                    <Typography display="inline" style={{ fontSize: '1.4rem', marginLeft: 7 }}>
+                      9.6
+                    </Typography>
+                    <Typography display="inline" style={{ fontSize: '0.8rem' }}>
+                      /10
+                    </Typography>
+                  </Paper>
+                </Stack>
+                <Stack
+                  direction="column"
+                  justifyContent="flex-end "
+                  alignItems="center"
+                  spacing={0}
+                  marginRight={1}
+                >
+                  <Typography style={{ fontSize: 12 }}>通知</Typography>
 
-              <Grid item tablet={5}>
-                <Box style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                  <Divider orientation="vertical" variant="middle" flexItem />
+                  <Paper elevation={0} sx={{ paddingLeft: 1, paddingRight: 1 }}>
+                    <NotificationAddOutlinedIcon sx={{ fontSize: 40 }} />
+                  </Paper>
+                </Stack>
+                <Stack
+                  direction="column"
+                  justifyContent="flex-end "
+                  alignItems="center"
+                  spacing={0}
+                >
+                  <Typography style={{ fontSize: 12 }}>後で</Typography>
 
-                  <Stack
-                    direction="column"
-                    justifyContent="flex-end "
-                    alignItems="center"
-                    spacing={0}
-                    marginRight={1}
-                  >
-                    <Typography style={{ fontSize: 12 }}>評価指数</Typography>
-                    {movie?.rates?.map(
-                      (rate) =>
-                        rate.serviceName === 'MyService' &&
-                        (rate.rateValue ? (
-                          <Paper elevation={0} sx={{ paddingLeft: 3, paddingRight: 2 }}>
-                            <Typography display="inline" style={{ fontSize: '2.2rem' }}>
-                              S
-                            </Typography>
-                            <Typography
-                              display="inline"
-                              style={{ fontSize: '1.4rem', marginLeft: 7 }}
-                              key={rate.serviceName}
-                            >
-                              {rate.rateValue}
-                            </Typography>
-                            <Typography display="inline" style={{ fontSize: '0.8rem' }}>
-                              /10
-                            </Typography>
-                          </Paper>
-                        ) : (
-                          <Paper elevation={0} sx={{ paddingLeft: 3, paddingRight: 2 }}>
-                            <Typography display="inline" style={{ fontSize: '2.2rem' }}>
-                              RIP
-                            </Typography>
-                          </Paper>
-                        )),
-                    )}
-                  </Stack>
-                  <Stack
-                    direction="column"
-                    justifyContent="flex-end "
-                    alignItems="center"
-                    spacing={0}
-                    marginRight={2}
-                  >
-                    <Typography style={{ fontSize: 12 }}>マイレート</Typography>
-                    <Paper elevation={0} sx={{ paddingLeft: 1, paddingRight: 2 }}>
-                      <Typography display="inline" style={{ fontSize: '2.2rem' }}>
-                        A+
-                      </Typography>
-                      <Typography display="inline" style={{ fontSize: '1.4rem', marginLeft: 7 }}>
-                        9.6
-                      </Typography>
-                      <Typography display="inline" style={{ fontSize: '0.8rem' }}>
-                        /10
-                      </Typography>
-                    </Paper>
-                  </Stack>
-                  <Stack
-                    direction="column"
-                    justifyContent="flex-end "
-                    alignItems="center"
-                    spacing={0}
-                    marginRight={1}
-                  >
-                    <Typography style={{ fontSize: 12 }}>通知</Typography>
-
-                    <Paper elevation={0} sx={{ paddingLeft: 1, paddingRight: 1 }}>
-                      <NotificationAddOutlinedIcon sx={{ fontSize: 40 }} />
-                    </Paper>
-                  </Stack>
-                  <Stack
-                    direction="column"
-                    justifyContent="flex-end "
-                    alignItems="center"
-                    spacing={0}
-                  >
-                    <Typography style={{ fontSize: 12 }}>後で</Typography>
-
-                    <Paper elevation={0} sx={{ paddingLeft: 1, paddingRight: 1 }}>
-                      <BookmarkBorderOutlinedIcon sx={{ fontSize: 40 }} />
-                    </Paper>
-                  </Stack>
-                </Box>
-              </Grid>
+                  <Paper elevation={0} sx={{ paddingLeft: 1, paddingRight: 1 }}>
+                    <BookmarkBorderOutlinedIcon sx={{ fontSize: 40 }} />
+                  </Paper>
+                </Stack>
+              </Box>
 
               {/* <Stack direction="column" justifyContent="center" alignItems="center" spacing={0}>
               評価指数
