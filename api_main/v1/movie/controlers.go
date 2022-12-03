@@ -225,6 +225,7 @@ func GetMovieById() gin.HandlerFunc {
 						{Key: "_id", Value: 1},
 						{Key: "title", Value: 1},
 						{Key: "contentType", Value: 1},
+						{Key: "summary", Value: 1},
 						{Key: "rates", Value: 1},
 						{Key: "tags", Value: 1},
 						{Key: "pvs", Value: 1},

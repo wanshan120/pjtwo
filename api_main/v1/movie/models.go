@@ -54,16 +54,18 @@ type Rate struct {
 }
 
 type Pv struct {
-	ServiceName string `json:"serviceName" bson:"serviceName,omitempty"`
-	Url         string `json:"url" bson:"url,omitempty"`
-	// CreatedAt   primitive.DateTime `bson:"created_at,omitempty"`
+	ServiceName string             `json:"serviceName" bson:"serviceName,omitempty"`
+	Url         string             `json:"url" bson:"url,omitempty"`
+	IsMain      bool               `json:"isMain" bson:"isMain,omitempty"`
+	UpdatedAt   primitive.DateTime `json:"updatedAt" bson:"updatedAt,omitempty"`
 }
 
 type Image struct {
-	Title string `json:"title" bson:"title,omitempty"`
-	Path  string `json:"path" bson:"path,omitempty"`
-	Desc  string `json:"desc" bson:"desc,omitempty"`
-	// CreatedAt primitive.DateTime `bson:"created_at,omitempty"`
+	Title     string             `json:"title" bson:"title,omitempty"`
+	Path      string             `json:"path" bson:"path,omitempty"`
+	Desc      string             `json:"desc" bson:"desc,omitempty"`
+	IsMain    bool               `json:"isMain" bson:"isMain,omitempty"`
+	UpdatedAt primitive.DateTime `json:"updatedAt" bson:"updatedAt,omitempty"`
 }
 
 // type Summary struct {

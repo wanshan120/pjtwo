@@ -8,19 +8,12 @@ import Paper from '@mui/material/Paper';
 
 // components
 import DrawerHeader from 'components/elements/DrawerHeader';
-import YoutubeIframe from 'components/elements/YoutubeIframe';
-import AspectRatioImage from 'components/elements/AspectRatioImage';
-
 import ResponsiveMenuBar from 'components/menu/ResponsiveMenuBar';
-import AspectRatioBlock from 'components/block/AspectRatioBlock';
 import DictList from 'components/list/DictList';
 
 // brother components
 import SwipeableTab from 'features/movie/components/SwipeableTab';
-import VODSiteList from 'features/movie/components/VODSiteList';
 
-// images
-import intothewildAama from 'data/images/intothewildAma.jpg';
 // data
 import { SampleContentsTagData } from 'data/detailTag';
 import TagKeys from 'data/tagKeysType';
@@ -31,9 +24,11 @@ import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlin
 import NotificationAddOutlinedIcon from '@mui/icons-material/NotificationAddOutlined';
 import Divider from '@mui/material/Divider';
 
-import useMovieDetail from 'features/movie/api/use-movie-detail';
+import useMovieDetail from 'features/movie/hooks/use-movie-detail';
 import RateStack from 'features/movie/components/RateStack';
-
+import PvComponent from './PvComponent';
+import ImageComponent from './ImageComponent';
+import Summary from './Summary';
 // import { Movie } from 'models/movie';
 
 const PageDetailMovie: FC<{ movieId: string }> = ({ movieId }) => {
@@ -109,93 +104,17 @@ const PageDetailMovie: FC<{ movieId: string }> = ({ movieId }) => {
                   </Paper>
                 </Stack>
               </Box>
-
-              {/* <Stack direction="column" justifyContent="center" alignItems="center" spacing={0}>
-              評価指数
-              <Paper variant="outlined" sx={{ paddingLeft: 1, paddingRight: 1 }}>
-                <Box
-                  sx={{
-                    '& > legend': { mt: 2 },
-                  }}
-                >
-                  <StyledRating
-                    name="customized-color"
-                    defaultValue={2}
-                    getLabelText={getLabelText}
-                    precision={0.5}
-                    icon={<FavoriteIcon fontSize="inherit" />}
-                    onChange={(event, newValue) => {
-                      setValue(newValue);
-                    }}
-                    onChangeActive={(event, newHover) => {
-                      setHover(newHover);
-                    }}
-                    emptyIcon={<FavoriteBorderIcon fontSize="inherit" />}
-                  />
-                  {value !== null && (
-                    <Box sx={{ tablet: 2, display: 'inline' }}>
-                      {labels[hover !== -1 ? hover : value]}
-                    </Box>
-                  )}
-                </Box>
-              </Paper>
-            </Stack> */}
             </Grid>
           </Paper>
         </Box>
-
         <Box component="div" style={{ display: 'flex' }}>
-          <AspectRatioBlock sx={{ width: '22%' }}>
-            <AspectRatioImage src={intothewildAama} alt={intothewildAama} loading="lazy" />
-          </AspectRatioBlock>
-          <AspectRatioBlock
-            aspectratio="56.25%"
-            sx={{ width: '56%', marginLeft: 1, marginRight: 1 }}
-          >
-            <YoutubeIframe
-              src="https://www.youtube.com/embed/eQyE0Mu97Ec"
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
-          </AspectRatioBlock>
-          <AspectRatioBlock sx={{ width: '22%' }}>
-            <Paper
-              variant="outlined"
-              style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                bottom: 0,
-                right: 0,
-                height: '100%',
-                minWidth: '200px',
-              }}
-            >
-              <VODSiteList />
-            </Paper>
-          </AspectRatioBlock>
+          <ImageComponent images={movie?.images} />
+          <PvComponent pvs={movie?.pvs} />
         </Box>
         <Grid container direction="row" columnSpacing={1} sx={{ marginTop: 1 }}>
           <Grid container item direction="column" tablet={9} spacing={1}>
             <Grid item>
-              <Paper variant="outlined" sx={{ padding: 2 }}>
-                <Typography
-                  variant="h4"
-                  display="inline"
-                  sx={{
-                    fontSize: '1rem',
-                    color: 'text.secondary',
-                    fontWeight: 'bold',
-                  }}
-                >
-                  あらすじ
-                </Typography>
-                <Typography paragraph sx={{ fontSize: '0.9rem', marginTop: 0.5 }}>
-                  裕福な家庭に生まれ、物質的に恵まれた環境で育ったクリス・マッキャンドレスは、エモリー大学を優秀な成績で卒業する。両親はハーバードのロースクールに進学することを望んでいたが、幼い頃から不和を見せつけられ、金で物ばかりを与えようとする両親に嫌気が差していたクリスは、学資預金を全額寄付し、世界の真理を求めアラスカへと旅に出る。
-                </Typography>
-              </Paper>
+              <Summary summary={movie?.summary} />
             </Grid>
             <Grid item>
               <SwipeableTab />

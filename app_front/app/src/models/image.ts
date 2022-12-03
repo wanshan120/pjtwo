@@ -5,6 +5,8 @@ export const image = z
     title: z.string().optional(),
     path: z.string().optional(),
     desc: z.string().optional(),
+    isMain: z.boolean(),
+    updatedAt: z.date().optional(),
   })
   .strict();
 

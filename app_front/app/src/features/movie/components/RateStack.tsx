@@ -77,7 +77,7 @@ const RateStack: FC<{ rates: Movie['rates']; movieId: string }> = ({ rates, movi
         <Fade in={open}>
           <Paper sx={style}>
             <Paper sx={{ padding: 5, width: '100%' }}>
-              <h3>評価について</h3>
+              <h3>視聴者の評価</h3>
               <Typography>
                 あなたの好きな作品、監督、ジャンルなどを元に、あなたの趣向に合わせた評価を提供します。
               </Typography>
