@@ -19,6 +19,7 @@ type Movie struct {
 	Rates       []*Rate            `bson:"rates,omitempty"`
 	Images      []*Image           `bson:"images,omitempty"`
 	Pvs         []*Pv              `bson:"pvs,omitempty"`
+	Plannings   []*Planning        `bson:"plannings,omitempty"`
 	Summary     string             `bson:"summary,omitempty"`
 	TagIds      []string           `bson:"tagIds,omitempty" binding:"dive"`
 	// EditLogs primitive.DateTime    `bson:"edit_logs,omitempty"`
@@ -33,6 +34,7 @@ type MovieWrite struct {
 	Pvs         []*Pv                `bson:"pvs,omitempty"`
 	Summary     string               `bson:"summary,omitempty"`
 	TagIds      []primitive.ObjectID `bson:"tagIds,omitempty" binding:"dive"`
+	Plannings   []*Planning          `bson:"plannings,omitempty" binding:"dive"`
 	// EditLogs primitive.DateTime    `bson:"edit_logs,omitempty"`
 }
 
@@ -45,6 +47,8 @@ type MovieById struct {
 	Pvs         []*Pv              `bson:"pvs,omitempty"`
 	Summary     string             `bson:"summary,omitempty"`
 	Tags        []*Tag             `bson:"tags,omitempty" binding:"dive"`
+	Plannings   []*Planning        `bson:"plannings,omitempty" binding:"dive"`
+
 	// EditLogs primitive.DateTime    `bson:"edit_logs,omitempty"`
 }
 
@@ -89,4 +93,20 @@ type Tag struct {
 	Type     string `json:"type" bson:"type,omitempty" validate:"required"`
 	Status   string `json:"status" bson:"status,omitempty" validate:"required"`
 	Desc     string `json:"desc" bson:"desc,omitempty"`
+}
+
+type Site struct {
+	Name string `json:"name" bson:"name,omitempty"`
+	Icon string `json:"icon" bson:"icon,omitempty"`
+}
+
+type Planning struct {
+	Site           Site               `json:"site" bson:"site,omitempty" validate:"required"`
+	Url            string             `json:"url" bson:"url,omitempty" validate:"required"`
+	IsFree         bool               `json:"isFree" bson:"isFree,omitempty"`
+	IsRental       bool               `json:"isRental" bson:"isRental,omitempty"`
+	IsSubscription bool               `json:"isSubscription" bson:"isSubscription,omitempty"`
+	IsBuy          bool               `json:"isBuy" bson:"isBuy,omitempty"`
+	Price          int32              `json:"price" bson:"price,omitempty" validate:"required"`
+	UpdatedAt      primitive.DateTime `json:"updatedAt" bson:"updatedAt,omitempty"`
 }

@@ -13,7 +13,7 @@ const ImageComponent: FC<{ images: Movie['images'] }> = ({ images }) => {
   const mainImage = images?.find(({ isMain }) => isMain);
 
   return (
-    <AspectRatioBlock sx={{ width: '22%' }}>
+    <AspectRatioBlock sx={{ width: '27.35%' }}>
       {images?.length && mainImage ? (
         <AspectRatioImage src={mainImage?.path} alt={mainImage?.title} loading="lazy" />
       ) : (

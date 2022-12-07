@@ -209,6 +209,64 @@ func GetMovieById() gin.HandlerFunc {
 				},
 			},
 			bson.D{
+				{Key: "$lookup", Value: bson.D{
+					{Key: "from", Value: "plannings"},
+					{Key: "let", Value: bson.D{{Key: "movieId", Value: "$_id"}}},
+					{Key: "pipeline",
+						Value: bson.A{
+							bson.D{
+								{Key: "$match",
+									Value: bson.D{
+										{Key: "$expr",
+											Value: bson.D{
+												{Key: "$eq",
+													Value: bson.A{
+														"$movieId",
+														"$$movieId",
+													},
+												},
+											},
+										},
+									},
+								},
+							},
+							bson.D{
+								{Key: "$lookup",
+									Value: bson.D{
+										{Key: "from", Value: "sites"},
+										{Key: "let", Value: bson.D{{Key: "siteId", Value: "$siteId"}}},
+										{Key: "pipeline",
+											Value: bson.A{
+												bson.D{
+													{Key: "$match",
+														Value: bson.D{
+															{Key: "$expr",
+																Value: bson.D{
+																	{Key: "$eq",
+																		Value: bson.A{
+																			"$_id",
+																			"$$siteId",
+																		},
+																	},
+																},
+															},
+														},
+													},
+												},
+											},
+										},
+										{Key: "as", Value: "site"},
+									},
+								},
+							},
+							bson.D{{Key: "$unwind", Value: "$site"}},
+						},
+					},
+					{Key: "as", Value: "plannings"},
+				},
+				},
+			},
+			bson.D{
 				{Key: "$unset",
 					Value: bson.A{
 						"tags._id",
@@ -230,6 +288,7 @@ func GetMovieById() gin.HandlerFunc {
 						{Key: "tags", Value: 1},
 						{Key: "pvs", Value: 1},
 						{Key: "images", Value: 1},
+						{Key: "plannings", Value: 1},
 					},
 				},
 			},

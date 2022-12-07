@@ -29,6 +29,7 @@ import RateStack from 'features/movie/components/RateStack';
 import PvComponent from './PvComponent';
 import ImageComponent from './ImageComponent';
 import Summary from './Summary';
+import StreamingList from './StreamingList';
 // import { Movie } from 'models/movie';
 
 const PageDetailMovie: FC<{ movieId: string }> = ({ movieId }) => {
@@ -115,6 +116,9 @@ const PageDetailMovie: FC<{ movieId: string }> = ({ movieId }) => {
           <Grid container item direction="column" tablet={9} spacing={1}>
             <Grid item>
               <Summary summary={movie?.summary} />
+            </Grid>
+            <Grid item>
+              <StreamingList plannings={movie?.plannings} />
             </Grid>
             <Grid item>
               <SwipeableTab />
