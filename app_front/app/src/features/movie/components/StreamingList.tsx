@@ -2,13 +2,14 @@ import { FC } from 'react';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 
-import { Button } from '@mui/material';
+import Button from '@mui/material/Button';
 import Avatar from '@mui/material/Avatar';
 import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
 import { Movie } from 'models/movie';
 
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
 
 const StreamingList: FC<{ plannings: Movie['plannings'] }> = ({ plannings }) => {
   // 最高値順でソートする
@@ -63,43 +64,43 @@ const StreamingList: FC<{ plannings: Movie['plannings'] }> = ({ plannings }) => 
           columnSpacing={{ mobile: 1, tablet: 2 }}
         >
           {descGigenPlannings?.map((planning) => (
-            <Grid item mobile={12} tablet={6}>
+            <Grid item mobile={12} tablet={6} key={planning.site.name}>
               <Button fullWidth variant="outlined" sx={{ padding: 2, textTransform: 'none' }}>
-                <Avatar
-                  alt={planning.site.name}
-                  src={`${process.env.PUBLIC_URL}/${planning.site.icon}`}
-                />
-                <Grid sx={{ flexGrow: 1 }} container spacing={2}>
-                  <Grid item mobile={6} tablet={6}>
-                    <Typography
-                      sx={{ display: 'inline' }}
-                      fontWeight="bold"
-                      variant="body2"
-                      color="text.primary"
-                      noWrap
-                    >
-                      {planning.site.name}
-                    </Typography>
-                  </Grid>
-                  <Grid item mobile={6} tablet={6}>
-                    <Typography
-                      sx={{ display: 'inline' }}
-                      variant="body2"
-                      color="text.primary"
-                      noWrap
-                    >
-                      {planning.desc}
-                    </Typography>
-                  </Grid>
-                </Grid>
-
-                <PlayCircleOutlineIcon fontSize="large" sx={{ color: 'whitesmoke' }} />
+                <Stack
+                  direction={{ mobile: 'row', tablet: 'row' }}
+                  justifyContent="space-between"
+                  alignItems="center"
+                  spacing={1}
+                  width="100%"
+                >
+                  <Avatar
+                    alt={planning.site.name}
+                    src={`${process.env.PUBLIC_URL}/${planning.site.icon}`}
+                  />
+                  <Typography fontWeight="bold" variant="body2" color="text.primary">
+                    {planning.site.name}
+                  </Typography>
+                  <Typography variant="body2" color="text.primary">
+                    {planning.desc}
+                  </Typography>
+                  <PlayCircleOutlineIcon fontSize="large" sx={{ color: 'whitesmoke' }} />
+                </Stack>
               </Button>
             </Grid>
           ))}
         </Grid>
       ) : (
-        'notitle'
+        <Typography
+          variant="body2"
+          display="inline"
+          sx={{
+            fontSize: '1rem',
+            color: 'text.secondary',
+            fontWeight: 'bold',
+          }}
+        >
+          配信サービスが見つかりませんでした
+        </Typography>
       )}
     </Paper>
   );

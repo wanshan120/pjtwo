@@ -46,7 +46,8 @@ type MovieById struct {
 	Images      []*Image           `bson:"images,omitempty"`
 	Pvs         []*Pv              `bson:"pvs,omitempty"`
 	Summary     string             `bson:"summary,omitempty"`
-	Tags        []*Tag             `bson:"tags,omitempty" binding:"dive"`
+	KeywordTags []*Category        `bson:"keywordTags,omitempty" binding:"dive"`
+	MetaTags    []*Category        `bson:"metaTags,omitempty" binding:"dive"`
 	Plannings   []*Planning        `bson:"plannings,omitempty" binding:"dive"`
 
 	// EditLogs primitive.DateTime    `bson:"edit_logs,omitempty"`
@@ -109,4 +110,9 @@ type Planning struct {
 	IsBuy          bool               `json:"isBuy" bson:"isBuy,omitempty"`
 	Price          int32              `json:"price" bson:"price,omitempty" validate:"required"`
 	UpdatedAt      primitive.DateTime `json:"updatedAt" bson:"updatedAt,omitempty"`
+}
+
+type Category struct {
+	Id   string `json:"id" bson:"_id,omitempty" binding:"dive"`
+	Tags []*Tag `json:"tags" bson:"tags,omitempty" binding:"dive"`
 }

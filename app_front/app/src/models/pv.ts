@@ -5,7 +5,7 @@ export const pv = z
     serviceName: z.string(),
     url: z.string().url(),
     isMain: z.boolean(),
-    updatedAt: z.date().optional(),
+    updatedAt: z.string().optional().nullable(),
   })
   .strict();
 

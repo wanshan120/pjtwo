@@ -20,18 +20,13 @@ const getMovie = async (movieId: string, options?: Options): Promise<Movie> => {
       //   message: '不正なクエリパラメータです。',
       // };
       // res.status(400).json(errorResponse);
-      console.log('レスポンス');
-      console.log(response.status);
-      console.log(response.statusText);
+      // console.log('レスポンス');
+      // console.log(response.status);
+      // console.log(response.statusText);
       console.log(e);
-      // throw Error('API type error');
+      throw Error('JSON parce error');
     }
   }
-  // if (!movieSchema(movie)) {
-  //   throw Error('API type error');
-  // }
-
-  console.log(json);
 
   return json as Movie;
 };

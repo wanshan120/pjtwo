@@ -4,15 +4,15 @@ import { site } from './site';
 export const planning = z
   .object({
     site,
-    url: z.string().url(),
-    isFree: z.boolean().optional(),
-    isRental: z.boolean().optional(),
+    url: z.string().optional().nullable(),
+    isFree: z.boolean().optional().nullable(),
+    isRental: z.boolean().optional().nullable(),
     isSubscription: z.boolean().optional(),
-    isBuy: z.boolean().optional(),
+    isBuy: z.boolean().optional().nullable(),
     price: z.number(),
     desc: z.string().optional().nullable(),
-    icon: z.string().url().optional().nullable(),
-    updatedAt: z.date().optional(),
+    icon: z.string().optional().nullable(),
+    updatedAt: z.string().optional().nullable(),
   })
   .strict();
 

@@ -131,6 +131,7 @@ func GetMovieById() gin.HandlerFunc {
 						bson.D{
 							{Key: "$match",
 								Value: bson.D{
+									{Key: "controlType", Value: "keyword"},
 									{Key: "$expr",
 										Value: bson.D{
 											{Key: "$in",
@@ -144,9 +145,53 @@ func GetMovieById() gin.HandlerFunc {
 								},
 							},
 						},
+						bson.D{
+							{Key: "$group",
+								Value: bson.D{
+									{Key: "_id", Value: "$category"},
+									{Key: "tags", Value: bson.D{{Key: "$push", Value: "$$ROOT"}}},
+								},
+							},
+						},
 					},
 				},
-				{Key: "as", Value: "tags"},
+				{Key: "as", Value: "keywordTags"},
+			},
+			},
+			},
+			bson.D{{Key: "$lookup", Value: bson.D{
+				{Key: "from", Value: "tags"},
+				{Key: "let", Value: bson.D{{Key: "tagIds", Value: "$tagIds"}}},
+				{Key: "pipeline",
+					Value: bson.A{
+						bson.D{
+							{Key: "$match",
+								Value: bson.D{
+									{Key: "controlType", Value: "meta"},
+									{Key: "$expr",
+										Value: bson.D{
+											{Key: "$in",
+												Value: bson.A{
+													"$_id",
+													"$$tagIds",
+												},
+											},
+										},
+									},
+								},
+							},
+						},
+						bson.D{
+							{Key: "$group",
+								Value: bson.D{
+									{Key: "_id", Value: "$category"},
+									{Key: "tags", Value: bson.D{{Key: "$push", Value: "$$ROOT"}}},
+								},
+							},
+						},
+					},
+				},
+				{Key: "as", Value: "metaTags"},
 			},
 			},
 			},
@@ -269,7 +314,6 @@ func GetMovieById() gin.HandlerFunc {
 			bson.D{
 				{Key: "$unset",
 					Value: bson.A{
-						"tags._id",
 						"pvs._id",
 						"pvs.movieId",
 						"images._id",
@@ -285,10 +329,11 @@ func GetMovieById() gin.HandlerFunc {
 						{Key: "contentType", Value: 1},
 						{Key: "summary", Value: 1},
 						{Key: "rates", Value: 1},
-						{Key: "tags", Value: 1},
 						{Key: "pvs", Value: 1},
 						{Key: "images", Value: 1},
 						{Key: "plannings", Value: 1},
+						{Key: "keywordTags", Value: 1},
+						{Key: "metaTags", Value: 1},
 					},
 				},
 			},

@@ -38,7 +38,7 @@ const RateStack: FC<{ rates: Movie['rates']; movieId: string }> = ({ rates, movi
             (rate) =>
               rate.serviceName === 'MyService' &&
               (rate.rateValue ? (
-                <Box>
+                <Box key={rate.serviceName}>
                   <Typography display="inline" style={{ fontSize: '2.2rem' }}>
                     {humanizeRate(rate.rateValue)}
                   </Typography>

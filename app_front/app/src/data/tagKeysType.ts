@@ -22,7 +22,10 @@ export type TagKeysType = {
   thought?: string;
 };
 
-const TagKeys: TagKeysType = {
+interface tagKey {
+  [key: string]: string;
+}
+const TagKeys: tagKey = {
   publicationDate: '公開日',
   based: '原作',
   author: '原作者',

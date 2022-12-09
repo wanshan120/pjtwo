@@ -3,7 +3,7 @@ import * as z from 'zod';
 export const site = z
   .object({
     name: z.string(),
-    icon: z.string().url(),
+    icon: z.string(),
   })
   .strict();
 

@@ -9,15 +9,15 @@ import Paper from '@mui/material/Paper';
 // components
 import DrawerHeader from 'components/elements/DrawerHeader';
 import ResponsiveMenuBar from 'components/menu/ResponsiveMenuBar';
-import DictList from 'components/list/DictList';
+// import DictList from 'components/list/DictList';
 
 // brother components
 import SwipeableTab from 'features/movie/components/SwipeableTab';
 
 // data
-import { SampleContentsTagData } from 'data/detailTag';
-import TagKeys from 'data/tagKeysType';
-import SamplefreeTagsData from 'data/freeTags';
+// import { SampleContentsTagData } from 'data/detailTag';
+// import TagKeys from 'data/tagKeysType';
+// import SamplefreeTagsData from 'data/freeTags';
 
 import Stack from '@mui/material/Stack';
 import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
@@ -30,14 +30,15 @@ import PvComponent from './PvComponent';
 import ImageComponent from './ImageComponent';
 import Summary from './Summary';
 import StreamingList from './StreamingList';
+import TagList from './TagList';
 // import { Movie } from 'models/movie';
 
 const PageDetailMovie: FC<{ movieId: string }> = ({ movieId }) => {
-  const contentsTagData = SampleContentsTagData;
-  const jpReadingTags = TagKeys;
+  // const contentsTagData = SampleContentsTagData;
+  // const jpReadingTags = TagKeys;
 
-  // freeTags
-  const freeTagData = SamplefreeTagsData;
+  // // freeTags
+  // const freeTagData = SamplefreeTagsData;
 
   // use-query
   const movie = useMovieDetail(movieId);
@@ -127,54 +128,10 @@ const PageDetailMovie: FC<{ movieId: string }> = ({ movieId }) => {
 
           <Grid container item direction="column" spacing={1} tablet={3}>
             <Grid item>
-              <Paper
-                variant="outlined"
-                sx={{
-                  display: 'flex',
-                  flexWrap: 'wrap',
-                  justifyContent: 'center',
-                  listStyle: 'none',
-                  padding: 2,
-                }}
-              >
-                <Typography
-                  variant="h4"
-                  paragraph
-                  sx={{
-                    fontSize: '1rem',
-                    color: 'text.secondary',
-                    fontWeight: 'bold',
-                  }}
-                >
-                  キーワード
-                </Typography>
-                <DictList tagObjects={freeTagData} jpReadingObjects={jpReadingTags} />
-              </Paper>
+              <TagList tags={movie?.keywordTags} subHeader="キーワード" />
             </Grid>
             <Grid item>
-              <Paper
-                variant="outlined"
-                sx={{
-                  display: 'flex',
-                  flexWrap: 'wrap',
-                  justifyContent: 'center',
-                  listStyle: 'none',
-                  padding: 2,
-                }}
-              >
-                <Typography
-                  variant="h4"
-                  paragraph
-                  sx={{
-                    fontSize: '1rem',
-                    color: 'text.secondary',
-                    fontWeight: 'bold',
-                  }}
-                >
-                  作品情報
-                </Typography>
-                <DictList tagObjects={contentsTagData} jpReadingObjects={jpReadingTags} />
-              </Paper>
+              <TagList tags={movie?.metaTags} subHeader="作品情報" />
             </Grid>
           </Grid>
         </Grid>

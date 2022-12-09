@@ -6,7 +6,7 @@ export const image = z
     path: z.string().optional(),
     desc: z.string().optional(),
     isMain: z.boolean(),
-    updatedAt: z.date().optional(),
+    updatedAt: z.string().optional().nullable(),
   })
   .strict();
 
