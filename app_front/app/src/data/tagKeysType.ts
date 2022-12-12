@@ -20,6 +20,7 @@ export type TagKeysType = {
   freeWord?: string;
   action?: string;
   thought?: string;
+  series?: string;
 };
 
 interface tagKey {
@@ -47,6 +48,7 @@ const TagKeys: tagKey = {
   freeWord: 'その他',
   action: '行動',
   thought: '思想',
+  series: 'シリーズ',
 };
 
 export default TagKeys;

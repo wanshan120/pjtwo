@@ -145,6 +145,7 @@ func GetMovieById() gin.HandlerFunc {
 								},
 							},
 						},
+						// bson.D{{Key: "$sort", Value: bson.D{{Key: "sortOder", Value: 1}}}},
 						bson.D{
 							{Key: "$group",
 								Value: bson.D{
@@ -181,6 +182,7 @@ func GetMovieById() gin.HandlerFunc {
 								},
 							},
 						},
+						// bson.D{{Key: "$sort", Value: bson.D{{Key: "sortOder", Value: 1}}}},
 						bson.D{
 							{Key: "$group",
 								Value: bson.D{
@@ -380,6 +382,160 @@ func GetMovieById() gin.HandlerFunc {
 		c.JSON(
 			http.StatusCreated,
 			&movieRead[0],
+		)
+	}
+}
+
+func GetRecommendMovie() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+		defer cancel()
+
+		tagId := c.Param("tagId")
+
+		// mongo id object check
+		objId, err := primitive.ObjectIDFromHex(tagId)
+		if err != nil {
+			c.JSON(
+				http.StatusBadRequest,
+				responses.ErrorResponse{
+					Status:  http.StatusBadRequest,
+					Message: "tagId can't decoded",
+					Data:    map[string]interface{}{"data": err.Error()},
+				},
+			)
+			return
+		}
+
+		// var cursor *mongo.Cursor
+		pipeline := bson.A{
+			bson.D{{Key: "$match", Value: bson.D{{Key: "tagIds", Value: objId}}}},
+			bson.D{{Key: "$limit", Value: 10}},
+			bson.D{
+				{Key: "$lookup",
+					Value: bson.D{
+						{Key: "from", Value: "tags"},
+						{Key: "let", Value: bson.D{{Key: "tagIds", Value: "$tagIds"}}},
+						{Key: "pipeline",
+							Value: bson.A{
+								bson.D{
+									{Key: "$match",
+										Value: bson.D{
+											{Key: "$or",
+												Value: bson.A{
+													bson.D{{Key: "category", Value: "publicationDate"}},
+													bson.D{{Key: "category", Value: "genre"}},
+												},
+											},
+											{Key: "$expr",
+												Value: bson.D{
+													{Key: "$in",
+														Value: bson.A{
+															"$_id",
+															"$$tagIds",
+														},
+													},
+												},
+											},
+										},
+									},
+								},
+								bson.D{{Key: "$sort", Value: bson.D{{Key: "sortOder", Value: 1}}}},
+							},
+						},
+						{Key: "as", Value: "tags"},
+					},
+				},
+			},
+			bson.D{{Key: "$sort", Value: bson.D{{Key: "publicationDate", Value: 1}}}},
+			bson.D{
+				{Key: "$lookup",
+					Value: bson.D{
+						{Key: "from", Value: "images"},
+						{Key: "let", Value: bson.D{{Key: "movieId", Value: "$_id"}}},
+						{Key: "pipeline",
+							Value: bson.A{
+								bson.D{
+									{Key: "$match",
+										Value: bson.D{
+											{Key: "isMain", Value: true},
+											{Key: "$expr",
+												Value: bson.D{
+													{Key: "$eq",
+														Value: bson.A{
+															"$movieId",
+															"$$movieId",
+														},
+													},
+												},
+											},
+										},
+									},
+								},
+							},
+						},
+						{Key: "as", Value: "image"},
+					},
+				},
+			},
+			bson.D{{Key: "$unwind", Value: bson.D{{Key: "path", Value: "$image"}}}},
+			bson.D{
+				{Key: "$unset",
+					Value: bson.A{
+						"summary",
+						"tagIds",
+					},
+				},
+			},
+			bson.D{
+				{Key: "$project",
+					Value: bson.D{
+						{Key: "_id", Value: 1},
+						{Key: "title", Value: 1},
+						{Key: "contentType", Value: 1},
+						{Key: "publicationoDate", Value: 1},
+						{Key: "rates", Value: 1},
+						{Key: "tags", Value: 1},
+						{Key: "pvs", Value: 1},
+						{Key: "image", Value: 1},
+					},
+				},
+			},
+		}
+
+		cursor, err := movieCollection.Aggregate(ctx, pipeline)
+		if err != nil {
+			c.JSON(
+				http.StatusInternalServerError,
+				responses.ErrorResponse{
+					Status:  http.StatusInternalServerError,
+					Message: "pipeline does not work",
+					Data:    map[string]interface{}{"data": err.Error()},
+				},
+			)
+			return
+		}
+
+		movieRead := []RecommendMovie{}
+		// var results []bson.D
+		if err = cursor.All(ctx, &movieRead); err != nil {
+			c.JSON(
+				http.StatusInternalServerError,
+				responses.ErrorResponse{
+					Status:  http.StatusInternalServerError,
+					Message: "cursor does not work",
+					Data:    map[string]interface{}{"data": err.Error()},
+				},
+			)
+			return
+		}
+		// for _, result := range results {
+		// 	fmt.Println(result)
+		// }
+
+		c.JSON(
+			http.StatusCreated,
+			&movieRead,
 		)
 	}
 }

@@ -23,7 +23,7 @@ const Summary: FC<{ summary: Movie['summary'] }> = ({ summary }) => (
         >
           あらすじ
         </Typography>
-        <Typography paragraph sx={{ fontSize: '0.9rem', marginTop: 1, marginBottom: 0 }}>
+        <Typography paragraph variant="body1" sx={{ marginTop: 1, marginBottom: 0 }}>
           <ShowMoreText text={summary} minTextSize={200} />
         </Typography>
       </Paper>
@@ -31,7 +31,7 @@ const Summary: FC<{ summary: Movie['summary'] }> = ({ summary }) => (
       <Card>
         <CardActionArea sx={{ height: '100%' }}>
           <CardContent sx={{ textAlign: 'center' }}>
-            <Typography gutterBottom variant="h6" component="div">
+            <Typography gutterBottom variant="body2" component="div">
               登録されているあらすじがありません
             </Typography>
             <Typography variant="body2" color="text.secondary">

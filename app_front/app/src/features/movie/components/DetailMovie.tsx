@@ -122,7 +122,7 @@ const PageDetailMovie: FC<{ movieId: string }> = ({ movieId }) => {
               <StreamingList plannings={movie?.plannings} />
             </Grid>
             <Grid item>
-              <SwipeableTab />
+              <SwipeableTab tagIds={movie?.keywordTags} />
             </Grid>
           </Grid>
 

@@ -53,6 +53,16 @@ type MovieById struct {
 	// EditLogs primitive.DateTime    `bson:"edit_logs,omitempty"`
 }
 
+type RecommendMovie struct {
+	Id               primitive.ObjectID `bson:"_id,omitempty"`
+	Title            string             `bson:"title,omitempty" validate:"required"`
+	ContentType      string             `bson:"contentType,omitempty" validate:"required"`
+	Rates            []*Rate            `bson:"rates,omitempty"`
+	Image            Image              `bson:"image,omitempty"`
+	Tags             []*Tag             `bson:"tags,omitempty" binding:"dive"`
+	PublicationoDate primitive.DateTime `json:"publicationDate" bson:"publicationDate,omitempty"`
+}
+
 type Rate struct {
 	ServiceName string  `json:"serviceName" bson:"serviceName,omitempty"`
 	RateValue   float64 `json:"rateValue" bson:"rateValue,omitempty"`
@@ -88,12 +98,12 @@ type Image struct {
 // }
 
 type Tag struct {
-	// Id       primitive.ObjectID `bson:"_id,omitempty"`
-	Name     string `json:"name" bson:"name,omitempty" validate:"required"`
-	Category string `json:"category" bson:"category,omitempty" validate:"required"`
-	Type     string `json:"type" bson:"type,omitempty" validate:"required"`
-	Status   string `json:"status" bson:"status,omitempty" validate:"required"`
-	Desc     string `json:"desc" bson:"desc,omitempty"`
+	Id          primitive.ObjectID `json:"id" bson:"_id,omitempty"`
+	Name        string             `json:"name" bson:"name,omitempty" validate:"required"`
+	Category    string             `json:"category" bson:"category,omitempty" validate:"required"`
+	ControlType string             `json:"controlType" bson:"controlType,omitempty" validate:"required"`
+	Status      string             `json:"status" bson:"status,omitempty" validate:"required"`
+	Desc        string             `json:"desc" bson:"desc,omitempty"`
 }
 
 type Site struct {

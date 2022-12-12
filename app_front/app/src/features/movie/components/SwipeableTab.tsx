@@ -1,3 +1,5 @@
+import { FC } from 'react';
+
 import * as React from 'react';
 import SwipeableViews from 'react-swipeable-views';
 import { useTheme } from '@mui/material/styles';
@@ -5,6 +7,7 @@ import AppBar from '@mui/material/AppBar';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
+import { Movie } from 'models/movie';
 
 // component
 import TabPanel from 'components/tab/TabPanel';
@@ -13,7 +16,7 @@ import TabPanel from 'components/tab/TabPanel';
 import RelatedTitleList from 'features/movie/components/RelatedTitleList';
 import ReviewList from 'features/movie/components/ReviewList';
 
-const SwipeableTab = () => {
+const SwipeableTab: FC<{ tagIds: Movie['metaTags'] }> = ({ tagIds }) => {
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
 
@@ -46,7 +49,7 @@ const SwipeableTab = () => {
         onChangeIndex={handleChangeIndex}
       >
         <TabPanel value={value} index={0}>
-          <RelatedTitleList />
+          <RelatedTitleList tagIds={tagIds} />
         </TabPanel>
         <TabPanel value={value} index={1}>
           <ReviewList />

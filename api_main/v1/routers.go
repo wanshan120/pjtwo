@@ -3,6 +3,7 @@ package routers
 import (
 	"api_main/v1/movie"
 	"api_main/v1/rate"
+	"api_main/v1/review"
 
 	"time"
 
@@ -60,5 +61,6 @@ func setUpRouter(router *gin.Engine) {
 	{
 		movie.RegisterRouter(api.Group("/movie"))
 		rate.RegisterRouter(api.Group("/rate"))
+		review.RegisterRouter(api.Group("/review"))
 	}
 }

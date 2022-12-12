@@ -77,10 +77,10 @@ const StreamingList: FC<{ plannings: Movie['plannings'] }> = ({ plannings }) => 
                     alt={planning.site.name}
                     src={`${process.env.PUBLIC_URL}/${planning.site.icon}`}
                   />
-                  <Typography fontWeight="bold" variant="body2" color="text.primary">
+                  <Typography fontWeight="bold" variant="body1" color="text.primary">
                     {planning.site.name}
                   </Typography>
-                  <Typography variant="body2" color="text.primary">
+                  <Typography variant="body1" color="text.primary">
                     {planning.desc}
                   </Typography>
                   <PlayCircleOutlineIcon fontSize="large" sx={{ color: 'whitesmoke' }} />

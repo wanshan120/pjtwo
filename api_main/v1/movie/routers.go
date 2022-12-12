@@ -11,6 +11,7 @@ func RegisterRouter(r *gin.RouterGroup) {
 	r.POST("/", CreateMovieItem())
 	// 映画詳細ページ
 	r.GET("/:movieId", GetMovieById())
+	r.GET("/recommend/:tagId", GetRecommendMovie())
 	// // 登录
 	// r.POST("/login", Auth.LoginHandler)
 
