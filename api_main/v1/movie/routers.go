@@ -12,6 +12,7 @@ func RegisterRouter(r *gin.RouterGroup) {
 	// 映画詳細ページ
 	r.GET("/:movieId", GetMovieById())
 	r.GET("/recommend/:tagId", GetRecommendMovie())
+	r.GET("/related/:tagId", GetRelatedMovies())
 	// // 登录
 	// r.POST("/login", Auth.LoginHandler)
 

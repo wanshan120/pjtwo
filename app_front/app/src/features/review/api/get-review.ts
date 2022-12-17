@@ -1,19 +1,19 @@
 import ky, { Options } from 'ky';
 import { DEFAULT_API_OPTIONS } from 'configs/ky-api';
-import { Review, reviewSchema } from 'models/review';
+import { Review, review } from 'models/review';
 import { ZodError } from 'zod';
 // import { ErrorResponse } from 'services/models/error-response';
 
-const getReview = async (contentId: string, options?: Options): Promise<Review> => {
+const getReview = async (productId: string, options?: Options): Promise<Review> => {
   const mergedOptions = {
     ...DEFAULT_API_OPTIONS,
     ...options,
   };
-  const response = await ky.get(`review/${contentId}`, mergedOptions);
+  const response = await ky.get(`review/${productId}`, mergedOptions);
   const json = await response.json();
 
   try {
-    reviewSchema.parse(json);
+    review.parse(json);
   } catch (e) {
     if (e instanceof ZodError) {
       // const errorResponse: ErrorResponse = {

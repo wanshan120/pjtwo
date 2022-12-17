@@ -7,6 +7,6 @@ import (
 // RegisterRouter
 func RegisterRouter(r *gin.RouterGroup) {
 
-	r.GET("/:contentId", GetReviewByContentId())
+	r.GET("/:productId", GetReviewByProductId())
 
 }

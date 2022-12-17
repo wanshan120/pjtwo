@@ -19,15 +19,15 @@ import (
 var reviewCollection *mongo.Collection = configs.GetCollection(configs.DB, "reviews")
 var validate = validator.New()
 
-func GetReviewByContentId() gin.HandlerFunc {
+func GetReviewByProductId() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 		defer cancel()
 
-		contentId := c.Param("contentId")
+		productId := c.Param("productId")
 
 		// mongo id object check
-		objId, err := primitive.ObjectIDFromHex(contentId)
+		objId, err := primitive.ObjectIDFromHex(productId)
 		if err != nil {
 			c.JSON(
 				http.StatusBadRequest,
@@ -43,7 +43,7 @@ func GetReviewByContentId() gin.HandlerFunc {
 		// var cursor *mongo.Cursor
 		// TODO: 一番人気のレビューを1件取得するように変更
 		pipeline := bson.A{
-			bson.D{{Key: "$match", Value: bson.D{{Key: "contentId", Value: objId}}}},
+			bson.D{{Key: "$match", Value: bson.D{{Key: "productId", Value: objId}}}},
 			bson.D{{Key: "$limit", Value: 1}},
 
 			bson.D{
@@ -51,7 +51,7 @@ func GetReviewByContentId() gin.HandlerFunc {
 					Value: bson.D{
 						{Key: "_id", Value: 1},
 						{Key: "userId", Value: 1},
-						{Key: "contentId", Value: 1},
+						{Key: "productId", Value: 1},
 						{Key: "title", Value: 1},
 						{Key: "content", Value: 1},
 						{Key: "updatedAt", Value: 1},

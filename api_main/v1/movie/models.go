@@ -1,6 +1,8 @@
 package movie
 
 import (
+	"api_main/v1/review"
+
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
@@ -60,6 +62,17 @@ type RecommendMovie struct {
 	Rates            []*Rate            `bson:"rates,omitempty"`
 	Image            Image              `bson:"image,omitempty"`
 	Tags             []*Tag             `bson:"tags,omitempty" binding:"dive"`
+	PublicationoDate primitive.DateTime `json:"publicationDate" bson:"publicationDate,omitempty"`
+}
+
+type MovieWithReview struct {
+	Id               primitive.ObjectID `bson:"_id,omitempty"`
+	Title            string             `bson:"title,omitempty" validate:"required"`
+	ContentType      string             `bson:"contentType,omitempty" validate:"required"`
+	Rates            []*Rate            `bson:"rates,omitempty"`
+	Image            Image              `bson:"image,omitempty"`
+	Tags             []*Tag             `bson:"tags,omitempty" binding:"dive"`
+	Review           review.ReviewJson  `bson:"review,omitempty" binding:"dive"`
 	PublicationoDate primitive.DateTime `json:"publicationDate" bson:"publicationDate,omitempty"`
 }
 

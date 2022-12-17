@@ -1,0 +1,12 @@
+.clamplinescustom .clamp-lines__button {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background: orangered;
+  border: 1px solid transparent;
+  transition: all 0.2s linear;
+}
+
+. .clamp-lines__button:hover {
+  background: orange;
+}

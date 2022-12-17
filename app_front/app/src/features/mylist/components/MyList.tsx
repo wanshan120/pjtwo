@@ -83,6 +83,7 @@ const MyList = () => {
                       style={{ width: '100%', height: 'auto', margin: 0, padding: 0 }}
                     />
                   </Grid>
+
                   <Grid item mobile={10.5}>
                     <Stack
                       direction="column"

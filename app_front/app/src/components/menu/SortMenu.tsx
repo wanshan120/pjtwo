@@ -26,7 +26,7 @@ const SortMenu = () => {
 
   return (
     <div>
-      <List component="nav" aria-label="Device settings" sx={{ bgcolor: 'background.paper' }}>
+      <List component="nav" aria-label="Device settings">
         <ListItem
           button
           id="lock-button"

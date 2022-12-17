@@ -113,25 +113,24 @@ const PageDetailMovie: FC<{ movieId: string }> = ({ movieId }) => {
           <ImageComponent images={movie?.images} />
           <PvComponent pvs={movie?.pvs} />
         </Box>
-        <Grid container direction="row" columnSpacing={1} sx={{ marginTop: 1 }}>
-          <Grid container item direction="column" tablet={9} spacing={1}>
-            <Grid item>
-              <Summary summary={movie?.summary} />
-            </Grid>
-            <Grid item>
-              <StreamingList plannings={movie?.plannings} />
-            </Grid>
-            <Grid item>
-              <SwipeableTab tagIds={movie?.keywordTags} />
+        <Grid container direction="row-reverse" columnSpacing={1} sx={{ marginTop: 1 }}>
+          <Grid container item direction="row" spacing={1} tablet={3}>
+            <Grid item mobile={12} tablet={12}>
+              <TagList tags={movie?.keywordTags} subHeader="キーワード" />
+              <Box sx={{ marginTop: 1 }}>
+                <TagList tags={movie?.metaTags} subHeader="作品情報" />
+              </Box>
             </Grid>
           </Grid>
-
-          <Grid container item direction="column" spacing={1} tablet={3}>
-            <Grid item>
-              <TagList tags={movie?.keywordTags} subHeader="キーワード" />
+          <Grid container item direction="row" tablet={9} spacing={1}>
+            <Grid container item mobile={12} tablet={12}>
+              <Summary summary={movie?.summary} />
             </Grid>
-            <Grid item>
-              <TagList tags={movie?.metaTags} subHeader="作品情報" />
+            <Grid container item mobile={12} tablet={12}>
+              <StreamingList plannings={movie?.plannings} />
+            </Grid>
+            <Grid container item mobile={12} tablet={12}>
+              <SwipeableTab tagIds={movie?.keywordTags} />
             </Grid>
           </Grid>
         </Grid>
