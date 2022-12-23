@@ -2,12 +2,13 @@ package auth
 
 import (
 	"errors"
+	"os"
 	"time"
 
 	"github.com/golang-jwt/jwt/v4"
 )
 
-var jwtKey = []byte("supersecretkey")
+var jwtKey = []byte(os.Getenv("SECKEY"))
 
 type JWTClaim struct {
 	UserName string `json:"userName"`
