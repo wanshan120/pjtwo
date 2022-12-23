@@ -1,9 +1,13 @@
 package routers
 
 import (
+	"api_main/middlewares"
 	"api_main/v1/movie"
 	"api_main/v1/rate"
 	"api_main/v1/review"
+	"api_main/v1/secure"
+	"api_main/v1/token"
+	"api_main/v1/user"
 
 	"time"
 
@@ -62,5 +66,11 @@ func setUpRouter(router *gin.Engine) {
 		movie.RegisterRouter(api.Group("/movie"))
 		rate.RegisterRouter(api.Group("/rate"))
 		review.RegisterRouter(api.Group("/review"))
+		user.RegisterRouter(api.Group("/user"))
+		token.RegisterRouter(api.Group("/token"))
+		secured := api.Group("/secured").Use(middlewares.Auth())
+		{
+			secured.GET("/ping", secure.Ping)
+		}
 	}
 }
