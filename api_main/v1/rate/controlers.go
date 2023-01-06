@@ -1,12 +1,9 @@
 package rate
 
 import (
-	"api_main/configs"
 	"api_main/v1/responses"
 	"context"
-	"fmt"
 	"net/http"
-	"time"
 
 	"github.com/gin-gonic/gin"
 	"github.com/go-playground/validator/v10"
@@ -17,16 +14,11 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
-var ratingsCollection *mongo.Collection = configs.GetCollection(configs.DB, "ratings")
 var validate = validator.New()
 
-func GetRatings() gin.HandlerFunc {
+func GetRatings(ctx context.Context, collection *mongo.Collection) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
-		defer cancel()
-
 		productId := c.Param("productId")
-		fmt.Println("productID: ", productId)
 
 		// mongo id object check
 		objId, err := primitive.ObjectIDFromHex(productId)
@@ -55,7 +47,7 @@ func GetRatings() gin.HandlerFunc {
 			},
 		}
 
-		cursor, err := ratingsCollection.Aggregate(ctx, pipeline)
+		cursor, err := collection.Aggregate(ctx, pipeline)
 		if err != nil {
 			c.JSON(
 				http.StatusInternalServerError,

@@ -1,14 +1,14 @@
 package routers
 
 import (
+	"api_main/configs"
 	"api_main/middlewares"
+	"api_main/v1/auth"
 	"api_main/v1/movie"
 	"api_main/v1/rate"
 	"api_main/v1/review"
-	"api_main/v1/secure"
-	"api_main/v1/token"
-	"api_main/v1/user"
-
+	usr "api_main/v1/user"
+	"context"
 	"time"
 
 	"github.com/gin-contrib/cors"
@@ -17,11 +17,12 @@ import (
 
 // InitRouter ルートの初期化
 func InitRouter() *gin.Engine {
+	ctx := context.Background()
 
 	router := gin.Default()
 
 	setUpConfig(router)
-	setUpRouter(router)
+	setUpRouter(ctx, router)
 
 	return router
 }
@@ -60,17 +61,23 @@ func setUpConfig(router *gin.Engine) {
 }
 
 // ルーティングの設定
-func setUpRouter(router *gin.Engine) {
-	api := router.Group("/api/v1")
+func setUpRouter(ctx context.Context, router *gin.Engine) {
+	// mongoDB
+	client := configs.ConnectDB(ctx)
+
+	v1 := router.Group("/api/v1")
 	{
-		movie.RegisterRouter(api.Group("/movie"))
-		rate.RegisterRouter(api.Group("/rate"))
-		review.RegisterRouter(api.Group("/review"))
-		user.RegisterRouter(api.Group("/user"))
-		token.RegisterRouter(api.Group("/token"))
-		secured := api.Group("/secured").Use(middlewares.Auth())
+		movie.RegisterRouter(ctx, client, v1.Group("/movie"))
+		rate.RegisterRouter(ctx, client, v1.Group("/rate"))
+		review.RegisterRouter(ctx, client, v1.Group("/review"))
 		{
-			secured.GET("/ping", secure.Ping)
+			// userのみmiddlewareと循環参照するためuser packageはここでルート設定
+			collection := configs.GetCollection(client, "users")
+			users := v1.Group("/users").Use(middlewares.DeserializeUser(
+				usr.NewUserServiceImpl(ctx, collection),
+			))
+			users.GET("/me", usr.GetMe)
 		}
+		auth.AuthRoute(ctx, client, v1.Group("/auth"))
 	}
 }

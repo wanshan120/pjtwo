@@ -14,6 +14,7 @@ import { ThemeProvider } from '@mui/material';
 import HomePage from 'features/home/components/HomePage';
 import MyList from 'features/mylist/components/MyList';
 import PageDetailMovieBoundary from 'features/movie/routes/DetailPage';
+import LoginPage from 'features/login/routes/LoginPage';
 
 const App: FC = () => {
   const { hash, pathname } = useLocation();
@@ -42,6 +43,7 @@ const App: FC = () => {
           <Route path={urlPatterns.detailMovie.path} element={<PageDetailMovieBoundary />}>
             <Route path=":movieId" element={<PageDetailMovieBoundary />} />
           </Route>
+          <Route path={urlPatterns.login.path} element={<LoginPage />} />
         </Routes>
       </ThemeProvider>
     </>

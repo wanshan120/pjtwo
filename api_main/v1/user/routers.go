@@ -1,11 +1,19 @@
 package user
 
-import (
-	"github.com/gin-gonic/gin"
-)
+// import (
+// 	"api_main/middlewares"
 
-// RegisterRouter
-func RegisterRouter(r *gin.RouterGroup) {
+// 	"github.com/gin-gonic/gin"
+// )
 
-	r.POST("/register", ResisterUser)
-}
+// // RegisterRouter
+// // func RegisterRouter(r *gin.RouterGroup) {
+
+// // 	r.POST("/register", ResisterUser)
+// // }
+
+// // RegisterRouter
+// func RegisterRouter(r *gin.RouterGroup) {
+// 	r.Use(middlewares.DeserializeUser(NewUserServicesImple()))
+// 	r.GET("/me", GetMe)
+// }

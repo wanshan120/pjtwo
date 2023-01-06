@@ -1,11 +1,9 @@
 package review
 
 import (
-	"api_main/configs"
 	"api_main/v1/responses"
 	"context"
 	"net/http"
-	"time"
 
 	"github.com/gin-gonic/gin"
 	"github.com/go-playground/validator/v10"
@@ -16,14 +14,10 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
-var reviewCollection *mongo.Collection = configs.GetCollection(configs.DB, "reviews")
 var validate = validator.New()
 
-func GetReviewByProductId() gin.HandlerFunc {
+func GetReviewByProductId(ctx context.Context, collection *mongo.Collection) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
-		defer cancel()
-
 		productId := c.Param("productId")
 
 		// mongo id object check
@@ -60,7 +54,7 @@ func GetReviewByProductId() gin.HandlerFunc {
 			},
 		}
 
-		cursor, err := reviewCollection.Aggregate(ctx, pipeline)
+		cursor, err := collection.Aggregate(ctx, pipeline)
 		if err != nil {
 			c.JSON(
 				http.StatusInternalServerError,

@@ -1,29 +1,20 @@
 package movie
 
 import (
+	"api_main/configs"
+	"context"
+
 	"github.com/gin-gonic/gin"
+	"go.mongodb.org/mongo-driver/mongo"
 )
 
 // RegisterRouter
-func RegisterRouter(r *gin.RouterGroup) {
+func RegisterRouter(ctx context.Context, client *mongo.Client, r *gin.RouterGroup) {
+	collection := configs.GetCollection(client, "movies")
 
-	// 注册
-	r.POST("/", CreateMovieItem())
+	r.POST("/", CreateMovieItem(ctx, collection))
 	// 映画詳細ページ
-	r.GET("/:movieId", GetMovieById())
-	r.GET("/recommend/:tagId", GetRecommendMovie())
-	r.GET("/related/:tagId", GetRelatedMovies())
-	// // 登录
-	// r.POST("/login", Auth.LoginHandler)
-
-	// auth := r.Group("")
-	// auth.Use(Auth.MiddlewareFunc())
-	// {
-	// 	// 用户列表
-	// 	auth.GET("", getUserList)
-	// 	// 删除用户
-	// 	auth.DELETE("/:id", deleteUserByID)
-	// 	// 更新用户信息
-	// 	auth.PUT("/:id", updateUserByID)
-	// }
+	r.GET("/:movieId", GetMovieById(ctx, collection))
+	r.GET("/recommend/:tagId", GetRecommendMovie(ctx, collection))
+	r.GET("/related/:tagId", GetRelatedMovies(ctx, collection))
 }

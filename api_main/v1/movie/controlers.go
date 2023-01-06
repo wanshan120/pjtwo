@@ -1,12 +1,10 @@
 package movie
 
 import (
-	"api_main/configs"
 	"api_main/v1/responses"
 	"context"
 	"fmt"
 	"net/http"
-	"time"
 
 	"github.com/gin-gonic/gin"
 	"github.com/go-playground/validator/v10"
@@ -17,14 +15,10 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
-var movieCollection *mongo.Collection = configs.GetCollection(configs.DB, "movies")
 var validate = validator.New()
 
-func CreateMovieItem() gin.HandlerFunc {
+func CreateMovieItem(ctx context.Context, collection *mongo.Collection) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
-		defer cancel()
-
 		var movieRead Movie
 
 		//validate the request body
@@ -74,7 +68,7 @@ func CreateMovieItem() gin.HandlerFunc {
 			TagIds:      movieWrite.TagIds,
 		}
 
-		result, err := movieCollection.InsertOne(ctx, newMovie)
+		result, err := collection.InsertOne(ctx, newMovie)
 		if err != nil {
 			c.JSON(
 				http.StatusInternalServerError,
@@ -98,11 +92,8 @@ func CreateMovieItem() gin.HandlerFunc {
 	}
 }
 
-func GetMovieById() gin.HandlerFunc {
+func GetMovieById(ctx context.Context, collection *mongo.Collection) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
-		defer cancel()
-
 		movieId := c.Param("movieId")
 
 		// mongo id object check
@@ -341,7 +332,7 @@ func GetMovieById() gin.HandlerFunc {
 			},
 		}
 
-		cursor, err := movieCollection.Aggregate(ctx, pipeline)
+		cursor, err := collection.Aggregate(ctx, pipeline)
 		if err != nil {
 			c.JSON(
 				http.StatusInternalServerError,
@@ -386,11 +377,8 @@ func GetMovieById() gin.HandlerFunc {
 	}
 }
 
-func GetRecommendMovie() gin.HandlerFunc {
+func GetRecommendMovie(ctx context.Context, collection *mongo.Collection) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
-		defer cancel()
-
 		tagId := c.Param("tagId")
 
 		// mongo id object check
@@ -503,7 +491,7 @@ func GetRecommendMovie() gin.HandlerFunc {
 			},
 		}
 
-		cursor, err := movieCollection.Aggregate(ctx, pipeline)
+		cursor, err := collection.Aggregate(ctx, pipeline)
 		if err != nil {
 			c.JSON(
 				http.StatusInternalServerError,
@@ -540,11 +528,8 @@ func GetRecommendMovie() gin.HandlerFunc {
 	}
 }
 
-func GetRelatedMovies() gin.HandlerFunc {
+func GetRelatedMovies(ctx context.Context, collection *mongo.Collection) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
-		defer cancel()
-
 		tagId := c.Param("tagId")
 
 		// mongo id object check
@@ -681,7 +666,7 @@ func GetRelatedMovies() gin.HandlerFunc {
 			},
 		}
 
-		cursor, err := movieCollection.Aggregate(ctx, pipeline)
+		cursor, err := collection.Aggregate(ctx, pipeline)
 		if err != nil {
 			c.JSON(
 				http.StatusInternalServerError,
