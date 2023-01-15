@@ -2,6 +2,8 @@ import { useRef } from 'react';
 
 import ErrorBoundary from 'ErrorBoundary';
 import Login from 'features/login/components/Login';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const LoginBoundary = () => {
   const ebKey = useRef(0);
@@ -16,6 +18,7 @@ const LoginBoundary = () => {
       }}
       key={ebKey.current}
     >
+      <ToastContainer />
       <Login />
     </ErrorBoundary>
   );

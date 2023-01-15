@@ -48,4 +48,8 @@ export const urlPatterns: urlPatternsType = {
     path: '/login',
     name: 'ログイン',
   },
+  register: {
+    path: '/register',
+    name: '新規ユーザー登録',
+  },
 };

@@ -11,6 +11,8 @@ interface Props {
   children: React.ReactNode;
   open?: boolean | null;
   url: string;
+  // eslint-disable-next-line react/no-unused-prop-types, @typescript-eslint/no-explicit-any
+  onClick?: any;
 }
 const ListItemWithButton: React.FC<Props> = ({ open, children, url }) => (
   <ListItem disablePadding sx={{ display: 'block' }}>
