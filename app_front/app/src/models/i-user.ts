@@ -5,11 +5,9 @@ export const iUser = z
     name: z.string(),
     email: z.string(),
     role: z.string(),
-    _id: z.string(),
     id: z.string(),
     createdAt: z.string().optional().nullable(),
     updatedAt: z.string().optional().nullable(),
-    __v: z.number(),
   })
   .strict();
 

@@ -16,7 +16,7 @@ const RequireUser = ({ allowedRoles }: { allowedRoles: string[] }) => {
     data: user,
   } = useQuery(['authUser'], getMe, {
     retry: 1,
-    select: (data) => data.data.user,
+    select: (data) => data?.data.user || null,
     onSuccess: (data) => {
       stateContext.dispatch({ type: 'SET_USER', payload: data });
     },

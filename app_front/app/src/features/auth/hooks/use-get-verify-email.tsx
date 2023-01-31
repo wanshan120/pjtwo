@@ -2,49 +2,35 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 // React
 import { SyntheticEvent, useEffect } from 'react';
-import { useMutation, useQuery } from 'react-query';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useMutation } from 'react-query';
+import { useNavigate, useParams } from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
 // My
-import { loginSchema, LoginInput } from 'models/input-login';
+import { verificationCodeSchema, VerificationCodeInput } from 'models/input-verification-code';
 import { genericResponse } from 'models/generic-response';
-import { useStateContext } from 'context';
-import postLoginUser from 'features/auth/api/post-login-user';
-import getMe from 'features/auth/api/get-me';
+import GetVerifyEmail from 'features/auth/api/get-verify-email';
 // Plugin
 import { toast } from 'react-toastify';
 import { zodResolver } from '@hookform/resolvers/zod';
 
-const usePostLoginUser = () => {
+const usePostVerifyEmail = () => {
   const navigate = useNavigate();
-  const location = useLocation();
-  const from = (location.state as string) || '/';
-  const methods = useForm<LoginInput>({
-    resolver: zodResolver(loginSchema),
-  });
-  const stateContext = useStateContext();
-
-  // API Get Current Logged-in user
-  const query = useQuery(['authUser'], getMe, {
-    enabled: false,
-    select: (data) => data?.data.user || null,
-    retry: 1,
-    onSuccess: (data) => {
-      stateContext.dispatch({ type: 'SET_USER', payload: data });
-    },
+  const { verificationCode } = useParams();
+  const methods = useForm<VerificationCodeInput>({
+    resolver: zodResolver(verificationCodeSchema),
   });
 
   // API Login Mutation
-  const { mutate: loginUser, isLoading } = useMutation(
-    (userData: LoginInput) => postLoginUser(userData),
+  const { mutate: verifyEmail, isLoading } = useMutation(
+    (_verificationCode: string) => GetVerifyEmail(_verificationCode),
     {
-      onSuccess: async () => {
-        await query.refetch();
-        toast.success('ログインに成功しました', { hideProgressBar: true });
-        navigate(from);
+      onSuccess: (data) => {
+        toast.success(data?.message);
+        navigate('/verifyemail');
       },
       onError: (error: Error) => {
         try {
+          console.log('on error');
           const e = genericResponse.parse(JSON.parse(error.message));
           toast.error(e.message, {
             position: 'top-right',
@@ -70,9 +56,17 @@ const usePostLoginUser = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isSubmitSuccessful]);
 
-  const onSubmitHandler: SubmitHandler<LoginInput> = (values) => {
-    // ? Executing the loginUser Mutation
-    loginUser(values);
+  // 初期値をセット
+  useEffect(() => {
+    if (verificationCode) {
+      reset({ verificationCode });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const onSubmitHandler: SubmitHandler<VerificationCodeInput> = (input: VerificationCodeInput) => {
+    // ? Executing the verifyEmail Mutation
+    verifyEmail(input.verificationCode);
   };
 
   // Promise処理ラッパー
@@ -91,4 +85,4 @@ const usePostLoginUser = () => {
   return { methods, handleSubmit, onSubmitHandler, onPromise, isLoading };
 };
 
-export default usePostLoginUser;
+export default usePostVerifyEmail;

@@ -5,6 +5,7 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 import { StateContextProvider } from 'context';
+import AuthMiddleware from 'middlewares/AuthMiddleware';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
@@ -15,8 +16,8 @@ const queryClient = new QueryClient({
       refetchOnWindowFocus: false, // ウィンドウフォーカスで再フェッチ
       refetchOnMount: false, // キャッシュデータが古いときにマウント時に再フェッチ
       refetchOnReconnect: false, // キャッシュデータが古いときに再接続時に再フェッチ
-      suspense: true,
-      staleTime: 5 * 1000, // データが古くなってからのミリ秒単位の時間
+      // suspense: true, // エラーをスルーするので個別にtrueする
+      staleTime: 1000 * 20, // 20秒で更新
     },
     mutations: {
       retry: 0,
@@ -31,9 +32,11 @@ if (container) {
     <QueryClientProvider client={queryClient}>
       <Router>
         <StateContextProvider>
-          <App />
-          {process.env.NODE_ENV === 'development' && <ReactQueryDevtools initialIsOpen={false} />}
+          <AuthMiddleware>
+            <App />
+          </AuthMiddleware>
         </StateContextProvider>
+        {process.env.NODE_ENV === 'development' && <ReactQueryDevtools initialIsOpen={false} />}
       </Router>
       ,
     </QueryClientProvider>,

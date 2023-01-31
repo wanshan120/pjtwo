@@ -46,8 +46,8 @@ type SignUpInput struct {
 	PasswordConfirm string    `json:"passwordConfirm" bson:"passwordConfirm,omitempty" binding:"required"`
 	Role            string    `json:"role" bson:"role"`
 	Verified        bool      `json:"verified" bson:"verified"`
-	CreatedAt       time.Time `json:"created_at" bson:"created_at"`
-	UpdatedAt       time.Time `json:"updated_at" bson:"updated_at"`
+	CreatedAt       time.Time `json:"createdAt" bson:"createdAt"`
+	UpdatedAt       time.Time `json:"updatedAt" bson:"updatedAt"`
 }
 
 // ? SignInInput struct
@@ -65,8 +65,8 @@ type DBResponse struct {
 	PasswordConfirm string             `json:"passwordConfirm,omitempty" bson:"passwordConfirm,omitempty"`
 	Role            string             `json:"role" bson:"role"`
 	Verified        bool               `json:"verified" bson:"verified"`
-	CreatedAt       time.Time          `json:"created_at" bson:"created_at"`
-	UpdatedAt       time.Time          `json:"updated_at" bson:"updated_at"`
+	CreatedAt       time.Time          `json:"createdAt" bson:"createdAt"`
+	UpdatedAt       time.Time          `json:"updatedAt" bson:"updatedAt"`
 }
 
 // ? UserResponse struct
@@ -75,8 +75,8 @@ type UserResponse struct {
 	Name      string             `json:"name,omitempty" bson:"name,omitempty"`
 	Email     string             `json:"email,omitempty" bson:"email,omitempty"`
 	Role      string             `json:"role,omitempty" bson:"role,omitempty"`
-	CreatedAt time.Time          `json:"created_at" bson:"created_at"`
-	UpdatedAt time.Time          `json:"updated_at" bson:"updated_at"`
+	CreatedAt time.Time          `json:"createdAt" bson:"createdAt"`
+	UpdatedAt time.Time          `json:"updatedAt" bson:"updatedAt"`
 }
 
 func FilteredResponse(user *DBResponse) UserResponse {

@@ -66,12 +66,19 @@ const Login = () => {
               noValidate
               sx={{ mt: 1 }}
             >
-              <FormInput name="email" label="メールアドレス" type="email" autoComplete="email" />
+              <FormInput
+                name="email"
+                label="メールアドレス"
+                type="email"
+                autoComplete="email"
+                InputLabelProps={{ shrink: true }}
+              />
               <FormInput
                 name="password"
                 label="パスワード"
                 type="password"
                 autoComplete="current-password"
+                InputLabelProps={{ shrink: true }}
               />
 
               <FormControlLabel

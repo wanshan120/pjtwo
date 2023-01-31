@@ -110,7 +110,7 @@ func (ac *AuthControllers) SignInUser(ctx *gin.Context) {
 	ctx.SetCookie(
 		"refresh_token",
 		refresh_token,
-		configs.RefreshTokenMaxAge*60,
+		configs.RefreshTokenMaxAge*60*48,
 		"/",
 		"localhost",
 		false,
@@ -195,5 +195,5 @@ func (ac *AuthControllers) LogoutUser(ctx *gin.Context) {
 	ctx.SetCookie("refresh_token", "", -1, "/", "localhost", false, true)
 	ctx.SetCookie("logged_in", "", -1, "/", "localhost", false, true)
 
-	ctx.JSON(http.StatusOK, gin.H{"status": "success"})
+	ctx.JSON(http.StatusOK, gin.H{"status": "success", "message": "ログアウトしました"})
 }

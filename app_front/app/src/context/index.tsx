@@ -1,5 +1,7 @@
+/* eslint-disable react/jsx-no-constructed-context-values */
 import React from 'react';
 import { IUser } from 'models/i-user';
+// import {useLocalStarage} from 'hooks/useLocalStrage'
 
 type State = {
   authUser: IUser | null;
@@ -38,7 +40,8 @@ const stateReducer = (state: State, action: Action) => {
 
 const StateContextProvider = ({ children }: StateContextProviderProps) => {
   const [state, dispatch] = React.useReducer(stateReducer, initialState);
-  const value = React.useMemo(() => ({ state, dispatch }), [state, dispatch]);
+  const value = { state, dispatch };
+  console.log(value);
 
   return <StateContext.Provider value={value}>{children}</StateContext.Provider>;
 };
@@ -50,7 +53,7 @@ const useStateContext = () => {
     return context;
   }
 
-  throw new Error(`useStateContext must be used with in a StateContextProvider`);
+  throw new Error(`useStateContext must be used within a StateContextProvider`);
 };
 
 export { StateContextProvider, useStateContext };

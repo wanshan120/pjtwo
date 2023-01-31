@@ -23,7 +23,7 @@ import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 // components
 import DrawerHeader from 'components/elements/DrawerHeader';
 import HoverRating from 'components/elements/HoverRating';
-import ResponsiveMenuBar from 'components/menu/ResponsiveMenuBar';
+import ResponsiveMenuBar from 'features/menu/components/ResponsiveMenuBar';
 
 import intothewildAama from 'data/images/intothewildAma.jpg';
 

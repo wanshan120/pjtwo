@@ -1,29 +1,31 @@
+/* eslint-disable consistent-return */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { Options } from 'ky';
 import { DEFAULT_API_OPTIONS } from 'configs/ky-api';
 import { IUserResponse, iUserResponse } from 'models/i-user-response';
 import { ZodError } from 'zod';
+import { HTTPError } from 'ky';
 import authClient from './ky-auth-crient';
 // import { ErrorResponse } from 'services/models/error-response';
 
-const getMe = async (options?: Options): Promise<IUserResponse> => {
-  const mergedOptions = {
-    ...DEFAULT_API_OPTIONS,
-    ...options,
-  };
-
-  const response = await authClient.get(`auth/logout`, mergedOptions);
-  const json = await response.json();
-
+const getMe = async (): Promise<IUserResponse | null> => {
   try {
+    const response = await authClient.get(`users/me`, { credentials: 'include' });
+    const json = await response.json();
+
     iUserResponse.parse(json);
-  } catch (e) {
-    if (e instanceof ZodError) {
-      throw Error('JSON parce error');
+
+    return json as IUserResponse;
+  } catch (error) {
+    if (error instanceof ZodError) {
+      throw Error(error.message);
+    }
+    if (error instanceof HTTPError) {
+      const serverMessage = await error.response.text();
+      throw Error(serverMessage);
     }
   }
 
-  return json as IUserResponse;
+  return null;
 };
 
 export default getMe;

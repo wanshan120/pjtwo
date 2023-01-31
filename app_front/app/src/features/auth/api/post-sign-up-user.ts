@@ -1,29 +1,28 @@
+/* eslint-disable consistent-return */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { Options } from 'ky';
-import { DEFAULT_API_OPTIONS } from 'configs/ky-api';
 import { GenericResponse, genericResponse } from 'models/generic-response';
 import { ZodError } from 'zod';
+import { RegisterInput } from 'models/input-resister';
+import { HTTPError } from 'ky';
 import authClient from './ky-auth-crient';
-// import { ErrorResponse } from 'services/models/error-response';
 
-const postSignUpUser = async (options?: Options): Promise<GenericResponse> => {
-  const mergedOptions = {
-    ...DEFAULT_API_OPTIONS,
-    ...options,
-  };
-
-  const response = await authClient.post(`auth/register`, mergedOptions);
-  const json = await response.json();
-
+const postSignUpUser = async (inputdata: RegisterInput) => {
   try {
+    const response = await authClient.post(`auth/register`, { json: inputdata });
+    const json = await response.json();
+
     genericResponse.parse(json);
-  } catch (e) {
-    if (e instanceof ZodError) {
-      throw Error('JSON parce error');
+
+    return json as GenericResponse;
+  } catch (error) {
+    if (error instanceof ZodError) {
+      throw Error('サーバーエラー');
+    }
+    if (error instanceof HTTPError) {
+      const serverMessage = await error.response.text();
+      throw Error(serverMessage);
     }
   }
-
-  return json as GenericResponse;
 };
 
 export default postSignUpUser;

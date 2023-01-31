@@ -27,9 +27,10 @@ const authClient = ky.create({
     ],
     beforeRetry: [
       async ({ request, error, retryCount }) => {
+        console.log(`retry: ${retryCount}`);
         if (error.message.includes('not logged in') && retryCount !== 0) {
-          const res = await ky.get(`auth/reflesh`, DEFAULT_API_OPTIONS);
-
+          const res = await ky.get(`auth/reflesh`, { credentials: 'include' });
+          console.log('refreshed');
           try {
             const json = await res.json();
             const ires: ILoginResponse = iLoginResponse.parse(json);

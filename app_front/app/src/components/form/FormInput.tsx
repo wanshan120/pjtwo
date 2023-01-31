@@ -7,9 +7,16 @@ type IFormInputProps = {
   name: string;
   label: string;
   autoComplete?: string;
+  helperText?: string;
 } & TextFieldProps;
 
-const FormInput: FC<IFormInputProps> = ({ name, label, autoComplete, ...otherProps }) => {
+const FormInput: FC<IFormInputProps> = ({
+  name,
+  label,
+  autoComplete,
+  helperText,
+  ...otherProps
+}) => {
   const {
     control,
     formState: { errors },
@@ -21,7 +28,7 @@ const FormInput: FC<IFormInputProps> = ({ name, label, autoComplete, ...otherPro
       defaultValue=""
       name={name}
       render={({ field }) => (
-        <FormControl fullWidth sx={{ mb: 2 }}>
+        <FormControl fullWidth sx={{ m: 0 }}>
           <TextField
             {...field}
             margin="normal"
@@ -34,6 +41,7 @@ const FormInput: FC<IFormInputProps> = ({ name, label, autoComplete, ...otherPro
             // {...register('email')}
             {...otherProps}
           />
+          {helperText && <FormHelperText>{helperText}</FormHelperText>}
           <FormHelperText error={!!errors[name]}>
             {String(errors[name]?.message ?? '')}
           </FormHelperText>

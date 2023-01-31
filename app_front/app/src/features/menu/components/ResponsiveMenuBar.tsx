@@ -22,7 +22,6 @@ import HomeIcon from '@mui/icons-material/Home';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 import SettingsIcon from '@mui/icons-material/Settings';
-import LogoutIcon from '@mui/icons-material/Logout';
 import LoginIcon from '@mui/icons-material/Login';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import MailIcon from '@mui/icons-material/Mail';
@@ -36,19 +35,14 @@ import drawerWidth from 'components/elements/DrawerWidth';
 import SearchModal from 'components/modal/SearchModal';
 import ListItemWithButton from 'components/elements/ListItemWithButton';
 // import ListItemWithButtonToMyList from 'components/atoms/ListItemWithButtonToMylist';
-
 import StyledListItemIcon from 'components/elements/StyledListItemIcon';
+import LogoutButton from 'features/menu/components/LogoutButton';
 
 // data
 import { urlPatterns } from 'urlPatterns';
 
 // login
 import { useStateContext } from 'context';
-import { useMutation } from 'react-query';
-import GetLogoutUser from 'features/auth/api/get-logout-user';
-import { useNavigate } from 'react-router-dom';
-import LoadingButton from '@mui/lab/LoadingButton';
-import Snackbar from '@mui/material/Snackbar';
 
 interface Props {
   /**
@@ -80,10 +74,8 @@ const ResponsiveMenuBar = (props: Props) => {
   }, [isMobile]);
 
   // login
-  const navigate = useNavigate();
   const stateContext = useStateContext();
   const user = stateContext.state.authUser;
-
   // const handleClose = (event: React.SyntheticEvent | Event, reason?: string) => {
   //   if (reason === 'clickaway') {
   //     return;
@@ -92,51 +84,19 @@ const ResponsiveMenuBar = (props: Props) => {
   //   setOpen(false);
   // };
 
-  const [snackOpen, snacSetOpen] = React.useState(true);
-  const { mutate: logoutUser, isLoading } = useMutation(async () => GetLogoutUser(), {
-    onSuccess: () => {
-      navigate('/login', { replace: true });
-    },
-    onError: (error: any) => {
-      if (Array.isArray(error.response.data.error)) {
-        error.data.error.forEach((el: any) => (
-          <Snackbar
-            open={snackOpen}
-            autoHideDuration={6000}
-            onClose={() => {
-              snacSetOpen(false);
-            }}
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-            message={el.message}
-          />
-        ));
-      } else {
-        <Snackbar
-          open={snackOpen}
-          autoHideDuration={6000}
-          onClose={() => {
-            snacSetOpen(false);
-          }}
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-          message={error.response.data.message}
-        />;
-      }
-    },
-  });
-  const onLogoutHandler = () => {
-    logoutUser();
-  };
   const drawer = (
     <>
       <Toolbar />
       {!user && (
         <List>
-          <ListItemWithButton open={open} url={urlPatterns.register.path}>
+          {/* 会員登録 */}
+          <ListItemWithButton open={open} url={urlPatterns.signUp.path}>
             <StyledListItemIcon open={open}>
               <PersonAddIcon />
             </StyledListItemIcon>
-            <ListItemText primary={urlPatterns.register.name} sx={{ opacity: open ? 1 : 0 }} />
+            <ListItemText primary={urlPatterns.signUp.name} sx={{ opacity: open ? 1 : 0 }} />
           </ListItemWithButton>
+          {/* ログイン */}
           <ListItemWithButton open={open} url={urlPatterns.login.path}>
             <StyledListItemIcon open={open}>
               <LoginIcon />
@@ -200,19 +160,8 @@ const ResponsiveMenuBar = (props: Props) => {
               </StyledListItemIcon>
               <ListItemText primary={urlPatterns.settings.name} sx={{ opacity: open ? 1 : 0 }} />
             </ListItemWithButton>
-            <LoadingButton
-              sx={{ mr: 2 }}
-              loading={isLoading}
-              onClick={() => navigate(urlPatterns.profile.path)}
-            >
-              Profile
-            </LoadingButton>
-            <ListItemWithButton open={open} url={urlPatterns.logout.path} onClick={onLogoutHandler}>
-              <StyledListItemIcon open={open}>
-                <LogoutIcon />
-              </StyledListItemIcon>
-              <ListItemText primary={urlPatterns.logout.name} sx={{ opacity: open ? 1 : 0 }} />
-            </ListItemWithButton>
+            {/* ログアウト */}
+            <LogoutButton open />
           </List>
         </>
       )}
