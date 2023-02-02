@@ -5,7 +5,8 @@ import camelcaseKeys from 'camelcase-keys';
 export const DEFAULT_API_OPTIONS: KyOptions = {
   prefixUrl: 'http://localhost:8080/api/v1',
   timeout: 7000,
-  retry: 2,
+  credentials: 'include',
+  retry: 0,
   hooks: {
     afterResponse: [
       async (

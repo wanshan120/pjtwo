@@ -4,7 +4,7 @@ import { GenericResponse, genericResponse } from 'models/generic-response';
 import { ZodError } from 'zod';
 import { RegisterInput } from 'models/input-resister';
 import { HTTPError } from 'ky';
-import authClient from './ky-auth-crient';
+import authClient from '../../../configs/ky-auth-client';
 
 const postSignUpUser = async (inputdata: RegisterInput) => {
   try {

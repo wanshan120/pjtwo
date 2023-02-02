@@ -2,11 +2,11 @@
 import { GenericResponse, genericResponse } from 'models/generic-response';
 import { ZodError } from 'zod';
 import { HTTPError } from 'ky';
-import authClient from './ky-auth-crient';
+import authClient from '../../../configs/ky-auth-client';
 
 const GetLogoutUser = async (): Promise<GenericResponse | null> => {
   try {
-    const response = await authClient.get(`auth/logout`, { credentials: 'include' });
+    const response = await authClient.get(`auth/logout`);
     const json = await response.json();
     genericResponse.parse(json);
 

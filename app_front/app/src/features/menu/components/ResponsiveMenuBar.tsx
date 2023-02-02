@@ -76,13 +76,6 @@ const ResponsiveMenuBar = (props: Props) => {
   // login
   const stateContext = useStateContext();
   const user = stateContext.state.authUser;
-  // const handleClose = (event: React.SyntheticEvent | Event, reason?: string) => {
-  //   if (reason === 'clickaway') {
-  //     return;
-  //   }
-
-  //   setOpen(false);
-  // };
 
   const drawer = (
     <>

@@ -41,7 +41,6 @@ const stateReducer = (state: State, action: Action) => {
 const StateContextProvider = ({ children }: StateContextProviderProps) => {
   const [state, dispatch] = React.useReducer(stateReducer, initialState);
   const value = { state, dispatch };
-  console.log(value);
 
   return <StateContext.Provider value={value}>{children}</StateContext.Provider>;
 };

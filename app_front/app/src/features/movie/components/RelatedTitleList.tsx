@@ -42,7 +42,6 @@ const RelatedTitleList: FC<{ tagIds: Movie['metaTags'] }> = ({ tagIds }) => {
   // use-query
   // const series = useSeries(seriedId)
   const relatedMovies = useRelatedMovies(seriesId);
-  console.log(relatedMovies);
   const [alignment, setAlignment] = React.useState('web');
 
   const handleChange = (event: React.MouseEvent<HTMLElement>, newAlignment: string) => {

@@ -4,16 +4,14 @@ import { ILoginResponse, iLoginResponse } from 'models/i-login-response';
 import { ZodError } from 'zod';
 import { LoginInput } from 'models/input-login';
 import { HTTPError } from 'ky';
-import authClient from './ky-auth-crient';
+import authClient from '../../../configs/ky-auth-client';
 
 const postLoginUser = async (inputdata: LoginInput) => {
   try {
     const response = await authClient.post(`auth/login`, {
-      credentials: 'include',
       json: inputdata,
     });
     const json = await response.json();
-    console.log(json);
     iLoginResponse.parse(json);
 
     return json as ILoginResponse;
