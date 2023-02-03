@@ -12,7 +12,6 @@ type AuthMiddlewareProps = {
 const AuthMiddleware: React.FC<AuthMiddlewareProps> = ({ children }) => {
   const [cookies] = useCookies(['logged_in']);
   const stateContext = useStateContext();
-
   const query = useQuery(['authUser'], () => getMe(), {
     enabled: !!cookies.logged_in,
     select: (data) => data?.data.user || null,

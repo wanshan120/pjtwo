@@ -53,9 +53,10 @@ const authClient = ky.create({
 
         return new Response(blob, init);
       },
+
+      // リフレッシュトークン
       // eslint-disable-next-line consistent-return
       async (input, options, response) => {
-        // リフレッシュトークンが有効であればアクセストークンを生成
         if (response.status === 401) {
           const responseJson = (await response.json()) as Response;
           const e = genericResponse.parse(responseJson);

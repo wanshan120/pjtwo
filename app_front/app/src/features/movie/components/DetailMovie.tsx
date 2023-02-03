@@ -86,20 +86,22 @@ const PageDetailMovie: FC<{ movieId: string }> = ({ movieId }) => {
       <Grid container direction="row-reverse" columnSpacing={1} sx={{ marginTop: 1 }}>
         <Grid container item direction="row" spacing={1} tablet={3}>
           <Grid item mobile={12} tablet={12}>
-            <TagList tags={movie?.keywordTags} subHeader="キーワード" />
-            <Box sx={{ marginTop: 1 }}>
-              <TagList tags={movie?.metaTags} subHeader="作品情報" />
-            </Box>
+            {movie?.keywordTags && <TagList tags={movie?.keywordTags} subHeader="キーワード" />}
+            {movie?.metaTags && (
+              <Box sx={{ marginTop: 1 }}>
+                <TagList tags={movie?.metaTags} subHeader="作品情報" />
+              </Box>
+            )}
           </Grid>
         </Grid>
         <Grid container item direction="row" tablet={9} spacing={1}>
-          <Grid container item mobile={12} tablet={12}>
+          <Grid item mobile={12} tablet={12} sx={{ width: '100%' }}>
             <Summary summary={movie?.summary} />
           </Grid>
-          <Grid container item mobile={12} tablet={12}>
+          <Grid item mobile={12} tablet={12} sx={{ width: '100%' }}>
             <StreamingList plannings={movie?.plannings} />
           </Grid>
-          <Grid container item mobile={12} tablet={12}>
+          <Grid item mobile={12} tablet={12} sx={{ width: '100%' }}>
             <SwipeableTab tagIds={movie?.keywordTags} />
           </Grid>
         </Grid>
