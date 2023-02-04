@@ -24,8 +24,10 @@ const usePostSignUpUser = () => {
   const { mutate: loginUser, isLoading } = useMutation(
     (userData: RegisterInput) => postSignUpUser(userData),
     {
-      onSuccess: (data) => {
-        toast.success(data?.message);
+      onSuccess: () => {
+        toast.success('続いてメールアドレスの認証を行ってください', {
+          position: 'top-right',
+        });
         navigate('/verifyemail');
       },
       onError: (error: Error) => {
