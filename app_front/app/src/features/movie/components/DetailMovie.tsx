@@ -14,6 +14,7 @@ import Divider from '@mui/material/Divider';
 import SwipeableTab from 'features/movie/components/SwipeableTab';
 import useMovieDetail from 'features/movie/hooks/use-movie-detail';
 import RateStack from 'features/movie/components/RateStack';
+import CircleRate from 'components/elements/CircleRate';
 import PvComponent from './PvComponent';
 import ImageComponent from './ImageComponent';
 import Summary from './Summary';
@@ -43,6 +44,19 @@ const PageDetailMovie: FC<{ movieId: string }> = ({ movieId }) => {
                 marginRight={2}
               >
                 <Typography style={{ fontSize: 12 }}>マイレート</Typography>
+                <Paper elevation={0} sx={{ paddingLeft: 1, paddingRight: 1 }}>
+                  <CircleRate size={70} rate={8} serviceName="MyRate" />
+                </Paper>
+              </Stack>
+
+              {/* <Stack
+                direction="column"
+                justifyContent="flex-end "
+                alignItems="center"
+                spacing={0}
+                marginRight={2}
+              >
+                <Typography style={{ fontSize: 12 }}>マイレート</Typography>
                 <Paper elevation={0} sx={{ paddingLeft: 1, paddingRight: 2 }}>
                   <Typography display="inline" style={{ fontSize: '2.2rem' }}>
                     A+
@@ -54,7 +68,7 @@ const PageDetailMovie: FC<{ movieId: string }> = ({ movieId }) => {
                     /10
                   </Typography>
                 </Paper>
-              </Stack>
+              </Stack> */}
               <Stack
                 direction="column"
                 justifyContent="flex-end "

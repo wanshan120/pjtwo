@@ -101,8 +101,8 @@ func (ac *AuthControllers) SignInUser(ctx *gin.Context) {
 	ctx.SetCookie(
 		"access_token",
 		access_token,
-		// configs.AccessTokenMaxAge*60,
-		configs.AccessTokenMaxAge*1,
+		configs.AccessTokenMaxAge*60,
+		// configs.AccessTokenMaxAge*1,
 		"/",
 		"localhost",
 		false,
@@ -111,8 +111,8 @@ func (ac *AuthControllers) SignInUser(ctx *gin.Context) {
 	ctx.SetCookie(
 		"refresh_token",
 		refresh_token,
-		// configs.RefreshTokenMaxAge*60*48,
-		configs.RefreshTokenMaxAge*3,
+		configs.RefreshTokenMaxAge*60*48,
+		// configs.RefreshTokenMaxAge*3,
 		"/",
 		"localhost",
 		false,
@@ -121,8 +121,8 @@ func (ac *AuthControllers) SignInUser(ctx *gin.Context) {
 	ctx.SetCookie(
 		"logged_in",
 		"true",
-		// configs.AccessTokenMaxAge*60,
-		configs.AccessTokenMaxAge*1,
+		configs.AccessTokenMaxAge*60,
+		// configs.AccessTokenMaxAge*1,
 		"/",
 		"localhost",
 		false,

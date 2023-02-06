@@ -20,7 +20,7 @@ import SignUpPage from 'features/auth/routes/SignUpPage';
 import VerifyEmailPage from 'features/auth/routes/VerifyEmailPage';
 import RequireUser from 'features/auth/components/RequireUser';
 import UnauthorizePage from 'features/auth/components/Unauthorized';
-
+import Skelton from 'features/skelton/components/Skelton';
 // toast
 import { ToastContainer, Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -69,7 +69,7 @@ const App: FC = () => {
               <Route path={urlPatterns.myList.path} element={<MyList />} />
               <Route path={urlPatterns.watchlist.path} element={<MyList />} />
               <Route path={urlPatterns.notice.path} element={<HomePage />} />
-              <Route path={urlPatterns.message.path} element={<HomePage />} />
+              <Route path={urlPatterns.message.path} element={<Skelton />} />
             </Route>
             <Route path="unauthorized" element={<UnauthorizePage />} />
           </Route>
