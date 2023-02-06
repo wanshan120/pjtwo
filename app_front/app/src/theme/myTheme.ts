@@ -6,10 +6,10 @@ const theme = createTheme(
     palette: {
       mode: 'dark',
       primary: {
-        main: '#007acc',
+        main: '#9019FF',
       },
       secondary: {
-        main: '#007acc',
+        main: '#9019FF',
       },
       background: {
         default: '#1e1e1e',
@@ -18,6 +18,9 @@ const theme = createTheme(
         primary: 'rgba(255, 255, 255, 0.85)',
         secondary: 'rgba(255, 255, 255, 0.7)',
         disabled: 'rgba(255, 255, 255, 0.5)',
+      },
+      banana: {
+        main: '#FFD526',
       },
     },
     typography: {

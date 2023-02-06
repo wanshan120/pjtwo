@@ -12,6 +12,19 @@ declare module '@mui/material/styles' {
     laptop: true;
     desktop: true;
   }
+  interface Palette {
+    banana: Palette['primary'];
+  }
+  interface PaletteOptions {
+    banana: PaletteOptions['primary'];
+  }
+}
+
+// Update the Button's color prop options
+declare module '@mui/material/IconButton' {
+  interface IconButtonPropsColorOverrides {
+    banana: true;
+  }
 }
 
 declare module '@mui/material/styles' {

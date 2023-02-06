@@ -6,8 +6,6 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
-import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
-import NotificationAddOutlinedIcon from '@mui/icons-material/NotificationAddOutlined';
 import Divider from '@mui/material/Divider';
 
 // brother components
@@ -15,6 +13,8 @@ import SwipeableTab from 'features/movie/components/SwipeableTab';
 import useMovieDetail from 'features/movie/hooks/use-movie-detail';
 import RateStack from 'features/movie/components/RateStack';
 import CircleRate from 'components/elements/CircleRate';
+import BookmarkButton from 'components/button/BookmarkButton';
+import BellButton from 'components/button/BellButton';
 import PvComponent from './PvComponent';
 import ImageComponent from './ImageComponent';
 import Summary from './Summary';
@@ -40,7 +40,7 @@ const PageDetailMovie: FC<{ movieId: string }> = ({ movieId }) => {
                 direction="column"
                 justifyContent="flex-end "
                 alignItems="center"
-                spacing={0}
+                spacing={1}
                 marginRight={2}
               >
                 <Typography style={{ fontSize: 12 }}>マイレート</Typography>
@@ -79,14 +79,14 @@ const PageDetailMovie: FC<{ movieId: string }> = ({ movieId }) => {
                 <Typography style={{ fontSize: 12 }}>通知</Typography>
 
                 <Paper elevation={0} sx={{ paddingLeft: 1, paddingRight: 1 }}>
-                  <NotificationAddOutlinedIcon sx={{ fontSize: 40 }} />
+                  <BellButton disabled={false} size={37} />
                 </Paper>
               </Stack>
               <Stack direction="column" justifyContent="flex-end " alignItems="center" spacing={0}>
-                <Typography style={{ fontSize: 12 }}>後で</Typography>
+                <Typography style={{ fontSize: 12 }}>後で見る</Typography>
 
                 <Paper elevation={0} sx={{ paddingLeft: 1, paddingRight: 1 }}>
-                  <BookmarkBorderOutlinedIcon sx={{ fontSize: 40 }} />
+                  <BookmarkButton disabled={false} size={37} />
                 </Paper>
               </Stack>
             </Box>

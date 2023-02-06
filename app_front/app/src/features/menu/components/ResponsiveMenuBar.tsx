@@ -173,7 +173,7 @@ const ResponsiveMenuBar = (props: Props) => {
             onClick={handleDrawerToggle}
             edge="start"
             sx={{
-              marginRight: 5,
+              marginRight: 1.5,
               padding: 1.5,
               // ...(open && { display: 'none' }),
             }}
@@ -181,12 +181,12 @@ const ResponsiveMenuBar = (props: Props) => {
             <MenuIcon />
           </IconButton>
           <Typography
-            variant="h6"
+            component="h2"
+            variant="h5"
             noWrap
-            component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
-            {isMobile ? `isMobile` : `isTablet`}
+            Nactm
           </Typography>
           <SearchModal />
         </Toolbar>

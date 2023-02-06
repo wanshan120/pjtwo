@@ -1,19 +1,17 @@
 import { FC } from 'react';
 import * as React from 'react';
 
-import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
-import ListItemButton from '@mui/material/ListItemButton';
 import Fade from '@mui/material/Fade';
 import Modal from '@mui/material/Modal';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 
 import { Movie } from 'models/movie';
-import humanizeRate from 'lib/humanizeRate';
 
+import CircleRate from 'components/elements/CircleRate';
 import RatingCountsBarChart from './RatingCountsBarChart';
 
 const style = {
@@ -31,38 +29,33 @@ const RateStack: FC<{ rates: Movie['rates']; movieId: string }> = ({ rates, movi
 
   return (
     <>
-      <ListItemButton onClick={handleOpen}>
-        <Stack direction="column" justifyContent="flex-end " alignItems="center" spacing={0}>
-          <Typography style={{ fontSize: 12 }}>視聴者の評価</Typography>
-          {rates?.map(
-            (rate) =>
-              rate.serviceName === 'MyService' &&
-              (rate.rateValue ? (
-                <Box key={rate.serviceName}>
-                  <Typography display="inline" style={{ fontSize: '2.2rem' }}>
-                    {humanizeRate(rate.rateValue)}
-                  </Typography>
-                  <Typography
-                    display="inline"
-                    style={{ fontSize: '1.4rem', marginLeft: 7 }}
-                    // key={rate.serviceName.toString()}
-                  >
-                    {rate.rateValue}
-                  </Typography>
-                  <Typography display="inline" style={{ fontSize: '0.8rem' }}>
-                    /10
-                  </Typography>
-                </Box>
-              ) : (
-                <Paper elevation={0} sx={{ paddingLeft: 3, paddingRight: 2 }}>
-                  <Typography display="inline" style={{ fontSize: '2.2rem' }}>
-                    RIP
-                  </Typography>
-                </Paper>
-              )),
-          )}
-        </Stack>
-      </ListItemButton>
+      <Stack
+        direction="column"
+        justifyContent="flex-end "
+        alignItems="center"
+        spacing={1}
+        marginLeft={1}
+      >
+        <Typography style={{ fontSize: 12 }}>Nactm</Typography>
+        {rates?.map(
+          (rate) =>
+            rate.serviceName === 'MyService' &&
+            (rate.rateValue ? (
+              <Paper
+                key={rate.serviceName}
+                elevation={0}
+                sx={{ paddingLeft: 1, paddingRight: 1 }}
+                onClick={handleOpen}
+              >
+                <CircleRate size={70} rate={rate.rateValue} serviceName="MyService" />
+              </Paper>
+            ) : (
+              <Paper elevation={0} sx={{ paddingLeft: 1, paddingRight: 1 }}>
+                <CircleRate size={70} rate={8} serviceName="MyService" />
+              </Paper>
+            )),
+        )}
+      </Stack>
       <Modal
         aria-labelledby="transition-modal-alluser-review-score"
         aria-describedby="transition-modal-description"
