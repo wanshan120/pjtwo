@@ -29,13 +29,7 @@ const RateStack: FC<{ rates: Movie['rates']; movieId: string }> = ({ rates, movi
 
   return (
     <>
-      <Stack
-        direction="column"
-        justifyContent="flex-end "
-        alignItems="center"
-        spacing={1}
-        marginLeft={1}
-      >
+      <Stack direction="column" justifyContent="flex-end " alignItems="center" spacing={1}>
         <Typography style={{ fontSize: 12 }}>Nactm</Typography>
         {rates?.map(
           (rate) =>

@@ -36,46 +36,13 @@ const PageDetailMovie: FC<{ movieId: string }> = ({ movieId }) => {
             <Box style={{ display: 'flex', justifyContent: 'flex-end' }}>
               <Divider orientation="vertical" flexItem style={{ marginRight: 5 }} />
               <RateStack rates={movie?.rates} movieId={movieId} />
-              <Stack
-                direction="column"
-                justifyContent="flex-end "
-                alignItems="center"
-                spacing={1}
-                marginRight={2}
-              >
+              <Stack direction="column" justifyContent="flex-end " alignItems="center" spacing={1}>
                 <Typography style={{ fontSize: 12 }}>マイレート</Typography>
                 <Paper elevation={0} sx={{ paddingLeft: 1, paddingRight: 1 }}>
                   <CircleRate size={70} rate={8} serviceName="MyRate" />
                 </Paper>
               </Stack>
-
-              {/* <Stack
-                direction="column"
-                justifyContent="flex-end "
-                alignItems="center"
-                spacing={0}
-                marginRight={2}
-              >
-                <Typography style={{ fontSize: 12 }}>マイレート</Typography>
-                <Paper elevation={0} sx={{ paddingLeft: 1, paddingRight: 2 }}>
-                  <Typography display="inline" style={{ fontSize: '2.2rem' }}>
-                    A+
-                  </Typography>
-                  <Typography display="inline" style={{ fontSize: '1.4rem', marginLeft: 7 }}>
-                    9.6
-                  </Typography>
-                  <Typography display="inline" style={{ fontSize: '0.8rem' }}>
-                    /10
-                  </Typography>
-                </Paper>
-              </Stack> */}
-              <Stack
-                direction="column"
-                justifyContent="flex-end "
-                alignItems="center"
-                spacing={0}
-                marginRight={1}
-              >
+              <Stack direction="column" justifyContent="flex-end " alignItems="center" spacing={0}>
                 <Typography style={{ fontSize: 12 }}>通知</Typography>
 
                 <Paper elevation={0} sx={{ paddingLeft: 1, paddingRight: 1 }}>

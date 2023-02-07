@@ -6,7 +6,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import NotificationAddOutlinedIcon from '@mui/icons-material/NotificationAddOutlined';
 
 const BellButton: FC<{ disabled: boolean; size: number }> = ({ disabled, size }) => {
-  const [activeBtn, setActiveBtn] = React.useState(true);
+  const [activeBtn, setActiveBtn] = React.useState(false);
   const handleClick = () => {
     setActiveBtn(!activeBtn);
   };

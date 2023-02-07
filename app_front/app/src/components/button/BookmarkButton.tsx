@@ -6,7 +6,7 @@ import BookmarkIcon from '@mui/icons-material/Bookmark';
 import BookmarkAddOutlinedIcon from '@mui/icons-material/BookmarkAddOutlined';
 
 const BookmarkButton: FC<{ disabled: boolean; size: number }> = ({ disabled, size }) => {
-  const [activeBtn, setActiveBtn] = React.useState(true);
+  const [activeBtn, setActiveBtn] = React.useState(false);
   const handleClick = () => {
     setActiveBtn(!activeBtn);
   };
