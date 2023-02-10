@@ -22,6 +22,7 @@ import { FormProvider } from 'react-hook-form';
 import FormInput from 'components/form/FormInput';
 import { LoadingButton } from '@mui/lab';
 import usePostLoginUser from 'features/auth/hooks/use-post-login-user';
+import { urlPatterns } from 'urlPatterns';
 
 const Login = () => {
   const { methods, handleSubmit, onSubmitHandler, onPromise, isLoading } = usePostLoginUser();
@@ -102,7 +103,7 @@ const Login = () => {
                   </Link>
                 </Grid>
                 <Grid item>
-                  <Link href="http://localhost:3000/login" variant="body2" color="text.secondary">
+                  <Link href={urlPatterns.signUp.path} variant="body2" color="text.secondary">
                     アカウントを作成しますか？
                   </Link>
                 </Grid>

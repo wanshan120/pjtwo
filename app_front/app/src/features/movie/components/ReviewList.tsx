@@ -32,7 +32,7 @@ const ReviewList: FC = () => (
   >
     <Box sx={{ width: '66px' }}>
       <Avatar
-        alt="もこもこひつじ"
+        alt="テストユーザー名１"
         src="/static/images/avatar/1.jpg"
         sx={{ width: 50, height: 50, m: 1 }}
       />
@@ -53,7 +53,7 @@ const ReviewList: FC = () => (
             noWrap
             sx={{ display: 'inline', fontSize: '1.1rem', fontWeight: 'bold', m: 1 }}
           >
-            もこもこひつじ
+            テストユーザー名１
           </Typography>
           <Typography
             gutterBottom

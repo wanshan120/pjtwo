@@ -28,7 +28,8 @@ const usePostSignUpUser = () => {
         toast.success('続いてメールアドレスの認証を行ってください', {
           position: 'top-right',
         });
-        navigate('/verifyemail');
+        // navigate('/verifyemail');  Note: create verifyEmail
+        navigate('/login');
       },
       onError: (error: Error) => {
         try {

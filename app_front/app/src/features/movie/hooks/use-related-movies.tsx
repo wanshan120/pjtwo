@@ -4,11 +4,12 @@ import getRelatedMovies from '../api/get-related-movie';
 // import { Movie } from 'models/movie';
 
 const useRelatedMovies = (tagId: string | undefined) => {
-  const query = useQuery(['related-movies', tagId], () => getRelatedMovies(tagId), {
+  const { data } = useQuery(['related-movies', tagId], () => getRelatedMovies(tagId), {
     enabled: !!tagId,
+    select: (d) => d?.data.movies || null,
   });
 
-  return query.data;
+  return data;
 };
 
 export default useRelatedMovies;
