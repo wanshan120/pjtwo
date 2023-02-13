@@ -7,7 +7,7 @@ import useAddWatchlist from '../hooks/use-add-watchlist';
 import useDelWatchlist from '../hooks/use-del-watchlist';
 import useFindoneWatchlist from '../hooks/use-findone-watchlist';
 
-const WatchIcon: FC<{ productId: string; size: number }> = ({ productId, size }) => {
+const WatchIconButton: FC<{ productId: string; size: number }> = ({ productId, size }) => {
   const { data } = useFindoneWatchlist(productId);
 
   const { onDeleteHandler, isLoading: delLoaging } = useDelWatchlist(productId);
@@ -46,4 +46,4 @@ const WatchIcon: FC<{ productId: string; size: number }> = ({ productId, size })
   return iconButton;
 };
 
-export default WatchIcon;
+export default WatchIconButton;

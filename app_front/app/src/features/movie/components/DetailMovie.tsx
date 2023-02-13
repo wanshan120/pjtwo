@@ -15,7 +15,7 @@ import RateStack from 'features/movie/components/RateStack';
 import CircleRate from 'components/elements/CircleRate';
 // import BookmarkButton from 'components/button/BookmarkButton';
 import BellButton from 'components/button/BellButton';
-import WatchIcon from 'features/watchlist/component/watchIcon';
+import WatchIconButton from 'features/watchlist/component/watchIconButton';
 import PvComponent from './PvComponent';
 import ImageComponent from './ImageComponent';
 import Summary from './Summary';
@@ -75,7 +75,7 @@ const PageDetailMovie: FC<{ movieId: string }> = ({ movieId }) => {
                     <Typography style={{ fontSize: 12 }}>後で見る</Typography>
 
                     <Paper elevation={0} sx={{ paddingLeft: 1, paddingRight: 1 }}>
-                      <WatchIcon productId={movie?.id} size={37} />
+                      <WatchIconButton productId={movie?.id} size={37} />
                     </Paper>
                   </Stack>
                 </Box>
