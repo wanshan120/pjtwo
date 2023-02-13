@@ -8,6 +8,7 @@ import (
 	"api_main/v1/rate"
 	"api_main/v1/review"
 	usr "api_main/v1/user"
+	"api_main/v1/watchlist"
 	"context"
 	"time"
 
@@ -71,6 +72,7 @@ func setUpRouter(ctx context.Context, router *gin.Engine) {
 		movie.RegisterRouter(ctx, client, v1.Group("/movie"))
 		rate.RegisterRouter(ctx, client, v1.Group("/rate"))
 		review.RegisterRouter(ctx, client, v1.Group("/review"))
+		watchlist.RegisterRouter(ctx, client, v1.Group("/watchlist"))
 		{
 			// userのみmiddlewareと循環参照するためuser packageはここでルート設定
 			collection := configs.GetCollection(client, "users")

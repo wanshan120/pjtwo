@@ -25,6 +25,7 @@ func DeserializeUser(userServices usr.UserServices) gin.HandlerFunc {
 		fields := strings.Fields(authorizationHeader)
 
 		if len(fields) != 0 && fields[0] == "Bearer" {
+			fmt.Print("this is Bearer")
 			access_token = fields[1]
 		} else if err == nil {
 			access_token = cookie

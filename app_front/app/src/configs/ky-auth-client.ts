@@ -10,7 +10,7 @@ import getRefreshAccessToken from 'features/auth/api/get-refresh-access-token';
 const authClient = ky.create({
   prefixUrl: 'http://localhost:8080/api/v1',
   timeout: 7000,
-  retry: { limit: 1, methods: ['post', 'get', 'put', 'delete'], statusCodes: [401, 500, 502] },
+  retry: { limit: 2, methods: ['post', 'get', 'put', 'delete'], statusCodes: [401, 500, 502] },
   credentials: 'include',
   hooks: {
     // beforeRetry: [
@@ -44,12 +44,17 @@ const authClient = ky.create({
         _options: NormalizedOptions,
         response: Response,
       ): Promise<Response> => {
+        const { headers, status, statusText } = response;
+        const init = { headers, status, statusText };
+        // No Content
+        if (response.status === 204) {
+          return new Response(null, init);
+        }
+        // JSON Content
         const responseJson = (await response.json()) as Response;
         const blob = new Blob([JSON.stringify(camelcaseKeys(responseJson), null, 2)], {
           type: 'application/json',
         });
-        const { headers, status, statusText } = response;
-        const init = { headers, status, statusText };
 
         return new Response(blob, init);
       },
