@@ -24,3 +24,8 @@ type RatingsGroupJson struct {
 	UserId    string  `json:"userId" bson:"userId,omitempty"`
 	RateValue float64 `json:"rateValue" bson:"rateValue,omitempty"`
 }
+
+type RatingCountResponse struct {
+	Id    float64 `json:"id" bson:"_id,omitempty"`
+	Count float64 `json:"count" bson:"count,omitempty"`
+}

@@ -86,6 +86,7 @@ func (mc *MovieControllers) FindRelatedMovies(ctx *gin.Context) {
 	oid, err := primitive.ObjectIDFromHex(tagId)
 	if err != nil {
 		ctx.JSON(http.StatusBadRequest, gin.H{"status": "fail", "message": "リクエストの形式が間違っています"})
+		return
 	}
 
 	movies, err := mc.movieServices.FindRelatedMovies(oid)

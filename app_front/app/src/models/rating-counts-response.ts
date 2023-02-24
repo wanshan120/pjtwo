@@ -5,7 +5,7 @@ export const ratingCountResponse = z
   .object({
     status: z.string(),
     data: z.object({
-      movies: ratingCountsSchema,
+      rates: ratingCountsSchema,
     }),
   })
   .strict();

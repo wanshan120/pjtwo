@@ -1,39 +1,26 @@
-import ky, { Options } from 'ky';
-import { DEFAULT_API_OPTIONS } from 'configs/ky-api';
-import { RatingCounts, ratingCountsSchema } from 'models/rating-counts';
+import authClient from 'configs/ky-auth-client';
+import { RatingCountResponse, ratingCountResponse } from 'models/rating-counts-response';
 import { ZodError } from 'zod';
-// import { ErrorResponse } from 'services/models/error-response';
+import { HTTPError } from 'ky';
 
-const getRatingCounts = async (movieId: string, options?: Options): Promise<RatingCounts> => {
-  const mergedOptions = {
-    ...DEFAULT_API_OPTIONS,
-    ...options,
-  };
-  const response = await ky.get(`rate/${movieId}`, mergedOptions);
-  const json = await response.json();
-
+const getRatingCounts = async (movieId: string): Promise<RatingCountResponse | null> => {
   try {
-    ratingCountsSchema.parse(json);
-  } catch (e) {
-    if (e instanceof ZodError) {
-      // const errorResponse: ErrorResponse = {
-      //   message: '不正なクエリパラメータです。',
-      // };
-      // res.status(400).json(errorResponse);
-      console.log('レスポンス');
-      console.log(response.status);
-      console.log(response.statusText);
-      console.log(e);
-      // throw Error('API type error');
+    const response = await authClient.get(`rate/${movieId}`);
+    const json = await response.json();
+    ratingCountResponse.parse(json);
+
+    return json as RatingCountResponse;
+  } catch (error) {
+    if (error instanceof ZodError) {
+      throw Error(error.message);
+    }
+    if (error instanceof HTTPError) {
+      const serverMessage = await error.response.text();
+      throw Error(serverMessage);
     }
   }
-  // if (!movieSchema(movie)) {
-  //   throw Error('API type error');
-  // }
 
-  console.log(json);
-
-  return json as RatingCounts;
+  return null;
 };
 
 export default getRatingCounts;

@@ -20,7 +20,7 @@ const RatingCountsBarChart: FC<{ movieId: string }> = ({ movieId }) => {
     .map((_, i) => ({
       id: i,
       name: humanizeRate(i),
-      グローバル評価: data?.find(({ id }) => id === i)?.count,
+      Nactmユーザーの評価: data?.find(({ id }) => id === i)?.count,
     }))
     .slice(1);
 
@@ -40,7 +40,7 @@ const RatingCountsBarChart: FC<{ movieId: string }> = ({ movieId }) => {
         <YAxis />
         <Tooltip cursor={{ fill: '#616C75' }} />
         <Legend />
-        <Bar dataKey="グローバル評価" fill="#8884d8" />
+        <Bar dataKey="Nactmユーザーの評価" fill="#8884d8" />
         {/* <Bar dataKey="count" fill="#82ca9d" /> */}
       </BarChart>
     </ResponsiveContainer>

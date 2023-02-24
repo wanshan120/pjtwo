@@ -10,7 +10,11 @@ import (
 
 // RegisterRouter
 func RegisterRouter(ctx context.Context, client *mongo.Client, r *gin.RouterGroup) {
+	// movie
 	collection := configs.GetCollection(client, "ratings")
-	r.GET("/:productId", GetRatings(ctx, collection))
+	rs := NewRateServices(ctx, collection)
+	rc := NewRateController(rs)
+
+	r.GET("/:productId", rc.FindRatings)
 
 }
