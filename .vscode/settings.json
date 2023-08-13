@@ -1,0 +1,5 @@
+{
+    // ESLintでワークスペースの第一階層にtsconfig.jsonがないとエラーが出るため
+    "eslint.workingDirectories": ["./react_frontend/app_main"],
+    "typescript.tsdk": "./react_frontend/app_main/node_modules/typescript/lib",
+}
