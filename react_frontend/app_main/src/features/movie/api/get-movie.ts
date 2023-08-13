@@ -1,6 +1,6 @@
-import { MovieResponse, movieResponse } from 'models/movie-response';
 import { ZodError } from 'zod';
 import { HTTPError } from 'ky';
+import { MovieResponse, movieResponse } from 'models/movie-response';
 
 import authClient from 'configs/ky-auth-client';
 

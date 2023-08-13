@@ -1,8 +1,8 @@
 import { useRef } from 'react';
 
+import { ToastContainer } from 'react-toastify';
 import ErrorBoundary from 'ErrorBoundary';
 import SignUp from 'features/auth/components/SignUp';
-import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const SignUpPage = () => {
@@ -11,7 +11,7 @@ const SignUpPage = () => {
   return (
     <ErrorBoundary
       statusMessages={{
-        404: `NotFound`,
+        404: 'NotFound',
       }}
       onError={() => {
         ebKey.current += 1;

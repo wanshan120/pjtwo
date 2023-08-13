@@ -1,7 +1,7 @@
 import ky, { Options } from 'ky';
+import { ZodError } from 'zod';
 import { DEFAULT_API_OPTIONS } from 'configs/ky-api';
 import { Jwt, jwt } from 'models/jwt';
-import { ZodError } from 'zod';
 // import { ErrorResponse } from 'services/models/error-response';
 
 const postJwt = async (options?: Options): Promise<Jwt> => {
@@ -9,7 +9,7 @@ const postJwt = async (options?: Options): Promise<Jwt> => {
     ...DEFAULT_API_OPTIONS,
     ...options,
   };
-  const response = await ky.post(`token`, mergedOptions);
+  const response = await ky.post('token', mergedOptions);
   const json = await response.json();
 
   try {

@@ -2,8 +2,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useRef, Suspense, lazy } from 'react';
 
-import ErrorBoundary from 'ErrorBoundary';
 import { ToastContainer } from 'react-toastify';
+import ErrorBoundary from 'ErrorBoundary';
 import 'react-toastify/dist/ReactToastify.css';
 import FullScreenLoader from 'components/loader/FullScreenLoader';
 
@@ -25,7 +25,7 @@ const VerifyEmailPage = () => {
   return (
     <ErrorBoundary
       statusMessages={{
-        404: `NotFound`,
+        404: 'NotFound',
       }}
       onError={() => {
         ebKey.current += 1;

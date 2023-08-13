@@ -19,14 +19,14 @@ import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlin
 import DoneOutlinedIcon from '@mui/icons-material/DoneOutlined';
 
 // components
+import { formatDistance, subDays } from 'date-fns';
+import ja from 'date-fns/locale/ja';
 import SortMenu from 'components/menu/SortMenu';
 import humanizeRate from 'lib/humanizeRate';
 // img
 // import intothewildAama from 'data/images/intothewildAma.jpg';
 
 // date
-import { formatDistance, subDays } from 'date-fns';
-import ja from 'date-fns/locale/ja';
 
 import { Movie } from 'models/movie';
 // import ShowMoreText from 'react-show-more-text';

@@ -1,14 +1,14 @@
 /* eslint-disable consistent-return */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { IUserResponse, iUserResponse } from 'models/i-user-response';
 import { ZodError } from 'zod';
-import { RegisterInput } from 'models/input-resister';
 import { HTTPError } from 'ky';
+import { IUserResponse, iUserResponse } from 'models/i-user-response';
+import { RegisterInput } from 'models/input-resister';
 import authClient from '../../../configs/ky-auth-client';
 
 const postSignUpUser = async (inputdata: RegisterInput) => {
   try {
-    const response = await authClient.post(`auth/register`, { json: inputdata });
+    const response = await authClient.post('auth/register', { json: inputdata });
     const json = await response.json();
     iUserResponse.parse(json);
 

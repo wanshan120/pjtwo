@@ -3,12 +3,13 @@ import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 
 // URL pattern list
+import CssBaseline from '@mui/material/CssBaseline';
+import { ThemeProvider } from '@mui/material';
+import { ToastContainer, Slide } from 'react-toastify';
 import { urlPatterns } from 'urlPatterns';
 
 // MUI
 import theme from 'theme/myTheme';
-import CssBaseline from '@mui/material/CssBaseline';
-import { ThemeProvider } from '@mui/material';
 
 // compornents
 import RichLayout from 'components/layout/RichLayout';
@@ -22,7 +23,6 @@ import RequireUser from 'features/auth/components/RequireUser';
 import UnauthorizePage from 'features/auth/components/Unauthorized';
 import Skelton from 'features/skelton/components/Skelton';
 // toast
-import { ToastContainer, Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import 'theme/toast.css';
 

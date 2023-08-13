@@ -4,7 +4,6 @@
 import { FC, useState } from 'react';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import StyledListItemIcon from 'components/elements/StyledListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { LoadingButton } from '@mui/lab';
 import LogoutIcon from '@mui/icons-material/Logout';
@@ -13,6 +12,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 import Fade from '@mui/material/Fade';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
+import StyledListItemIcon from 'components/elements/StyledListItemIcon';
 
 import { useStateContext } from 'context';
 import useGetLogoutUser from 'features/auth/hooks/use-get-logout-user';

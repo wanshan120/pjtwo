@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable react/no-unknown-property */
 import { FC } from 'react';
 /** @jsxImportSource @emotion/react */
 import { css, keyframes } from '@emotion/react';

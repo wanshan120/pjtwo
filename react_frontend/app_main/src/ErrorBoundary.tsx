@@ -26,7 +26,7 @@ class ErrorBoundary extends PureComponent<Props, State> {
   }
 
   render() {
-    const { children, statusMessages = {} } = this.props;
+    const { children, statusMessages = DEFAULT_MESSAGES, onError: _onError } = this.props;
     const { hasError, error } = this.state;
     const messages = { ...DEFAULT_MESSAGES, ...statusMessages };
 

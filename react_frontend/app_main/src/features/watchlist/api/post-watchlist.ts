@@ -1,6 +1,6 @@
-import { WatchlistResponse, watchlistResponse } from 'models/watchlist';
 import { ZodError } from 'zod';
 import { HTTPError } from 'ky';
+import { WatchlistResponse, watchlistResponse } from 'models/watchlist';
 
 import authClient from 'configs/ky-auth-client';
 

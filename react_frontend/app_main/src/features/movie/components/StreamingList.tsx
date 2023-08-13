@@ -5,11 +5,11 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Avatar from '@mui/material/Avatar';
 import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
-import { Movie } from 'models/movie';
 
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
+import { Movie } from 'models/movie';
 
 const StreamingList: FC<{ plannings: Movie['plannings'] }> = ({ plannings }) => {
   // 最高値順でソートする

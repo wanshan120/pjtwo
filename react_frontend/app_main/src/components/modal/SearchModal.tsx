@@ -64,7 +64,12 @@ const SearchModal = () => {
           <Paper sx={style}>
             <Paper
               component="form"
-              sx={{ paddingBottom: 2, display: 'flex', alignItems: 'center', width: '100%' }}
+              sx={{
+                paddingBottom: 2,
+                display: 'flex',
+                alignItems: 'center',
+                width: '100%',
+              }}
             >
               <SearchIcon sx={{ fontSize: 30 }} />
               <InputBase
@@ -94,7 +99,12 @@ const SearchModal = () => {
                         src={intothewildAama}
                         alt={intothewildAama}
                         loading="lazy"
-                        style={{ width: '100%', height: 'auto', margin: 0, padding: 0 }}
+                        style={{
+                          width: '100%',
+                          height: 'auto',
+                          margin: 0,
+                          padding: 0,
+                        }}
                       />
                     </Grid>
                     <Grid item mobile={10.5}>

@@ -1,5 +1,3 @@
-import { BreakpointOverrides } from '@mui/material/styles';
-
 declare module '@mui/material/styles' {
   interface BreakpointOverrides {
     xs: false; // default is 0px

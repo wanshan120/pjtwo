@@ -1,5 +1,5 @@
-import { WatchlistResponse } from 'models/watchlist';
 import { HTTPError } from 'ky';
+import { WatchlistResponse } from 'models/watchlist';
 
 import authClient from 'configs/ky-auth-client';
 

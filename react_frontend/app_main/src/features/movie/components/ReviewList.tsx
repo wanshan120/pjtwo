@@ -51,7 +51,12 @@ const ReviewList: FC = () => (
             gutterBottom
             variant="h3"
             noWrap
-            sx={{ display: 'inline', fontSize: '1.1rem', fontWeight: 'bold', m: 1 }}
+            sx={{
+              display: 'inline',
+              fontSize: '1.1rem',
+              fontWeight: 'bold',
+              m: 1,
+            }}
           >
             テストユーザー名１
           </Typography>
@@ -99,7 +104,12 @@ const ReviewList: FC = () => (
             <Chip label="ネタバレ含む" color="warning" variant="outlined" sx={{ my: 1 }} />
             <Typography
               variant="h3"
-              sx={{ fontSize: '1.1rem', fontWeight: 'bold', marginTop: 1, marginBottom: 1 }}
+              sx={{
+                fontSize: '1.1rem',
+                fontWeight: 'bold',
+                marginTop: 1,
+                marginBottom: 1,
+              }}
             >
               前向きな旅物語ではなく、どちらかというと主人公が悲観して自分を死に追い込んでいくネガティブな人間ドラマ
             </Typography>
@@ -111,7 +121,12 @@ const ReviewList: FC = () => (
             </Typography>
             <Typography
               variant="h3"
-              sx={{ fontSize: '1.1rem', fontWeight: 'bold', marginTop: 2, marginBottom: 1 }}
+              sx={{
+                fontSize: '1.1rem',
+                fontWeight: 'bold',
+                marginTop: 2,
+                marginBottom: 1,
+              }}
             >
               ただ、生きることについて
             </Typography>

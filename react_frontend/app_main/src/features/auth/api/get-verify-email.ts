@@ -1,9 +1,9 @@
 /* eslint-disable consistent-return */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { DEFAULT_API_OPTIONS } from 'configs/ky-api';
-import { GenericResponse, genericResponse } from 'models/generic-response';
 import { ZodError } from 'zod';
 import { HTTPError } from 'ky';
+import { DEFAULT_API_OPTIONS } from 'configs/ky-api';
+import { GenericResponse, genericResponse } from 'models/generic-response';
 import authClient from '../../../configs/ky-auth-client';
 // import { ErrorResponse } from 'services/models/error-response';
 

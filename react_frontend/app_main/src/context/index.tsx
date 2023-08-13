@@ -33,7 +33,7 @@ const stateReducer = (state: State, action: Action) => {
       };
     }
     default: {
-      throw new Error(`Unhandled action type`);
+      throw new Error('Unhandled action type');
     }
   }
 };
@@ -52,7 +52,7 @@ const useStateContext = () => {
     return context;
   }
 
-  throw new Error(`useStateContext must be used within a StateContextProvider`);
+  throw new Error('useStateContext must be used within a StateContextProvider');
 };
 
 export { StateContextProvider, useStateContext };

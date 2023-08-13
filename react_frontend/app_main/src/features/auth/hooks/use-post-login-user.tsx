@@ -6,14 +6,14 @@ import { useMutation, useQuery } from 'react-query';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
 // My
+import { toast } from 'react-toastify';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { loginSchema, LoginInput } from 'models/input-login';
 import { genericResponse } from 'models/generic-response';
 import { useStateContext } from 'context';
 import postLoginUser from 'features/auth/api/post-login-user';
 import getMe from 'features/auth/api/get-me';
 // Plugin
-import { toast } from 'react-toastify';
-import { zodResolver } from '@hookform/resolvers/zod';
 
 const usePostLoginUser = () => {
   const navigate = useNavigate();
@@ -88,7 +88,13 @@ const usePostLoginUser = () => {
       }
     };
 
-  return { methods, handleSubmit, onSubmitHandler, onPromise, isLoading };
+  return {
+    methods,
+    handleSubmit,
+    onSubmitHandler,
+    onPromise,
+    isLoading,
+  };
 };
 
 export default usePostLoginUser;

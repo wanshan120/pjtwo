@@ -1,6 +1,6 @@
-import { RelatedMoviesResponse, relatedMoviesResponse } from 'models/related-movie-response';
 import { ZodError } from 'zod';
 import { HTTPError } from 'ky';
+import { RelatedMoviesResponse, relatedMoviesResponse } from 'models/related-movie-response';
 
 import authClient from 'configs/ky-auth-client';
 

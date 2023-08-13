@@ -6,12 +6,12 @@ import { useMutation } from 'react-query';
 import { useNavigate, useParams } from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
 // My
+import { toast } from 'react-toastify';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { verificationCodeSchema, VerificationCodeInput } from 'models/input-verification-code';
 import { genericResponse } from 'models/generic-response';
 import GetVerifyEmail from 'features/auth/api/get-verify-email';
 // Plugin
-import { toast } from 'react-toastify';
-import { zodResolver } from '@hookform/resolvers/zod';
 
 const usePostVerifyEmail = () => {
   const navigate = useNavigate();
@@ -82,7 +82,13 @@ const usePostVerifyEmail = () => {
       }
     };
 
-  return { methods, handleSubmit, onSubmitHandler, onPromise, isLoading };
+  return {
+    methods,
+    handleSubmit,
+    onSubmitHandler,
+    onPromise,
+    isLoading,
+  };
 };
 
 export default usePostVerifyEmail;

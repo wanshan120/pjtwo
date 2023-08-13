@@ -1,9 +1,9 @@
 import { useCookies } from 'react-cookie';
 import { useQuery } from 'react-query';
+import React from 'react';
 import getMe from 'features/auth/api/get-me';
 import { useStateContext } from 'context';
 import FullScreenLoader from 'components/loader/FullScreenLoader';
-import React from 'react';
 
 type AuthMiddlewareProps = {
   children: React.ReactElement;

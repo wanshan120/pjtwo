@@ -46,7 +46,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   '& .MuiInputBase-input': {
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
-    paddingLeft: `1em`,
+    paddingLeft: '1em',
     transition: theme.transitions.create('width'),
     width: '100%',
   },
@@ -138,7 +138,12 @@ const HomePage = () => (
                       gutterBottom
                       variant="h3"
                       noWrap
-                      sx={{ display: 'inline', fontSize: '1.1rem', fontWeight: 'bold', m: 1 }}
+                      sx={{
+                        display: 'inline',
+                        fontSize: '1.1rem',
+                        fontWeight: 'bold',
+                        m: 1,
+                      }}
                     >
                       テストユーザー名１
                     </Typography>
@@ -332,7 +337,12 @@ const HomePage = () => (
                       gutterBottom
                       variant="h3"
                       noWrap
-                      sx={{ display: 'inline', fontSize: '1.1rem', fontWeight: 'bold', m: 1 }}
+                      sx={{
+                        display: 'inline',
+                        fontSize: '1.1rem',
+                        fontWeight: 'bold',
+                        m: 1,
+                      }}
                     >
                       テストユーザー名１
                     </Typography>

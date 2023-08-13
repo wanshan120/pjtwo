@@ -18,14 +18,14 @@ import ClearIcon from '@mui/icons-material/Clear';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 // components
+import { formatDistance, subDays } from 'date-fns';
+import ja from 'date-fns/locale/ja';
 import SortMenu from 'components/menu/SortMenu';
 
 // img
 import intothewildAama from 'data/images/intothewildAma.jpg';
 
 // date
-import { formatDistance, subDays } from 'date-fns';
-import ja from 'date-fns/locale/ja';
 
 const MyList = () => {
   const [alignment, setAlignment] = React.useState('web');
@@ -68,7 +68,12 @@ const MyList = () => {
                 src={intothewildAama}
                 alt={intothewildAama}
                 loading="lazy"
-                style={{ width: '100%', height: 'auto', margin: 0, padding: 0 }}
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                  margin: 0,
+                  padding: 0,
+                }}
               />
             </Grid>
 

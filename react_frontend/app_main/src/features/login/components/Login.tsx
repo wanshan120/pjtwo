@@ -16,11 +16,11 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
-import Copyright from 'components/copylight/Copylight';
 import CssBaseline from '@mui/material/CssBaseline';
 import { FormProvider } from 'react-hook-form';
-import FormInput from 'components/form/FormInput';
 import { LoadingButton } from '@mui/lab';
+import FormInput from 'components/form/FormInput';
+import Copyright from 'components/copylight/Copylight';
 import usePostLoginUser from 'features/auth/hooks/use-post-login-user';
 import { urlPatterns } from 'urlPatterns';
 

@@ -1,7 +1,7 @@
-import authClient from 'configs/ky-auth-client';
-import { RatingCountResponse, ratingCountResponse } from 'models/rating-counts-response';
 import { ZodError } from 'zod';
 import { HTTPError } from 'ky';
+import authClient from 'configs/ky-auth-client';
+import { RatingCountResponse, ratingCountResponse } from 'models/rating-counts-response';
 
 const getRatingCounts = async (movieId: string): Promise<RatingCountResponse | null> => {
   try {

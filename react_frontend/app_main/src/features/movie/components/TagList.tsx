@@ -2,10 +2,9 @@ import { FC } from 'react';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 
+import Grid from '@mui/material/Grid';
 import { Movie } from 'models/movie';
 import TagKeys from 'data/tagKeysType';
-
-import Grid from '@mui/material/Grid';
 
 const TagList: FC<{ tags: Movie['keywordTags']; subHeader: string }> = ({ tags, subHeader }) => (
   <Paper

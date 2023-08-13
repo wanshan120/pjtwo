@@ -4,12 +4,12 @@
 import { useMutation } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 // My
+import { toast } from 'react-toastify';
 import { genericResponse } from 'models/generic-response';
 import GetLogoutUser from 'features/auth/api/get-logout-user';
 import { urlPatterns } from 'urlPatterns';
 
 // Plugin
-import { toast } from 'react-toastify';
 
 const useGetLogoutUser = () => {
   const navigate = useNavigate();
