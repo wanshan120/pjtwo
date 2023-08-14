@@ -1,3 +1,5 @@
+import { BreakpointOverrides } from '@mui/material/styles';
+
 declare module '@mui/material/styles' {
   interface BreakpointOverrides {
     xs: false; // default is 0px
@@ -9,19 +11,6 @@ declare module '@mui/material/styles' {
     tablet: true;
     laptop: true;
     desktop: true;
-  }
-  interface Palette {
-    banana: Palette['primary'];
-  }
-  interface PaletteOptions {
-    banana: PaletteOptions['primary'];
-  }
-}
-
-// Update the Button's color prop options
-declare module '@mui/material/IconButton' {
-  interface IconButtonPropsColorOverrides {
-    banana: true;
   }
 }
 

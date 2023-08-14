@@ -19,9 +19,6 @@ const theme = createTheme(
         secondary: 'rgba(255, 255, 255, 0.7)',
         disabled: 'rgba(255, 255, 255, 0.5)',
       },
-      banana: {
-        main: '#FFD526',
-      },
     },
     typography: {
       fontFamily: ['Roboto', 'Noto Sans JP', '"Helvetica"', 'Arial', 'sans-serif'].join(','),

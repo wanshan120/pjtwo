@@ -85,7 +85,6 @@ module.exports = {
       },
     ],
     'react/react-in-jsx-scope': 'off',
-    'react/require-default-props': 'off',
     'react/function-component-definition': [
       'error',
       {
@@ -100,12 +99,16 @@ module.exports = {
         classPropertiesAllowed: false,
       },
     ],
+    // note you must disable the base rule as it can report incorrect errors
+    'no-shadow': 'off',
+    '@typescript-eslint/no-shadow': ['error'],
   },
   overrides: [
     {
       files: ['*.tsx'],
       rules: {
         'react/prop-types': 'off',
+        'react/require-default-props': 'off',
       },
     },
   ],
@@ -114,6 +117,7 @@ module.exports = {
       node: {
         paths: ['src'],
       },
+      typescript: { project: './' },
     },
   },
 };

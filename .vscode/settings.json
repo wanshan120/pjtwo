@@ -1,28 +1,38 @@
 {
-    // VSCodeのワークスペースのサブディレクトリにtsconfig.jsonがある場合の設定
-    "eslint.workingDirectories": ["./react_frontend/app_main"],
-    "typescript.tsdk": "./react_frontend/app_main/node_modules/typescript/lib",
-    "eslint.enable": true,
-    "eslint.run": "onSave",
+  // VSCodeのワークスペースのサブディレクトリにtsconfig.jsonがある場合の設定
+  "eslint.workingDirectories": ["./react_frontend/app_main"],
+  "typescript.tsdk": "./react_frontend/app_main/node_modules/typescript/lib",
+  "eslint.enable": true,
+  "eslint.run": "onSave",
 
-    // Prettier
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "[graphql]": {
-        "editor.formatOnSave": true
-    },
-    "[javascript]": {
-        "editor.formatOnSave": true
-    },
-    "[javascriptreact]": {
-        "editor.formatOnSave": true
-    },
-    "[json]": {
-        "editor.formatOnSave": true
-    },
-    "[typescript]": {
-        "editor.formatOnSave": true
-    },
-    "[typescriptreact]": {
-        "editor.formatOnSave": true
-    },
+  // Prettier
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[graphql]": {
+    "editor.formatOnSave": true
+  },
+  "[javascript]": {
+    "editor.formatOnSave": true
+  },
+  "[javascriptreact]": {
+    "editor.formatOnSave": true
+  },
+  "[json]": {
+    "editor.formatOnSave": true
+  },
+  "[typescript]": {
+    "editor.formatOnSave": true
+  },
+  "[typescriptreact]": {
+    "editor.formatOnSave": true
+  },
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.fixAll.stylelint": true
+  },
+  "editor.formatOnSave": true,
+  "typescript.enablePromptUseWorkspaceTsdk": true
 }
