@@ -4,6 +4,7 @@ import (
 	"context"
 	"strings"
 
+	"github.com/wanshan120/pjtwo/go_backend/common/pjtwodb/models"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
@@ -18,17 +19,17 @@ func NewUserServiceImpl(ctx context.Context, collection *mongo.Collection) UserS
 	return &UserServicesImpl{collection, ctx}
 }
 
-func (us *UserServicesImpl) FindUserById(id string) (*DBResponse, error) {
+func (us *UserServicesImpl) FindUserById(id string) (*models.UserRecord, error) {
 	oid, _ := primitive.ObjectIDFromHex(id)
 
-	var user *DBResponse
+	var user *models.UserRecord
 
 	query := bson.M{"_id": oid}
 	err := us.collection.FindOne(us.ctx, query).Decode(&user)
 
 	if err != nil {
 		if err == mongo.ErrNoDocuments {
-			return &DBResponse{}, err
+			return &models.UserRecord{}, err
 		}
 		return nil, err
 	}
@@ -36,15 +37,15 @@ func (us *UserServicesImpl) FindUserById(id string) (*DBResponse, error) {
 	return user, nil
 }
 
-func (us *UserServicesImpl) FindUserByEmail(email string) (*DBResponse, error) {
-	var user *DBResponse
+func (us *UserServicesImpl) FindUserByEmail(email string) (*models.UserRecord, error) {
+	var user *models.UserRecord
 
 	query := bson.M{"email": strings.ToLower(email)}
 	err := us.collection.FindOne(us.ctx, query).Decode(&user)
 
 	if err != nil {
 		if err == mongo.ErrNoDocuments {
-			return &DBResponse{}, err
+			return &models.UserRecord{}, err
 		}
 		return nil, err
 	}

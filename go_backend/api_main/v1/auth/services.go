@@ -1,10 +1,10 @@
 package auth
 
 import (
-	"github.com/wanshan120/pjtwo/go_backend/api_main/v1/user"
+	"github.com/wanshan120/pjtwo/go_backend/common/pjtwodb/models"
 )
 
 type AuthServices interface {
-	SignUpUser(*user.SignUpInput) (*user.DBResponse, error)
-	SignInUser(*user.SignInInput) (*user.DBResponse, error)
+	SignUpUser(*models.SignUpInput) (*models.UserRecord, error)
+	SignInUser(*models.SignInInput) (*models.UserRecord, error)
 }

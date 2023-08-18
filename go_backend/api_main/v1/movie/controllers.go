@@ -5,6 +5,7 @@ import (
 	"strings"
 
 	"github.com/gin-gonic/gin"
+	"github.com/wanshan120/pjtwo/go_backend/common/pjtwodb/models"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
 )
@@ -18,7 +19,7 @@ func NewMovieController(movieServices MovieServices) MovieControllers {
 }
 
 func (mc *MovieControllers) AddMovie(ctx *gin.Context) {
-	var movie *AddMovieInput
+	var movie *models.AddMovieInput
 
 	// 入力値検証
 	if err := ctx.ShouldBindJSON(&movie); err != nil {
@@ -37,7 +38,7 @@ func (mc *MovieControllers) AddMovie(ctx *gin.Context) {
 		return
 	}
 	ctx.JSON(http.StatusCreated, gin.H{
-		"status": "success", "data": gin.H{"movie": FilteredResponse(newMovie)},
+		"status": "success", "data": gin.H{"movie": models.FiltereMovie(newMovie)},
 	})
 
 }

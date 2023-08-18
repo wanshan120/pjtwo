@@ -5,6 +5,7 @@ import (
 	"errors"
 	"time"
 
+	"github.com/wanshan120/pjtwo/go_backend/common/pjtwodb/models"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
@@ -20,9 +21,9 @@ func NewWatchlistService(ctx context.Context, collection *mongo.Collection) Watc
 	return &WatchlistServicesImpl{ctx, collection}
 }
 
-func (wsi *WatchlistServicesImpl) Add(productId primitive.ObjectID, userId primitive.ObjectID) (*WatchlistSchema, error) {
+func (wsi *WatchlistServicesImpl) Add(productId primitive.ObjectID, userId primitive.ObjectID) (*models.Watchlist, error) {
 	// insert
-	watchlist := WatchlistRequest{}
+	watchlist := models.AddWatchlist{}
 	watchlist.CreatedAt = time.Now()
 	watchlist.UserId = userId
 	watchlist.ProductId = productId
@@ -46,7 +47,7 @@ func (wsi *WatchlistServicesImpl) Add(productId primitive.ObjectID, userId primi
 	}
 
 	// insert check
-	newWached := WatchlistSchema{}
+	newWached := models.Watchlist{}
 	query := bson.M{"_id": res.InsertedID}
 	if err := wsi.collection.FindOne(wsi.ctx, query).Decode(&newWached); err != nil {
 		return nil, err
@@ -70,10 +71,10 @@ func (wsi *WatchlistServicesImpl) Delete(productId primitive.ObjectID, userId pr
 	return nil
 }
 
-func (wsi *WatchlistServicesImpl) FindOne(productId primitive.ObjectID, userId primitive.ObjectID) (*WatchlistSchema, error) {
+func (wsi *WatchlistServicesImpl) FindOne(productId primitive.ObjectID, userId primitive.ObjectID) (*models.Watchlist, error) {
 
 	// insert check
-	newWached := WatchlistSchema{}
+	newWached := models.Watchlist{}
 	query := bson.M{"productId": productId, "userId": userId}
 	if err := wsi.collection.FindOne(wsi.ctx, query).Decode(&newWached); err != nil {
 		return nil, err

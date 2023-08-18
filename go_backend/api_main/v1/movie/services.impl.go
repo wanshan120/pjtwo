@@ -5,6 +5,7 @@ import (
 	"errors"
 	"time"
 
+	"github.com/wanshan120/pjtwo/go_backend/common/pjtwodb/models"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
@@ -19,7 +20,7 @@ func NewMovieService(ctx context.Context, collection *mongo.Collection) MovieSer
 	return &MovieServicesImpl{ctx, collection}
 }
 
-func (msi *MovieServicesImpl) AddMovie(movie *AddMovieInput) (*DBResponse, error) {
+func (msi *MovieServicesImpl) AddMovie(movie *models.AddMovieInput) (*models.Movie, error) {
 	movie.CreatedAt = time.Now()
 	movie.UpdatedAt = movie.CreatedAt
 
@@ -34,7 +35,7 @@ func (msi *MovieServicesImpl) AddMovie(movie *AddMovieInput) (*DBResponse, error
 	}
 
 	// response
-	var newMovie *DBResponse
+	var newMovie *models.Movie
 	query := bson.M{"_id": res.InsertedID}
 	err = msi.collection.FindOne(ctx1, query).Decode(&newMovie)
 	if err != nil {
@@ -45,7 +46,7 @@ func (msi *MovieServicesImpl) AddMovie(movie *AddMovieInput) (*DBResponse, error
 }
 
 // 映画情報を取得する
-func (msi *MovieServicesImpl) FindMovieById(id primitive.ObjectID) (*FindMovieDBResponse, error) {
+func (msi *MovieServicesImpl) FindMovieById(id primitive.ObjectID) (*models.FindMovieDetail, error) {
 
 	pipeline := bson.A{
 		bson.D{{Key: "$match", Value: bson.D{{Key: "_id", Value: id}}}},
@@ -273,21 +274,21 @@ func (msi *MovieServicesImpl) FindMovieById(id primitive.ObjectID) (*FindMovieDB
 		return nil, err
 	}
 
-	movie := []FindMovieDBResponse{}
+	movie := []models.FindMovieDetail{}
 	if err = cursor.All(msi.ctx, &movie); err != nil {
 		return nil, err
 	}
 
 	// no document check
 	if len(movie) == 0 {
-		return &FindMovieDBResponse{}, mongo.ErrNoDocuments
+		return &models.FindMovieDetail{}, mongo.ErrNoDocuments
 	}
 
 	return &movie[0], nil
 }
 
 // おすすめの映画を探す
-func (msi *MovieServicesImpl) FindRecommendedMovies(tagId primitive.ObjectID) (*[]RecomendDBResponse, error) {
+func (msi *MovieServicesImpl) FindRecommendedMovies(tagId primitive.ObjectID) (*[]models.RecommendedMovie, error) {
 
 	pipeline := bson.A{
 		bson.D{{Key: "$match", Value: bson.D{{Key: "tagIds", Value: tagId}}}},
@@ -389,7 +390,7 @@ func (msi *MovieServicesImpl) FindRecommendedMovies(tagId primitive.ObjectID) (*
 		return nil, err
 	}
 
-	movies := []RecomendDBResponse{}
+	movies := []models.RecommendedMovie{}
 	if err = cursor.All(msi.ctx, &movies); err != nil {
 		return nil, err
 	}
@@ -398,7 +399,7 @@ func (msi *MovieServicesImpl) FindRecommendedMovies(tagId primitive.ObjectID) (*
 }
 
 // 関連映画を探す
-func (msi *MovieServicesImpl) FindRelatedMovies(tagId primitive.ObjectID) (*[]RelatedMovieDBResponse, error) {
+func (msi *MovieServicesImpl) FindRelatedMovies(tagId primitive.ObjectID) (*[]models.RelatedMovie, error) {
 
 	pipeline := bson.A{
 		bson.D{{Key: "$match", Value: bson.D{{Key: "tagIds", Value: tagId}}}},
@@ -524,7 +525,7 @@ func (msi *MovieServicesImpl) FindRelatedMovies(tagId primitive.ObjectID) (*[]Re
 		return nil, err
 	}
 
-	movies := []RelatedMovieDBResponse{}
+	movies := []models.RelatedMovie{}
 	if err = cursor.All(msi.ctx, &movies); err != nil {
 		return nil, err
 	}

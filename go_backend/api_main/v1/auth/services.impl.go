@@ -6,8 +6,8 @@ import (
 	"strings"
 	"time"
 
-	usr "github.com/wanshan120/pjtwo/go_backend/api_main/v1/user"
 	"github.com/wanshan120/pjtwo/go_backend/api_main/v1/utils"
+	"github.com/wanshan120/pjtwo/go_backend/common/pjtwodb/models"
 
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
@@ -23,7 +23,7 @@ func NewAuthService(ctx context.Context, collection *mongo.Collection) AuthServi
 	return &AuthServicesImpl{ctx, collection}
 }
 
-func (uc *AuthServicesImpl) SignUpUser(user *usr.SignUpInput) (*usr.DBResponse, error) {
+func (uc *AuthServicesImpl) SignUpUser(user *models.SignUpInput) (*models.UserRecord, error) {
 	user.CreatedAt = time.Now()
 	user.UpdatedAt = user.CreatedAt
 	user.Email = strings.ToLower(user.Email)
@@ -53,7 +53,7 @@ func (uc *AuthServicesImpl) SignUpUser(user *usr.SignUpInput) (*usr.DBResponse, 
 		return nil, errors.New("could not create index for email")
 	}
 
-	var newUser *usr.DBResponse
+	var newUser *models.UserRecord
 	query := bson.M{"_id": res.InsertedID}
 
 	err = uc.collection.FindOne(ctx1, query).Decode(&newUser)
@@ -64,6 +64,6 @@ func (uc *AuthServicesImpl) SignUpUser(user *usr.SignUpInput) (*usr.DBResponse, 
 	return newUser, nil
 }
 
-func (uc *AuthServicesImpl) SignInUser(*usr.SignInInput) (*usr.DBResponse, error) {
+func (uc *AuthServicesImpl) SignInUser(*models.SignInInput) (*models.UserRecord, error) {
 	return nil, nil
 }

@@ -7,7 +7,9 @@ import (
 
 	conf "github.com/wanshan120/pjtwo/go_backend/api_main/configs"
 	usr "github.com/wanshan120/pjtwo/go_backend/api_main/v1/user"
+
 	"github.com/wanshan120/pjtwo/go_backend/api_main/v1/utils"
+	"github.com/wanshan120/pjtwo/go_backend/common/pjtwodb/models"
 
 	"github.com/gin-gonic/gin"
 	"go.mongodb.org/mongo-driver/mongo"
@@ -24,7 +26,7 @@ func NewAuthControllers(authServices AuthServices, userServices usr.UserServices
 
 // ユーザー登録
 func (ac *AuthControllers) SignUpUser(ctx *gin.Context) {
-	var user *usr.SignUpInput
+	var user *models.SignUpInput
 
 	// 入力値検証
 	if err := ctx.ShouldBindJSON(&user); err != nil {
@@ -51,13 +53,13 @@ func (ac *AuthControllers) SignUpUser(ctx *gin.Context) {
 	}
 
 	ctx.JSON(http.StatusCreated, gin.H{
-		"status": "success", "data": gin.H{"user": usr.FilteredResponse(newUser)},
+		"status": "success", "data": gin.H{"user": models.FilterUserRecordToResponse(newUser)},
 	})
 }
 
 // ログイン
 func (ac *AuthControllers) SignInUser(ctx *gin.Context) {
-	var credentials *usr.SignInInput
+	var credentials *models.SignInInput
 
 	if err := ctx.BindJSON(&credentials); err != nil {
 		ctx.JSON(http.StatusBadRequest, gin.H{"status": "fail", "message": err.Error()})

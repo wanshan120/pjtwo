@@ -1,4 +1,4 @@
-package user
+package models
 
 import (
 	"time"
@@ -16,7 +16,7 @@ type User struct {
 	UpdatedAt primitive.DateTime `json:"updatedAt" bson:"updatedAt,omitempty"`
 }
 
-type UserSchema struct {
+type UserWithID struct {
 	Id primitive.ObjectID `bson:"_id,omitempty"`
 	User
 }
@@ -38,7 +38,6 @@ func (user *User) CheckPassword(providedPassword string) error {
 	return nil
 }
 
-// ? SignUpInput struct
 type SignUpInput struct {
 	Name            string    `json:"name" bson:"name" binding:"required"`
 	Email           string    `json:"email" bson:"email" binding:"required"`
@@ -50,14 +49,12 @@ type SignUpInput struct {
 	UpdatedAt       time.Time `json:"updatedAt" bson:"updatedAt"`
 }
 
-// ? SignInInput struct
 type SignInInput struct {
 	Email    string `json:"email" bson:"email" binding:"required"`
 	Password string `json:"password" bson:"password" binding:"required"`
 }
 
-// ? DBResponse struct
-type DBResponse struct {
+type UserRecord struct {
 	ID              primitive.ObjectID `json:"id" bson:"_id"`
 	Name            string             `json:"name" bson:"name"`
 	Email           string             `json:"email" bson:"email"`
@@ -69,8 +66,7 @@ type DBResponse struct {
 	UpdatedAt       time.Time          `json:"updatedAt" bson:"updatedAt"`
 }
 
-// ? UserResponse struct
-type UserResponse struct {
+type PublicUserResponse struct {
 	ID        primitive.ObjectID `json:"id,omitempty" bson:"_id,omitempty"`
 	Name      string             `json:"name,omitempty" bson:"name,omitempty"`
 	Email     string             `json:"email,omitempty" bson:"email,omitempty"`
@@ -79,8 +75,8 @@ type UserResponse struct {
 	UpdatedAt time.Time          `json:"updatedAt" bson:"updatedAt"`
 }
 
-func FilteredResponse(user *DBResponse) UserResponse {
-	return UserResponse{
+func FilterUserRecordToResponse(user *UserRecord) PublicUserResponse {
+	return PublicUserResponse{
 		ID:        user.ID,
 		Email:     user.Email,
 		Name:      user.Name,

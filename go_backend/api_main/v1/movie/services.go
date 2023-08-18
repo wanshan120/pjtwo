@@ -1,10 +1,13 @@
 package movie
 
-import "go.mongodb.org/mongo-driver/bson/primitive"
+import (
+	"github.com/wanshan120/pjtwo/go_backend/common/pjtwodb/models"
+	"go.mongodb.org/mongo-driver/bson/primitive"
+)
 
 type MovieServices interface {
-	AddMovie(*AddMovieInput) (*DBResponse, error)                            // CreateMovieItem
-	FindMovieById(primitive.ObjectID) (*FindMovieDBResponse, error)          // GetMovieById
-	FindRecommendedMovies(primitive.ObjectID) (*[]RecomendDBResponse, error) // GetRecommendMovie
-	FindRelatedMovies(primitive.ObjectID) (*[]RelatedMovieDBResponse, error) // GetRelatedMovies
+	AddMovie(*models.AddMovieInput) (*models.Movie, error)
+	FindMovieById(primitive.ObjectID) (*models.FindMovieDetail, error)            // GetMovieById
+	FindRecommendedMovies(primitive.ObjectID) (*[]models.RecommendedMovie, error) // GetRecommendMovie
+	FindRelatedMovies(primitive.ObjectID) (*[]models.RelatedMovie, error)         // GetRelatedMovies
 }

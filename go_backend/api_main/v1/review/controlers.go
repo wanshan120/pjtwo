@@ -10,6 +10,7 @@ import (
 	"github.com/go-playground/validator/v10"
 
 	// "go.mongodb.org/mongo-driver/bson"
+	"github.com/wanshan120/pjtwo/go_backend/common/pjtwodb/models"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
@@ -68,7 +69,7 @@ func GetReviewByProductId(ctx context.Context, collection *mongo.Collection) gin
 			return
 		}
 
-		review := []ReviewJson{}
+		review := []models.ReviewJson{}
 		// var review []bson.D
 		if err = cursor.All(ctx, &review); err != nil {
 			c.JSON(

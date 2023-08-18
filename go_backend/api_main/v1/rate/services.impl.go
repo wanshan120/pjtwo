@@ -3,6 +3,7 @@ package rate
 import (
 	"context"
 
+	"github.com/wanshan120/pjtwo/go_backend/common/pjtwodb/models"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
@@ -17,7 +18,7 @@ func NewRateServices(ctx context.Context, collection *mongo.Collection) RateServ
 	return &RateServicesImpl{ctx, collection}
 }
 
-func (rsi *RateServicesImpl) FindRatings(id primitive.ObjectID) (*[]RatingCountResponse, error) {
+func (rsi *RateServicesImpl) FindRatings(id primitive.ObjectID) (*[]models.RatingCountResponse, error) {
 
 	pipeline := bson.A{
 		bson.D{{Key: "$match", Value: bson.D{{Key: "productId", Value: id}}}},
@@ -35,7 +36,7 @@ func (rsi *RateServicesImpl) FindRatings(id primitive.ObjectID) (*[]RatingCountR
 		return nil, err
 	}
 
-	results := []RatingCountResponse{}
+	results := []models.RatingCountResponse{}
 	if err = cursor.All(rsi.ctx, &results); err != nil {
 		return nil, err
 	}
