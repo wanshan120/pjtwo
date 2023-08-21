@@ -20,12 +20,7 @@ func ConnectDB(ctx context.Context) *mongo.Client {
 		log.Fatal("Could not load environment variables", err)
 	}
 
-	client, err := mongo.NewClient(options.Client().ApplyURI(config.DBUri))
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	err = client.Connect(ctx1)
+	client, err := mongo.Connect(ctx1, options.Client().ApplyURI(config.DBUri))
 	if err != nil {
 		log.Fatal(err)
 	}
