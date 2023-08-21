@@ -3,7 +3,7 @@ package review
 import (
 	"context"
 
-	"github.com/wanshan120/pjtwo/go_backend/api_main/configs"
+	"github.com/wanshan120/pjtwo/go_backend/common/pjtwodb/configs"
 
 	"github.com/gin-gonic/gin"
 	"go.mongodb.org/mongo-driver/mongo"

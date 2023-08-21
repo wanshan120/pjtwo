@@ -10,9 +10,9 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	conf "github.com/wanshan120/pjtwo/go_backend/api_main/configs"
 	usr "github.com/wanshan120/pjtwo/go_backend/api_main/v1/user"
 	"github.com/wanshan120/pjtwo/go_backend/api_main/v1/utils"
+	conf "github.com/wanshan120/pjtwo/go_backend/common/pjtwodb/configs"
 )
 
 func DeserializeUser(userServices usr.UserServices) gin.HandlerFunc {

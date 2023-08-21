@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"strings"
 
-	conf "github.com/wanshan120/pjtwo/go_backend/api_main/configs"
 	usr "github.com/wanshan120/pjtwo/go_backend/api_main/v1/user"
+	conf "github.com/wanshan120/pjtwo/go_backend/common/pjtwodb/configs"
 
 	"github.com/wanshan120/pjtwo/go_backend/api_main/v1/utils"
 	"github.com/wanshan120/pjtwo/go_backend/common/pjtwodb/models"

@@ -4,7 +4,6 @@ import (
 	"context"
 	"time"
 
-	"github.com/wanshan120/pjtwo/go_backend/api_main/configs"
 	"github.com/wanshan120/pjtwo/go_backend/api_main/middlewares"
 	"github.com/wanshan120/pjtwo/go_backend/api_main/v1/auth"
 	"github.com/wanshan120/pjtwo/go_backend/api_main/v1/movie"
@@ -12,6 +11,7 @@ import (
 	"github.com/wanshan120/pjtwo/go_backend/api_main/v1/review"
 	usr "github.com/wanshan120/pjtwo/go_backend/api_main/v1/user"
 	"github.com/wanshan120/pjtwo/go_backend/api_main/v1/watchlist"
+	"github.com/wanshan120/pjtwo/go_backend/common/pjtwodb/configs"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
